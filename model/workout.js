@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+var mongoose = require("mongoose");
 
 var Schema = mongoose.Schema;
 
@@ -19,4 +19,4 @@ var WorkoutSchema = new Schema({
 
 var Workout = mongoose.model("Workout", WorkoutSchema);
 
-export default Workout;
+module.exports = Workout;
