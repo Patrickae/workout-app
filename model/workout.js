@@ -6,7 +6,7 @@ var WorkoutSchema = new Schema({
   workoutName:{
     type: String
   },
-  creator:{
+  creatorId:{
     type: String
   },
   exercises:{

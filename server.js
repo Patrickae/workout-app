@@ -37,9 +37,162 @@ db.once("open", function() {
 });
 
 //----------------------
+//--------Routes for getting existing info----------------
+
+//route to get all workouts
+app.get("/api/workouts", function(req, res){
+	//get all Workout Collection
+	Workout.find({}).exec(function(err, doc){
+		if(err){
+			console.log(err)
+		}
+		else{
+			res.send(doc);
+		}
+	});
+});
+
+//route to get all users
+app.get("api/users", function(req, res){
+	//find all in the User collection
+	User.find({}).exec(function(err, doc){
+		if(err){
+			console.log(err);
+		}
+		else{
+			res.send(doc);
+		}
+	});
+});
+//---------------------------------------------------------------
+//-----------Routes for adding users and workouts -----------------
+
+//route to post a new workout
+app.post("/api/workouts", function(req, res){
+	//make a new instance of Workout with the req.body
+	var newWorkout = new Workout(req.body);
+	console.log(req.body);
+	//save the new workout
+	newWorkout.save(function(err, doc){
+		if(err){
+			console.log(err);
+		}
+		else{
+			res.send(doc);
+		}
+	});
+});
+
+//add new user
+app.post("/api/users", function(req, res){
+	//make a new instance of User with the req.body
+	var newUser = new User(req.body);
+	console.log(req.body);
+	//save the new User
+	newUser.save(function(err, doc){
+		if(err){
+			console.log(err);
+		}
+		else{
+			res.send(doc);
+		}
+	});
+});
 
 
 
+//---------------------------------------------------------------
+//---------------Routes for deleting ----------------------------
+
+
+app.delete("api/workouts/:id", function(req,res){
+	var id = req.params.id
+
+	Workouts.fund({_id: id}).remove().exec(function(err){
+		if(err){
+			console.log(err);
+		}
+		else{
+			res.send("Deleted");
+		}
+	});
+});
+
+
+app.delete("api/users/:id", function(req,res){
+	var id = req.params.id;
+
+	User.find({_id:id}).remove().exec(function(err){
+		if(err){
+			console.log(err)
+		}
+		else{
+			res.send("Deleted");
+		}
+	});
+});
+
+//---------------------------------------------------------------
+//---------------Routes for Updating----------------------------
+
+app.put("api/workouts/:id", function(req, res){
+	var id = req.params.id;
+	Workout.findOne({_id: id}, function(err, foundObject){
+		if(err){
+			console.log(err);
+			res.status(500).send();
+		}
+		else{
+			if(!foundObject){
+				res.status(404).send();
+			}
+			else{
+				foundObject.workoutName = req.body.workoutName
+			}
+		}
+	});
+});
+
+
+app.put("api/workouts/:id", function(req, res){
+	var id = req.params.id;
+	Workout.findOne({_id: id}, function(err, foundObject){
+		if(err){
+			console.log(err);
+			res.status(500).send();
+		}
+		else{
+			if(!foundObject){
+				res.status(404).send();
+			}
+			else{
+				foundObject.workoutName = req.body.workoutName
+			}
+		}
+	});
+});
+
+
+
+app.put("api/users/:id", function(req, res){
+	var id = req.params.id;
+	User.findOne({_id: id}, function(err, foundObject){
+		if(err){
+			console.log(err);
+			res.status(500).send();
+		}
+		else{
+			if(!foundObject){
+				res.status(404).send();
+			}
+			else{
+				foundObject.name = req.body.name
+			}
+		}
+	});
+});
+
+//---------------------------------------------------------------
 
 
 // Any non API GET routes will be directed to our React App and handled by React Router

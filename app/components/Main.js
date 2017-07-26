@@ -10,13 +10,7 @@ class Main extends React.Component{
       
         <div className="container-fluid">
 
-      {/*header*/}
-        <div className="row">
-          <div className="jumbotron text-center" id="jumbo">
-            <h1>Workout helper</h1>
-            <p>Create or choose workouts and let them help you get moving</p>
-          </div>
-        </div>
+
 
         <div className="row" id="navRow">
           <nav className="navbar navbar-inverse" role="navigation">
@@ -37,7 +31,7 @@ class Main extends React.Component{
                 <div className="collapse navbar-collapse" id="nav-div">
                   <ul className="nav navbar-nav" id="nav-links">
                     {/* Using <Link> in place of <a> and "to" in place of "href" */}
-                    <li><Link to="/">Create Workout</Link></li>
+                    <li><Link to="/create">Create Workout</Link></li>
                     <li><Link to="/">Edit Saved Workouts</Link></li>
                     <li><Link to="/">Saved Workouts</Link></li>
                     <li><Link to="/">View Profile</Link></li>
@@ -47,6 +41,7 @@ class Main extends React.Component{
               </header>{/*Container Fluid*/}
             </nav>
           </div>
+
 
 
             {this.props.children}
