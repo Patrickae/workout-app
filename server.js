@@ -8,6 +8,7 @@ var mongoose = require("mongoose");
 // Require Schemas
 var User = require("./model/user.js");
 var Workout = require("./model/workout.js");
+var Exercise = require("./model/exercise.js");
 
 // Create Instance of Express
 var app = express();
@@ -64,6 +65,17 @@ app.get("api/users", function(req, res){
 		}
 	});
 });
+
+app.get("api/exercises", function(req, res){
+	Exercise.find({}).exec(function(err, doc){
+		if(err){
+			console.log(err)
+		}
+		else{
+			res.send(doc)
+		}
+	});
+});
 //---------------------------------------------------------------
 //-----------Routes for adding users and workouts -----------------
 
@@ -99,7 +111,19 @@ app.post("/api/users", function(req, res){
 	});
 });
 
+app.post("api/exercises", function(req, res){
+	var newExercise = new Exercise(req.body);
+	console.log(req.body);
 
+	newExercise.save(function(err, doc){
+		if(err){
+			console.log(err)
+		}
+		else{
+			res.send(doc);
+		}
+	});
+});
 
 //---------------------------------------------------------------
 //---------------Routes for deleting ----------------------------
