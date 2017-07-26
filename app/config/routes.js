@@ -9,13 +9,13 @@ import { Route, IndexRoute, Router, browserHistory} from "react-router";
 // // Include the Router component
 // // Include the browserHistory prop to configure client side routing
 
-
 import Main from "../components/Main";
 import Home from "../components/Home";
 import Create from "../components/Create";
 import Type from "../components/Create/Type";
 import Exercises from "../components/Create/Exercises";
 import Name from "../components/Create/Name";
+
 
 module.exports = (
   // High level component is the Router component.
@@ -27,16 +27,14 @@ module.exports = (
 
       <Route path="Create" component={Create}>
 
-      	<Route path="Type" component={Type} />
+      	<Route path="Type" render={() => {<Type workout={Create.state} handleChange={Create.handleChange} handleSubmit={Create.handleSubmit}/>}} />
       	<Route path="Exercises" component={Exercises} />
       	<Route path="Name" component={Name} />
-
 
       	<IndexRoute component={Type} />
 
       </Route>
       
-
       {/* If user selects any other path... we get the Home Route */}
       <IndexRoute component={Home} />
 

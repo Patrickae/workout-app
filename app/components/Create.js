@@ -2,16 +2,19 @@ import React from "react";
 
 
 import { Link } from "react-router";
+import { Type } from "./Create/Type";
+import { Name } from "./Create/Name";
+import { Exercises } from "./Create/Exercises";
 
 class Create extends React.Component{
 
 	constructor(){
 		super();
 		this.state = {
-			workoutName:"",
-			workoutType:"",
-			exercises: [],
-			creatorId : ""
+			workoutName:"Foo",
+			workoutType:"Bar",
+			exercises: ["Foo", "Wiz", "Bang"],
+			creatorId : "123456"
 		}
 	this.handleChange = this.handleChange.bind(this);
 	this.handleSubmit = this.handleSubmit.bind(this);
@@ -29,7 +32,10 @@ class Create extends React.Component{
 	  	console.log(this.state.workoutType);
   }
 
+
+
 	render(){
+
 		return(
 			<div>
 

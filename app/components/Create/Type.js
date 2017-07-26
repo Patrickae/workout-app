@@ -2,39 +2,41 @@ import React from "react";
 
 import { Link } from "react-router";
 class Type extends React.Component{
-		constructor(){
+		constructor(props){
 		super();
 		this.state = {
 			workoutName:"",
-			workoutType:"",
+			workoutType: "",
 			exercises: [],
 			creatorId : ""
 		}
 	this.handleChange = this.handleChange.bind(this);
-	this.handleSubmit = this.handleSubmit.bind(this);
+	
 	}
 
 	handleChange(event) {
 		
 	    console.log("TEXT CHANGED");
 	    this.setState({workoutType: this.refs.wktType.value});
+
+	    console.log(this.props);
   }
 
- 	handleSubmit(event){
-	  	event.preventDefault();
-	  	console.log("Clicked");
-	  	console.log(this.state.workoutType);
-  }
+ // 	handleSubmit(event){
+	//   	event.preventDefault();
+	//   	console.log("Clicked");
+	//   	console.log(this.state.workoutType);
+ //  }
 
 	render(){
 		return(
 
 
-			<form onSubmit={this.handleSubmit}>
+			<form onSubmit={this.props.handleSubmit}>
 				<div className="form-group">
 					<h4 className=""><strong>Workout Structure</strong></h4>
 					<select
-					value={this.state.workoutType}
+					value={this.props.workoutType}
 					className="form-control"
 					id="search"
 					ref="wktType"
@@ -45,14 +47,15 @@ class Type extends React.Component{
 					</select>
 				</div>
 				<div className="pull-right">
-					<Link to="Create/Exercises">
+					
 					<button
+					onClick={this.props.handleSubmit}
 					type="submit"
 					className="btn btn-success"
 					>
 						<h4>Next</h4>
 					</button>
-					</Link>
+					
 				</div>
 			</form>
 
