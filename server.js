@@ -54,7 +54,7 @@ app.get("/api/workouts", function(req, res){
 });
 
 //route to get all users
-app.get("api/users", function(req, res){
+app.get("/api/users", function(req, res){
 	//find all in the User collection
 	User.find({}).exec(function(err, doc){
 		if(err){
@@ -66,7 +66,7 @@ app.get("api/users", function(req, res){
 	});
 });
 
-app.get("api/exercises", function(req, res){
+app.get("/api/exercises", function(req, res){
 	Exercise.find({}).exec(function(err, doc){
 		if(err){
 			console.log(err)
@@ -111,7 +111,7 @@ app.post("/api/users", function(req, res){
 	});
 });
 
-app.post("api/exercises", function(req, res){
+app.post("/api/exercises", function(req, res){
 	var newExercise = new Exercise(req.body);
 	console.log(req.body);
 
@@ -129,7 +129,7 @@ app.post("api/exercises", function(req, res){
 //---------------Routes for deleting ----------------------------
 
 
-app.delete("api/workouts/:id", function(req,res){
+app.delete("/api/workouts/:id", function(req,res){
 	var id = req.params.id
 
 	Workouts.fund({_id: id}).remove().exec(function(err){
@@ -143,7 +143,7 @@ app.delete("api/workouts/:id", function(req,res){
 });
 
 
-app.delete("api/users/:id", function(req,res){
+app.delete("/api/users/:id", function(req,res){
 	var id = req.params.id;
 
 	User.find({_id:id}).remove().exec(function(err){
@@ -159,7 +159,7 @@ app.delete("api/users/:id", function(req,res){
 //---------------------------------------------------------------
 //---------------Routes for Updating----------------------------
 
-app.put("api/workouts/:id", function(req, res){
+app.put("/api/workouts/:id", function(req, res){
 	var id = req.params.id;
 	Workout.findOne({_id: id}, function(err, foundObject){
 		if(err){
@@ -178,7 +178,7 @@ app.put("api/workouts/:id", function(req, res){
 });
 
 
-app.put("api/workouts/:id", function(req, res){
+app.put("/api/workouts/:id", function(req, res){
 	var id = req.params.id;
 	Workout.findOne({_id: id}, function(err, foundObject){
 		if(err){
@@ -198,7 +198,7 @@ app.put("api/workouts/:id", function(req, res){
 
 
 
-app.put("api/users/:id", function(req, res){
+app.put("/api/users/:id", function(req, res){
 	var id = req.params.id;
 	User.findOne({_id: id}, function(err, foundObject){
 		if(err){
