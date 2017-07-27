@@ -3,8 +3,8 @@ import axios from "axios";
 var helpers = {
 
 //exercise helpers
-	saveExercise: function(name, url, target, image) {
-    var newExercise = { exerciseName: name, URL: url, targetArea: target, image: image };
+	saveExercise: function(name, url, target, image, mechanics) {
+    var newExercise = { exerciseName: name, URL: url, muscleGroup: target, image: image, mechanics: mechanics };
     return axios.post("/api/exercises", newExercise)
       .then(function(response) {
         console.log("axios results", response.data._id);

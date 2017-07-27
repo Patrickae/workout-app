@@ -9,10 +9,13 @@ var ExerciseSchema = new Schema({
   URL:{
     type:String
   },
-  targetArea:{
+  muscleGroup:{
     type:String
   },
   image:{
+    type:String
+  },
+  mechanics:{
     type:String
   }
 });

@@ -80,18 +80,6 @@ app.get("/api/exercises", function(req, res){
 
 
 
-// app.get("/api/exercises/:id", function(req, res){
-// 	Exercise.find({_id:req.params.id}).exec(function(err, doc){
-// 		if(err){
-// 			console.log(err)
-// 		}
-// 		else{
-// 			res.send(doc)
-// 		}
-// 	});
-// });
-
-
 
 
 
@@ -141,6 +129,7 @@ app.post("/api/exercises", function(req, res){
 			console.log(err)
 		}
 		else{
+			console.log(doc);
 			res.send(doc);
 		}
 	});
