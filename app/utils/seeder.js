@@ -650,6 +650,204 @@ var backAndAbExercisesList = [
 ];
 
 
+	var legExercisesList = [
+	{
+		exerciseName: "Deadlift",
+		URL: "http://www.exrx.net/WeightExercises/GluteusMaximus/BBDeadlift.html",
+		muscleGroup:"Legs",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Barbell_Deadlift.png",
+		mechanics:"Compound"
+	},
+	{
+		exerciseName: "Squat",
+		URL: "http://www.exrx.net/WeightExercises/GluteusMaximus/BBSquat.html",
+		muscleGroup:"Legs",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Barbell_Squat.png",
+		mechanics:"Compound"
+	},
+	{
+		exerciseName: "Barbell Lunge",
+		URL: "http://www.exrx.net/WeightExercises/GluteusMaximus/BBLunge.html",
+		muscleGroup:"Legs",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Barbell_Lunge1.png",
+		mechanics:"Compound"
+	},
+	{
+		exerciseName: "Hip Thrust",
+		URL: "http://www.exrx.net/WeightExercises/GluteusMaximus/BBHipThrust.html",
+		muscleGroup:"Legs",
+		image: "https://s-media-cache-ak0.pinimg.com/736x/2e/42/7e/2e427ef878cd2704c088f152ae7d7c2e--super-glutes.jpg",
+		mechanics:"Isolated"
+	},
+	{
+		exerciseName: "Front Squat",
+		URL: "http://www.exrx.net/WeightExercises/GluteusMaximus/BBFrontSquat.html",
+		muscleGroup:"Legs",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Front_Squat1.png",
+		mechanics:"Compound"
+	},
+	{
+		exerciseName: "Barbell Step-up",
+		URL: "http://www.exrx.net/WeightExercises/GluteusMaximus/BBStepUp.html",
+		muscleGroup:"Legs",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Barbell-Step-up.png",
+		mechanics:"Compound"
+	},
+	{
+		exerciseName: "Single Leg Deadlift",
+		URL: "http://www.exrx.net/WeightExercises/GluteusMaximus/DBSingleLegStiffLegDeadlift.html",
+		muscleGroup:"Legs",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Single_Straight_Leg_Dumbbell_Deadlift.png",
+		mechanics:"Isolated"
+	},
+	{
+		exerciseName: "Dumbbell Lunge",
+		URL: "http://www.exrx.net/WeightExercises/GluteusMaximus/DBLunge.html",
+		muscleGroup:"Legs",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Dumbbell_Lunges_M_WorkoutLabs.png",
+		mechanics:"Compound"
+	},
+	{
+		exerciseName: "Dumbbell Side Lunge",
+		URL: "http://www.exrx.net/WeightExercises/GluteusMaximus/DBSideLunge.html",
+		muscleGroup:"Legs",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Side_Lunge_M_WorkoutLabs.png",
+		mechanics:"Compound"
+	},
+	{
+		exerciseName: "45 Degree Leg Press",
+		URL: "http://www.exrx.net/WeightExercises/GluteusMaximus/LV45LegPress.html",
+		muscleGroup:"Legs",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Leg_press_F_WorkoutLabs.png",
+		mechanics:"Compound"
+	},
+	{
+		exerciseName: "Hack Press",
+		URL: "http://www.exrx.net/WeightExercises/GluteusMaximus/LVHackPress.html",
+		muscleGroup:"Legs",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Machine_Hack_Squat1.png",
+		mechanics:"Compound"
+	},
+	{
+		exerciseName: "Seated Leg Press",
+		URL: "http://www.exrx.net/WeightExercises/GluteusMaximus/LVSeatedLegPress.html",
+		muscleGroup:"Legs",
+		image: "http://images.seek4fitness.net/Exercise/03692332-c97a-102c-b939-001f29cc93fa/Original/Inclined-seated-leg-press.Leg-press.jpg",
+		mechanics:"Compound"
+	},
+	{
+		exerciseName: "Smith Squat",
+		URL: "http://www.exrx.net/WeightExercises/GluteusMaximus/SMSquat.html",
+		muscleGroup:"Legs",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Smith_Machine_Squats.png",
+		mechanics:"Compound"
+	},
+	{
+		exerciseName: "Body Weight Squat",
+		URL: "http://www.exrx.net/WeightExercises/GluteusMaximus/BWSquat.html",
+		muscleGroup:"Legs",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Bodyweight_Squat.png",
+		mechanics:"Compound"
+	},
+	{
+		exerciseName: "Body Weight Lunge",
+		URL: "http://www.exrx.net/WeightExercises/GluteusMaximus/BWLunge.html",
+		muscleGroup:"Legs",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Bodyweight_Walking_Lunge1.png",
+		mechanics:"Compound"
+	},
+	{
+		exerciseName: "Rollout",
+		URL: "http://www.exrx.net/WeightExercises/HipFlexors/BWKneelingWheelRollout.html",
+		muscleGroup:"Abs",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Ab_Roller_Wheel_Rollout_M_WorkoutLabs.png",
+		mechanics:"Isolated"
+	},
+	{
+		exerciseName: "Lying Straight Leg Raise",
+		URL: "http://www.exrx.net/WeightExercises/HipFlexors/BWStraightLegRaise.html",
+		muscleGroup:"Abs",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Lying_Leg_Raise1.png",
+		mechanics:"Isolated"
+	},
+	{
+		exerciseName: "Leg Extensions",
+		URL: "http://www.exrx.net/WeightExercises/Quadriceps/LVLegExtension.html",
+		muscleGroup:"Legs",
+		image: "https://s-media-cache-ak0.pinimg.com/originals/4d/48/87/4d488729c282bfe28539efaf75fc581f.png",
+		mechanics:"Isolated"
+	},
+	{
+		exerciseName: "Lying Leg Curl",
+		URL: "http://www.exrx.net/WeightExercises/Hamstrings/LVLyingLegCurl.html",
+		muscleGroup:"Legs",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Lying_Leg_Curls_M_WorkoutLabs.png",
+		mechanics:"Isolated"
+	},
+	{
+		exerciseName: "Seated Leg Curl",
+		URL: "http://www.exrx.net/WeightExercises/Hamstrings/LVSeatedLegCurl.html",
+		muscleGroup:"Legs",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Lying_Leg_Curls_M_WorkoutLabs.png",
+		mechanics:"Isolated"
+	},
+	{
+		exerciseName: "Seated Hip Adduction",
+		URL: "http://www.exrx.net/WeightExercises/HipAdductors/LVSeatedHipAdduction.html",
+		muscleGroup:"Legs",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Thigh_Adductor_Inner_Thigh_Machine_F_WorkoutLabs.png",
+		mechanics:"Isolated"
+	},
+	{
+		exerciseName: "Seated Hip Abduction",
+		URL: "http://www.exrx.net/WeightExercises/HipAbductor/LVSeatedHipAbduction.html",
+		muscleGroup:"Legs",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Thigh_Adductor_Inner_Thigh_Machine_M_WorkoutLabs.png",
+		mechanics:"Isolated"
+	},
+	{
+		exerciseName: "Barbell Calf Raise",
+		URL: "http://www.exrx.net/WeightExercises/Gastrocnemius/SBStandingCalfRaise.html",
+		muscleGroup:"Calves",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/standing_barbell_calf_raise-1.png",
+		mechanics:"Isolated"
+	},
+	{
+		exerciseName: "45 Degree Calf Press",
+		URL: "http://www.exrx.net/WeightExercises/Gastrocnemius/LV45CalfPress.html",
+		muscleGroup:"Calves",
+		image: "https://s-media-cache-ak0.pinimg.com/736x/50/a7/e2/50a7e2b8e81b7fc3bbd90ddd7b6bc6cb--squat-press-monday-workout.jpg",
+		mechanics:"Isolated"
+	},
+	{
+		exerciseName: "Lever Standing Calf Raise",
+		URL: "http://www.exrx.net/WeightExercises/Gastrocnemius/LVStandingCalfRaise.html",
+		muscleGroup:"Calves",
+		image: "http://web5.lib.pacificu.edu/boxerbootcamp/wp-content/uploads/sites/36/2016/01/Standing-Calf-Raise.gif",
+		mechanics:"Isolated"
+	},
+	{
+		exerciseName: "Seated Calf Raise",
+		URL: "http://www.exrx.net/WeightExercises/Soleus/LVSeatedCalfRaise.html",
+		muscleGroup:"Calves",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Seated_Calf_Raise.png",
+		mechanics:"Isolated"
+	}
+
+
+
+
+
+];
+
+
+
+
+
+
+
+
+
 
 
 
