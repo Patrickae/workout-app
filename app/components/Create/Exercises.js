@@ -1,16 +1,21 @@
 import React from "react";
+import helpers from "../../utils/helpers";
 
 class Exercises extends React.Component{
 		constructor(){
 		super();
 		this.state = {
-			workoutName:"",
-			workoutType:"",
 			exercises: [],
 			creatorId : ""
 		}
 
 	}
+
+	// componentWillMount() {
+	// 	helpers.getExercises().then(function(data){
+	// 		this.state({exercises: data});
+	// 	})
+	// }
 
 	render(){
 		return(
@@ -18,11 +23,11 @@ class Exercises extends React.Component{
 				<div className="form-group">
 					<h4 className=""><strong>Exercise</strong></h4>
 					<select
-					value={this.state.workoutType}
+					value={this.props.exercises}
 					className="form-control"
 					id="search"
 					ref="wktType"
-					onChange={this.handleChange}
+					/*onChange={this.state.creatorId}*/
 					required>
 						<option>Bench Press</option>
 						<option>Squat</option>

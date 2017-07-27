@@ -42,17 +42,21 @@ class Main extends React.Component{
             </nav>
           </div>
 
-
+          <div>
 
             {this.props.children}
+          </div>
 
-            <footer>
-              <hr/>
-              <p className="pull-right">
+
+
+            <div className="row">
+              <footer className="footer fixed-bottom text-center container-fluid" id="footer">
                 <i className="fa fa-github" aria-hidden="true"></i>
                 Proudly built using React.js
-              </p>
-            </footer>
+              </footer>
+            </div>
+
+                
 
           </div>
     );

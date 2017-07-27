@@ -6,11 +6,12 @@ class Type extends React.Component{
 		super();
 		this.state = {
 			workoutName:"",
-			workoutType: "",
+			workoutType: "Sets and Reps",
 			exercises: [],
 			creatorId : ""
 		}
 	this.handleChange = this.handleChange.bind(this);
+	this.handleSubmit = this.handleSubmit.bind(this);
 	
 	}
 
@@ -19,14 +20,18 @@ class Type extends React.Component{
 	    console.log("TEXT CHANGED");
 	    this.setState({workoutType: this.refs.wktType.value});
 
+	    this.props.updateWorkoutType(this.state.workoutType);
+
 	    console.log(this.props);
   }
 
- // 	handleSubmit(event){
-	//   	event.preventDefault();
-	//   	console.log("Clicked");
-	//   	console.log(this.state.workoutType);
- //  }
+
+ 	handleSubmit(event){
+	  	event.preventDefault();
+	  	console.log("Clicked");
+	  	console.log(this.state.workoutType);
+	  	this.props.updateWorkoutType(this.state.workoutType);
+  }
 
 	render(){
 		return(
@@ -36,7 +41,7 @@ class Type extends React.Component{
 				<div className="form-group">
 					<h4 className=""><strong>Workout Structure</strong></h4>
 					<select
-					value={this.props.workoutType}
+					value={this.state.workoutType}
 					className="form-control"
 					id="search"
 					ref="wktType"
@@ -49,8 +54,8 @@ class Type extends React.Component{
 				<div className="pull-right">
 					
 					<button
-					onClick={this.props.handleSubmit}
-					type="submit"
+					onClick={this.handleSubmit}
+					
 					className="btn btn-success"
 					>
 						<h4>Next</h4>

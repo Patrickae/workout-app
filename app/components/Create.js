@@ -2,9 +2,9 @@ import React from "react";
 
 
 import { Link } from "react-router";
-import { Type } from "./Create/Type";
-import { Name } from "./Create/Name";
-import { Exercises } from "./Create/Exercises";
+import Type  from "./Create/Type";
+import Name from "./Create/Name";
+import Exercises from "./Create/Exercises";
 
 class Create extends React.Component{
 
@@ -16,14 +16,14 @@ class Create extends React.Component{
 			exercises: ["Foo", "Wiz", "Bang"],
 			creatorId : "123456"
 		}
-	this.handleChange = this.handleChange.bind(this);
+	this.updateWorkoutType = this.updateWorkoutType.bind(this);
 	this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
-	handleChange(event) {
+	updateWorkoutType(input) {
 		
-	    console.log("TEXT CHANGED");
-	    this.setState({workoutType: this.refs.wktType.value});
+	    console.log("parent function triggeres");
+	    this.setState({workoutType: input});
   }
 
  	handleSubmit(event){
@@ -46,7 +46,9 @@ class Create extends React.Component{
 			</div>
 
 
-			{this.props.children}
+			<Type workoutType={this.state.workoutType} handleChange={this.handleChange} updateWorkoutType={this.updateWorkoutType} />
+			<Exercises exercises={this.state.exercises} />
+			<Name />
 
 
 			</div>

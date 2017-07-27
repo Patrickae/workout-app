@@ -1,4 +1,5 @@
 import React from "react";
+import helpers from "../utils/helpers"
 
 class Home extends React.Component{
 	constructor(){
@@ -8,7 +9,37 @@ class Home extends React.Component{
 		}
 	}
 
+
+
+
+
   render(){
+
+
+
+// var exercisesList = [
+// 	{
+// 		exerciseName: "Barbell Flat Bench Press",
+// 		URL: "http://www.exrx.net/WeightExercises/Quadriceps/BBSquat.html",
+// 		targetArea:["Chest", "Triceps"],
+// 		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Barbell_Bench_Press_M_WorkoutLabs.png"
+// 	}
+// ];
+
+
+
+// function seeder(){
+
+// 	for (var i=0; i<exercisesList.length; i++){
+
+// 		helpers.saveExercise(exercisesList[i].exerciseName, exercisesList[i].URL, exercisesList[i].target, exercisesList[i].image);
+// 	}
+
+// };
+
+
+
+
     return(
     	<div>
     	  <div className="row">
@@ -24,6 +55,14 @@ class Home extends React.Component{
 		  <li className="list-group-item">Leg Day</li>
 		  <li className="list-group-item">Full Body Strength</li>
 	</ul>
+
+
+	<button className="btn btn-warning">Seed Data</button>
+
+
+
+
+
 	</div>
     );
   }

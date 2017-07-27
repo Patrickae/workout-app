@@ -66,6 +66,7 @@ app.get("/api/users", function(req, res){
 	});
 });
 
+//get all exercises
 app.get("/api/exercises", function(req, res){
 	Exercise.find({}).exec(function(err, doc){
 		if(err){
@@ -111,6 +112,7 @@ app.post("/api/users", function(req, res){
 	});
 });
 
+//add new exercise
 app.post("/api/exercises", function(req, res){
 	var newExercise = new Exercise(req.body);
 	console.log(req.body);
