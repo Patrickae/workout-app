@@ -13,34 +13,21 @@ seeder(){
 
 	var exercisesList = [
 	{
-		exerciseName: "Barbell Shoulder Press",
-		URL: "http://www.exrx.net/WeightExercises/DeltoidAnterior/BBShoulderPress.html",
-		muscleGroup:"Shoulders",
-		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Seated_Barbell_Military_Press_M_WorkoutLabs.png",
+		exerciseName: "Assisted Triceps Dip",
+		URL: "http://www.exrx.net/WeightExercises/Triceps/ASTriDip.html",
+		muscleGroup:"Triceps",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Assisted_Tricep_Dips.png",
 		mechanics:"Compound"
 	},
 	{
-		exerciseName: "Barbell Front Raise",
-		URL: "http://www.exrx.net/WeightExercises/DeltoidAnterior/BBFrontRaise.html",
-		muscleGroup:"Shoulders",
-		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Barbell_Front_Raise.png",
-		mechanics:"Isolated"
-	},
-	{
-		exerciseName: "Barbell Military Press",
-		URL: "http://www.exrx.net/WeightExercises/DeltoidAnterior/BBMilitaryPress.html",
-		muscleGroup:"Shoulders",
-		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Standing_Overhead_Barbell_Military_Shoulder_Press.png",
+		exerciseName: "Assisted Triceps Dip",
+		URL: "http://www.exrx.net/WeightExercises/Triceps/ASTriDip.html",
+		muscleGroup:"Triceps",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Assisted_Tricep_Dips.png",
 		mechanics:"Compound"
-	},
-	{
-		exerciseName: "Arnold Press",
-		URL: "http://www.exrx.net/WeightExercises/DeltoidAnterior/DBArnoldPress.html",
-		muscleGroup:"Shoulders",
-		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Seated_Arnold_Dumbbell_Press_M_WorkoutLabs.png",
-		mechanics:"Compound"
-	},
-	
+	}
+
+
 ];
 
 	for (var i=0; i<exercisesList.length; i++){

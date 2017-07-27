@@ -176,3 +176,115 @@ function seeder(){
 	}
 
 ];
+
+
+
+
+
+var shoulderExercisesList = [
+	{
+		exerciseName: "Barbell Shoulder Press",
+		URL: "http://www.exrx.net/WeightExercises/DeltoidAnterior/BBShoulderPress.html",
+		muscleGroup:"Shoulders",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Seated_Barbell_Military_Press_M_WorkoutLabs.png",
+		mechanics:"Compound"
+	},
+	{
+		exerciseName: "Barbell Front Raise",
+		URL: "http://www.exrx.net/WeightExercises/DeltoidAnterior/BBFrontRaise.html",
+		muscleGroup:"Shoulders",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Barbell_Front_Raise.png",
+		mechanics:"Isolated"
+	},
+	{
+		exerciseName: "Barbell Military Press",
+		URL: "http://www.exrx.net/WeightExercises/DeltoidAnterior/BBMilitaryPress.html",
+		muscleGroup:"Shoulders",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Standing_Overhead_Barbell_Military_Shoulder_Press.png",
+		mechanics:"Compound"
+	},
+	{
+		exerciseName: "Arnold Press",
+		URL: "http://www.exrx.net/WeightExercises/DeltoidAnterior/DBArnoldPress.html",
+		muscleGroup:"Shoulders",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Seated_Arnold_Dumbbell_Press_M_WorkoutLabs.png",
+		mechanics:"Compound"
+	},
+	{
+		exerciseName: "Dumbbell Front Raise",
+		URL: "http://www.exrx.net/WeightExercises/DeltoidAnterior/DBFrontRaise.html",
+		muscleGroup:"Shoulders",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Forward_Dumbbell_Raise.png",
+		mechanics:"Isolated"
+	},
+	{
+		exerciseName: "Dumbbell Shoulder Press",
+		URL: "http://www.exrx.net/WeightExercises/DeltoidAnterior/DBShoulderPress.html",
+		muscleGroup:"Shoulders",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Dumbbell_Shoulder_Press_M_WorkoutLabs.png",
+		mechanics:"Compound"
+	},
+	{
+		exerciseName: "Machine Shoulder Press",
+		URL: "http://www.exrx.net/WeightExercises/DeltoidAnterior/LVShoulderPress.html",
+		muscleGroup:"Shoulders",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Machine_Seated_Shoulder_Press_M_WorkoutLabs.png",
+		mechanics:"Compound"
+	},
+	{
+		exerciseName: "Barbell Upright Row",
+		URL: "http://www.exrx.net/WeightExercises/DeltoidLateral/BBUprightRow.html",
+		muscleGroup:"Shoulders",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Barbell_Upright_Row.png",
+		mechanics:"Compound"
+	},
+	{
+		exerciseName: "Cable Lateral Raise",
+		URL: "http://www.exrx.net/WeightExercises/DeltoidLateral/CBLateralRaise.html",
+		muscleGroup:"Shoulders",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Single_Arm_Cable_Lateral_Side_Raise-1.png",
+		mechanics:"Isolated"
+	},
+	{
+		exerciseName: "Dumbbell Lateral Raise",
+		URL: "http://www.exrx.net/WeightExercises/DeltoidLateral/DBLateralRaise.html",
+		muscleGroup:"Shoulders",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Dumbbell_Lateral_Raise_Power-Partials.png",
+		mechanics:"Isolated"
+	},
+	{
+		exerciseName: "Machine Lateral Raise",
+		URL: "http://www.exrx.net/WeightExercises/DeltoidLateral/LVLateralRaiseH.html",
+		muscleGroup:"Shoulders",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Lateral_Raise_Machine_M_WorkoutLabs.png",
+		mechanics:"Isolated"
+	},
+	{
+		exerciseName: "Dumbbell Rear Delt Row",
+		URL: "http://www.exrx.net/WeightExercises/DeltoidPosterior/DBRearDeltRow.html",
+		muscleGroup:"Shoulders",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/One_Arm_Dumbbell_Row.png",
+		mechanics:"Compound"
+	},
+	{
+		exerciseName: "Dumbbell Lying Rear Delt Row",
+		URL: "http://www.exrx.net/WeightExercises/DeltoidPosterior/DBLyingRearDeltRow.html",
+		muscleGroup:"Shoulders",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Dumbbell_Incline_Row_M_WorkoutLabs.png",
+		mechanics:"Compound"
+	},
+	{
+		exerciseName: "Seated Reverse Fly",
+		URL: "http://www.exrx.net/WeightExercises/DeltoidPosterior/LVRearLateralRaise.html",
+		muscleGroup:"Shoulders",
+		image: "https://sportmenu.com/uploads/store/Texts/Text552/b73f5c.png",
+		mechanics:"Isolated"
+	}
+
+
+
+];
+
+
+
+
