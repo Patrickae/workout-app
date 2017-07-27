@@ -13,82 +13,126 @@ seeder(){
 
 	var exercisesList = [
 	{
-		exerciseName: "Barbell Bent Over Row",
-		URL: "http://www.exrx.net/WeightExercises/BackGeneral/BBBentOverRow.html",
-		muscleGroup:"Back",
-		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Bent_Over_Barbell_Row.png",
-		mechanics:"Compound"
-	},
-	{
-		exerciseName: "Seated Row",
-		URL: "http://www.exrx.net/WeightExercises/BackGeneral/CBSeatedRow.html",
-		muscleGroup:"Back",
-		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Seated_Low_Cable_Row.png",
-		mechanics:"Compound"
-	},
-	{
-		exerciseName: "Dumbbell Bent Over Row",
-		URL: "http://www.exrx.net/WeightExercises/BackGeneral/DBBentOverRow.html",
-		muscleGroup:"Back",
-		image: "http://workoutlabs.com/wp-content/uploads/watermarked/One_Arm_Dumbbell_Row.png",
-		mechanics:"Compound"
-	},
-	{
-		exerciseName: "T-bar Row",
-		URL: "http://www.exrx.net/WeightExercises/BackGeneral/LVTBarRow.html",
-		muscleGroup:"Back",
-		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Bent_Over_Two-Arm_Long_Bar_Row.png",
-		mechanics:"Compound"
-	},
-	{
-		exerciseName: "Assisted Pull-up",
-		URL: "http://www.exrx.net/WeightExercises/LatissimusDorsi/AsPullupKneeling.html",
-		muscleGroup:"Back",
-		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Machine_Assisted_Pull-Ups_Pullups-1.png",
-		mechanics:"Compound"
-	},
-	{
-		exerciseName: "Pull-up",
-		URL: "http://www.exrx.net/WeightExercises/LatissimusDorsi/BWPullup.html",
-		muscleGroup:"Back",
-		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Pullup.png",
-		mechanics:"Compound"
-	},
-	{
-		exerciseName: "Close Grip Pulldown",
-		URL: "http://www.exrx.net/WeightExercises/LatissimusDorsi/CBCloseGripPulldown.html",
-		muscleGroup:"Back",
-		image: "http://workoutlabs.com/wp-content/uploads/watermarked/V-Bar_Triangle_Bar_Lat_Pull_Downs.png",
-		mechanics:"Compound"
-	},
-	{
-		exerciseName: "Close Grip Pulldown",
-		URL: "http://www.exrx.net/WeightExercises/LatissimusDorsi/CBCloseGripPulldown.html",
-		muscleGroup:"Back",
-		image: "http://workoutlabs.com/wp-content/uploads/watermarked/V-Bar_Triangle_Bar_Lat_Pull_Downs.png",
-		mechanics:"Compound"
-	},
-	{
-		exerciseName: "Cable Pulldown",
-		URL: "http://www.exrx.net/WeightExercises/LatissimusDorsi/CBFrontPulldown.html",
-		muscleGroup:"Back",
-		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Wide-Grip_Lat_Pulldown.png",
-		mechanics:"Compound"
-	},
-	{
-		exerciseName: "Barbell Shrug",
-		URL: "http://www.exrx.net/WeightExercises/TrapeziusUpper/BBShrug.html",
-		muscleGroup:"Back",
-		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Barbell_Shrug.png",
+		exerciseName: "Crunch",
+		URL: "http://www.exrx.net/WeightExercises/RectusAbdominis/BWCrunch.html",
+		muscleGroup:"Abs",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Sit_up_Crunch_F_WorkoutLabs.png",
 		mechanics:"Isolated"
 	},
 	{
-		exerciseName: "Cable Wide Grip Seated Row",
-		URL: "http://www.exrx.net/WeightExercises/BackGeneral/CBWideGripSeatedRow.html",
-		muscleGroup:"Back",
-		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Seated_Machine_Back_Row.png",
+		exerciseName: "Jack-knife Sit-up",
+		URL: "http://www.exrx.net/WeightExercises/RectusAbdominis/WtJackKnifeSitUp.html",
+		muscleGroup:"Abs",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Jackknife_Sit-up_M_WorkoutLabs.png",
 		mechanics:"Compound"
+	},
+	{
+		exerciseName: "Jack-knife Sit-up",
+		URL: "http://www.exrx.net/WeightExercises/RectusAbdominis/WtJackKnifeSitUp.html",
+		muscleGroup:"Abs",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Jackknife_Sit-up_M_WorkoutLabs.png",
+		mechanics:"Compound"
+	},
+	{
+		exerciseName: "Hanginig leg hip raise",
+		URL: "http://www.exrx.net/WeightExercises/RectusAbdominis/BWHangingLegHipRaise.html",
+		muscleGroup:"Abs",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Hanging_Leg_Raise1.png",
+		mechanics:"Compound"
+	},
+	{
+		exerciseName: "Incline Sit-up",
+		URL: "http://www.exrx.net/WeightExercises/RectusAbdominis/BWInclineSitUp.html",
+		muscleGroup:"Abs",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Decline_Bench_Crunches_Sit-ups_Situps.png",
+		mechanics:"Compound"
+	},
+	{
+		exerciseName: "V-up",
+		URL: "http://www.exrx.net/WeightExercises/RectusAbdominis/WtVUp.html",
+		muscleGroup:"Abs",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Jackknife_Sit-up_M_WorkoutLabs.png",
+		mechanics:"Compound"
+	},
+	{
+		exerciseName: "Cable Kneeling Crunch",
+		URL: "http://www.exrx.net/WeightExercises/RectusAbdominis/CBKneelingCrunch.html",
+		muscleGroup:"Abs",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Kneeling_Cable_Crunch_M_WorkoutLabs.png",
+		mechanics:"Compound"
+	},
+	{
+		exerciseName: "Side Bend",
+		URL: "http://www.exrx.net/WeightExercises/Obliques/DB45SideBend.html",
+		muscleGroup:"Abs",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Romain_Chair_Hyperextention_Bench_Side_Bends.png",
+		mechanics:"Isolated"
+	},
+	{
+		exerciseName: "Lying Twist",
+		URL: "http://www.exrx.net/WeightExercises/Obliques/BWLyingTwist.html",
+		muscleGroup:"Abs",
+		image: "https://s-media-cache-ak0.pinimg.com/originals/35/a5/df/35a5dfbed232dd678940e6d4e5c5d08f.png",
+		mechanics:"Compound"
+	},
+	{
+		exerciseName: "Plank",
+		URL: "http://www.exrx.net/WeightExercises/RectusAbdominis/BWFrontPlank.html",
+		muscleGroup:"Abs",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Plank_M_WorkoutLabs.png",
+		mechanics:"Isolated"
+	},
+	{
+		exerciseName: "Side Plank",
+		URL: "http://www.exrx.net/WeightExercises/Obliques/BWSidePlank.html",
+		muscleGroup:"Abs",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Side_plank_M_WorkoutLabs.png",
+		mechanics:"Isolated"
+	},
+	{
+		exerciseName: "Barbell Deadlift",
+		URL: "http://www.exrx.net/WeightExercises/ErectorSpinae/BBDeadlift.html",
+		muscleGroup:"Back",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Barbell_Deadlift.png",
+		mechanics:"Compound"
+	},
+	{
+		exerciseName: "Straight Leg Barbell Deadlift",
+		URL: "http://www.exrx.net/WeightExercises/ErectorSpinae/BBStraightLegDeadlift.html",
+		muscleGroup:"Back",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Romanian_Deadlift1.png",
+		mechanics:"Compound"
+	},
+	{
+		exerciseName: "Back Extensions",
+		URL: "http://www.exrx.net/WeightExercises/ErectorSpinae/BB45BackExtension.html",
+		muscleGroup:"Back",
+		image: "https://s-media-cache-ak0.pinimg.com/originals/f8/82/90/f882909dee0eda79ed5d1dc89eefd083.png",
+		mechanics:"Isolated"
+	},
+	{
+		exerciseName: "Dumbbell Straight Leg Deadlift",
+		URL: "http://www.exrx.net/WeightExercises/ErectorSpinae/DBStraightLegDeadlift.html",
+		muscleGroup:"Back",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Single_Straight_Leg_Dumbbell_Deadlift.png",
+		mechanics:"Compound"
+	},
+	{
+		exerciseName: "Superman",
+		URL: "http://www.exrx.net/WeightExercises/ErectorSpinae/Superman.html",
+		muscleGroup:"Back",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Superman.png",
+		mechanics:"Isolated"
+	},
+	{
+		exerciseName: "Bird Dog",
+		URL: "http://www.exrx.net/WeightExercises/ErectorSpinae/BWBirdDog.html",
+		muscleGroup:"Back",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Bird_Dogs_F_WorkoutLabs.png",
+		mechanics:"Isolated"
 	}
+	
+
 
 ];
 
