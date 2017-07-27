@@ -9,33 +9,174 @@ class Home extends React.Component{
 		}
 	}
 
+seeder(){
+
+	var exercisesList = [
+	{
+		exerciseName: "Barbell Bench Press",
+		URL: "http://www.exrx.net/WeightExercises/PectoralSternal/BBBenchPress.html",
+		muscleGroup:"Chest",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Barbell_Bench_Press_M_WorkoutLabs.png",
+		mechanics:"Compound"
+	},
+	{
+		exerciseName: "Assisted Chest Dip",
+		URL: "http://www.exrx.net/WeightExercises/PectoralSternal/AsChestDip.html",
+		muscleGroup:"Chest",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Assisted_Tricep_Dips.png",
+		mechanics:"Compound"
+	},
+	{
+		exerciseName: "Barbell Decline Bench Press",
+		URL: "http://www.exrx.net/WeightExercises/PectoralSternal/BBDeclineBenchPress.html",
+		muscleGroup:"Chest",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Decline_Barbell_Bench_Press_M_WorkoutLabs.png",
+		mechanics:"Compound"
+	},
+	{
+		exerciseName: "Chest Dip",
+		URL: "http://www.exrx.net/WeightExercises/PectoralSternal/BWChestDip.html",
+		muscleGroup:"Chest",
+		image: "https://s-media-cache-ak0.pinimg.com/originals/c2/9e/f3/c29ef30d315eacff652e2e3f065e9a33.png",
+		mechanics:"Compound"
+	},
+	{
+		exerciseName: "Cable Standing Fly",
+		URL: "http://www.exrx.net/WeightExercises/PectoralSternal/CBStandingFly.html",
+		muscleGroup:"Chest",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Standing_Cable_Fly.png",
+		mechanics:"Isolated"
+	},
+	{
+		exerciseName: "Cable Lying Fly",
+		URL: "http://www.exrx.net/WeightExercises/PectoralSternal/CBLyingFly.html",
+		muscleGroup:"Chest",
+		image: "http://sharongayle.com/Blog/image.axd?picture=2012%2F12%2FChristmas+2012+Issue+-+GForceFit.jpg",
+		mechanics:"Isolated"
+	},
+	{
+		exerciseName: "Dumbbell Bench Press",
+		URL: "http://www.exrx.net/WeightExercises/PectoralSternal/DBBenchPress.html",
+		muscleGroup:"Chest",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Dumbbell_Bench_Press_M_WorkoutLabs.png",
+		mechanics:"Compound"
+	},
+	{
+		exerciseName: "Dumbbell Bench Press",
+		URL: "http://www.exrx.net/WeightExercises/PectoralSternal/DBBenchPress.html",
+		muscleGroup:"Chest",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Dumbbell_Bench_Press_M_WorkoutLabs.png",
+		mechanics:"Compound"
+	},
+	{
+		exerciseName: "Dumbbell Decline Bench Press",
+		URL: "http://www.exrx.net/WeightExercises/PectoralSternal/DBDeclineBenchPress.html",
+		muscleGroup:"Chest",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Decline_Dumbbell_Press_M_WorkoutLabs.png",
+		mechanics:"Compound"
+	},
+	{
+		exerciseName: "Dumbbell Pullover",
+		URL: "http://www.exrx.net/WeightExercises/PectoralSternal/DBPullover.html",
+		muscleGroup:"Chest",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Dumbbell_Pullover.png",
+		mechanics:"Isolated"
+	},
+	{
+		exerciseName: "Dumbbell Fly",
+		URL: "http://www.exrx.net/WeightExercises/PectoralSternal/DBFly.html",
+		muscleGroup:"Chest",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Flat_Bench_Dumbbell_Fly.png",
+		mechanics:"Isolated"
+	},
+	{
+		exerciseName: "Dumbbell Decline Fly",
+		URL: "http://www.exrx.net/WeightExercises/PectoralSternal/DBDeclineFly.html",
+		muscleGroup:"Chest",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Decline_Dumbbell_Fly.png",
+		mechanics:"Isolated"
+	},
+	{
+		exerciseName: "Machine Chest Press",
+		URL: "http://www.exrx.net/WeightExercises/PectoralSternal/LVChestPressS.html",
+		muscleGroup:"Chest",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Hammer_Strength_Machine_Chest_Press.png",
+		mechanics:"Compound"
+	},
+	{
+		exerciseName: "Smith Machine Chest Press",
+		URL: "http://www.exrx.net/WeightExercises/PectoralSternal/SMBenchPress.html",
+		muscleGroup:"Chest",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Smith_Machine_Chest_Press_M_WorkoutLabs.png",
+		mechanics:"Compound"
+	},
+	{
+		exerciseName: "Weighted Chest Dip",
+		URL: "http://www.exrx.net/WeightExercises/PectoralSternal/WtChestDip.html",
+		muscleGroup:"Chest",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Weighted_Tricep_Dips.png",
+		mechanics:"Compound"
+	},
+	{
+		exerciseName: "Barbell Incline Bench Press",
+		URL: "http://www.exrx.net/WeightExercises/PectoralClavicular/BBInclineBenchPress.html",
+		muscleGroup:"Chest",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Incline_Barbell_Bench_Press.png",
+		mechanics:"Compound"
+	},
+	{
+		exerciseName: "Dumbbell Incline Bench Press",
+		URL: "http://www.exrx.net/WeightExercises/PectoralClavicular/DBInclineBenchPress.html",
+		muscleGroup:"Chest",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Incline_Dumbbell_Press.png",
+		mechanics:"Compound"
+	},
+	{
+		exerciseName: "Dumbbell Incline Fly",
+		URL: "http://www.exrx.net/WeightExercises/PectoralClavicular/DBInclineFly.html",
+		muscleGroup:"Chest",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Incline_Dumbbell_Fly_F_WorkoutLabs.png",
+		mechanics:"Isolated"
+	},
+	{
+		exerciseName: "Push Up",
+		URL: "http://www.exrx.net/WeightExercises/PectoralSternal/BWPushup.html",
+		muscleGroup:"Chest",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Pushup1.png",
+		mechanics:"Compound"
+	},
+	{
+		exerciseName: "Decline Push Up",
+		URL: "http://www.exrx.net/WeightExercises/PectoralClavicular/BWDeclinePushup.html",
+		muscleGroup:"Chest",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Decline_Pushup1.png",
+		mechanics:"Compound"
+	},
+	{
+		exerciseName: "Suspended Chest Press",
+		URL: "http://www.exrx.net/WeightExercises/PectoralSternal/STChestPress.html",
+		muscleGroup:"Chest",
+		image: "http://workoutlabs.com/wp-content/uploads/watermarked/TRX_Suspension_Straps_Chest_Press-1.png",
+		mechanics:"Compound"
+	}
+
+];
+
+	for (var i=0; i<exercisesList.length; i++){
+
+		helpers.saveExercise(exercisesList[i].exerciseName, exercisesList[i].URL, exercisesList[i].muscleGroup, exercisesList[i].image, exercisesList[i].mechanics);
+	}
+
+	// helpers.deleteExercise("59796b3b1dc8eae5c9476d10");
+
+
+};
+
 
 
 
 
   render(){
-
-
-
-// var exercisesList = [
-// 	{
-// 		exerciseName: "Barbell Flat Bench Press",
-// 		URL: "http://www.exrx.net/WeightExercises/Quadriceps/BBSquat.html",
-// 		targetArea:["Chest", "Triceps"],
-// 		image: "http://workoutlabs.com/wp-content/uploads/watermarked/Barbell_Bench_Press_M_WorkoutLabs.png"
-// 	}
-// ];
-
-
-
-// function seeder(){
-
-// 	for (var i=0; i<exercisesList.length; i++){
-
-// 		helpers.saveExercise(exercisesList[i].exerciseName, exercisesList[i].URL, exercisesList[i].target, exercisesList[i].image);
-// 	}
-
-// };
 
 
 
@@ -57,7 +198,7 @@ class Home extends React.Component{
 	</ul>
 
 
-	<button className="btn btn-warning">Seed Data</button>
+	<button className="btn btn-warning" onClick={this.seeder}>Seed Data</button>
 
 
 

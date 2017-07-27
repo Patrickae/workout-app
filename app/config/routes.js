@@ -27,7 +27,7 @@ module.exports = (
 
       <Route path="Create" component={Create}>
 
-      	<Route path="Type" render={() => {return(<Type workout={Create.state} handleChange={Create.handleChange} handleSubmit={Create.handleSubmit}/>)}} />
+      	<Route path="Type" render={() => {<Type workout={Create.state} handleChange={Create.handleChange} handleSubmit={Create.handleSubmit}/>}} />
       	<Route path="Exercises" component={Exercises} />
       	<Route path="Name" component={Name} />
 

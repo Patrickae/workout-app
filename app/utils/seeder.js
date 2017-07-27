@@ -1,5 +1,6 @@
 import helpers from "./helpers";
 
+
 var exercisesList = [
 	{
 		exerciseName: "",
@@ -19,3 +20,4 @@ function seeder(){
 	}
 
 };
+

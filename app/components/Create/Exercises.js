@@ -11,11 +11,6 @@ class Exercises extends React.Component{
 
 	}
 
-	// componentWillMount() {
-	// 	helpers.getExercises().then(function(data){
-	// 		this.state({exercises: data});
-	// 	})
-	// }
 
 	render(){
 		return(

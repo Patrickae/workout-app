@@ -77,8 +77,27 @@ app.get("/api/exercises", function(req, res){
 		}
 	});
 });
+
+
+
+// app.get("/api/exercises/:id", function(req, res){
+// 	Exercise.find({_id:req.params.id}).exec(function(err, doc){
+// 		if(err){
+// 			console.log(err)
+// 		}
+// 		else{
+// 			res.send(doc)
+// 		}
+// 	});
+// });
+
+
+
+
+
+
 //---------------------------------------------------------------
-//-----------Routes for adding users and workouts -----------------
+//-----------Routes for adding info -----------------
 
 //route to post a new workout
 app.post("/api/workouts", function(req, res){
@@ -130,11 +149,11 @@ app.post("/api/exercises", function(req, res){
 //---------------------------------------------------------------
 //---------------Routes for deleting ----------------------------
 
-
+//delete workouts
 app.delete("/api/workouts/:id", function(req,res){
 	var id = req.params.id
 
-	Workouts.fund({_id: id}).remove().exec(function(err){
+	Workouts.find({_id: id}).remove().exec(function(err){
 		if(err){
 			console.log(err);
 		}
@@ -144,7 +163,7 @@ app.delete("/api/workouts/:id", function(req,res){
 	});
 });
 
-
+//delete users
 app.delete("/api/users/:id", function(req,res){
 	var id = req.params.id;
 
@@ -156,6 +175,21 @@ app.delete("/api/users/:id", function(req,res){
 			res.send("Deleted");
 		}
 	});
+});
+
+//delete exercises
+app.delete("/api/exercises/:id", function(req, res){
+
+	var id = req.params.id;
+
+	Exercise.findByIdAndRemove(id, function(err, response){
+		if(err){
+			console.log("Collection couldnt be removed", err);
+			return;
+		}else{
+			console.log("collection deleted")
+		}
+	});	
 });
 
 //---------------------------------------------------------------
