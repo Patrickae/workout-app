@@ -12,7 +12,10 @@ var WorkoutSchema = new Schema({
   exercises:{
     type:Array
   },
-  workoutType:{
+  description:{
+    type:String
+  },
+   type:{
     type:String
   }
 });

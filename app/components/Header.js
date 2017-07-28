@@ -26,7 +26,7 @@ const Header = () =>(
                 <div className="collapse navbar-collapse" id="nav-div">
                   <ul className="nav navbar-nav" id="nav-links">
                     {/* Using <Link> in place of <a> and "to" in place of "href" */}
-                    <li><Link to="/create">Create Workout</Link></li>
+                    <li><Link to="/create/type">Create Workout</Link></li>
                     <li><Link to="/">Edit Saved Workouts</Link></li>
                     <li><Link to="/">Saved Workouts</Link></li>
                     <li><Link to="/">View Profile</Link></li>

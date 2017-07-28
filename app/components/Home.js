@@ -1,5 +1,7 @@
 import React from "react";
 import helpers from "../utils/helpers"
+import { Link } from "react-router-dom";
+
 
 class Home extends React.Component{
 	constructor(){
@@ -18,6 +20,14 @@ class Home extends React.Component{
             <h1>Workout helper</h1>
           	</div>
         </div>
+
+    {/*take user to the create page*/}
+        <div>
+	        <Link to="/create/type">
+	        	<i className="fa fa-plus-circle fa-5x" aria-hidden="true"></i>
+	        </Link>
+        </div>
+
     	<h3> Recommended for you </h3>
       	<ul className="list-group">
 		  <li className="list-group-item">Weight Training</li>

@@ -1,12 +1,14 @@
 import React from "react";
 import helpers from "../../utils/helpers";
+import { Link } from "react-router-dom";
 
 class Exercises extends React.Component{
 		constructor(){
 		super();
 		this.state = {
 			exercises: [],
-			creatorId : "",
+			currentSelection:"",
+			reps:[],
 			muscleGroup: "Legs",
 			mechanics: "Compound"
 		}
@@ -15,51 +17,37 @@ class Exercises extends React.Component{
 		this.filterExercise=this.filterExercise.bind(this);
 	};
 
+	//handle change in form values
 	handleChange(event){
 
 		this.setState({muscleGroup: this.refs.muscleGroup.value});
 		this.setState({mechanics: this.refs.mechanics.value});
 	};
-
+	//load the exercises from the api to the component state
 	componentWillMount(){
 		helpers.getExercises().then(result => {
 			this.setState({exercises: result.data})
-		});
-
-		
+		});	
 	};
-
+	//hide the exercise list - we dont want it to show untill searched
 	componentDidMount(){
 		$("#exerciseList").hide();
 	};
-
+	//
 	filterExercise(event){
 		event.preventDefault();
-
-
-		
-		console.log("clicked");
-		console.log(this.state.muscleGroup);
-		console.log(this.state.mechanics);	
 		var group=this.state.muscleGroup;
 		var mech = this.state.mechanics
-
+		//use helper function to return exercises meeting the criteria
 		helpers.exerciseSearchResults(group, mech).then(result =>{
 			console.log(result);
 			this.setState({exercises:result.data})
 		});	
-
-		
-		$("#exerciseList").show(300)
-
+		//fade in	
+		$("#exerciseList").fadeOut(500);
+		setTimeout($("#exerciseList").fadeIn(1000), 1000)
 	};
-
-
-
-
-
-
-
+	addExercise(){}
 
 	render(){
 
@@ -67,50 +55,54 @@ class Exercises extends React.Component{
 			var exercisesDisplay=this.state.exercises.map(data =>
 				<div className = "col-xs-6" key={data._id}>
 					<div className = "well" key={data._id}>
-						<h4>{data.exerciseName}</h4>
+						<h6>{data.exerciseName}</h6>
 						<img src={data.image} alt={data.exerciseName} className="img img-responsive"/>
 
-						<a href={data.URL} target="_blank"><button className="btn btn-success">Choose</button></a>
+						<a href={data.URL} target="_blank"><i className="fa fa-info"></i></a>
 					</div>
 				</div>
 
 					);
 
-		return(<div>
+		return(<div className="container">
 					<div className="row">
-						<form>
+						<form className="form-horizontal">
 							<div className="form-group">
-								<h4 className=""><strong>Muscle Group</strong></h4>
-								<select
-								value={this.state.muscleGroup}
-								className="form-control"
-								ref="muscleGroup"
-								onChange={this.handleChange}
-								/*onChange={this.state.creatorId}*/
-								required>
-									<option>Legs</option>
-									<option>Chest</option>
-									<option>Triceps</option>
-									<option>Biceps</option>
-									<option>Forearms</option>
-									<option>Back</option>
-									<option>Abs</option>	
-									<option>Shoulders</option>
-									<option>Calves</option>			
-								</select>
+								<label className="control-label col-xs-3">Muscle Group:</label>
+								<div className="col-xs-9">
+									<select
+									value={this.state.muscleGroup}
+									className="form-control"
+									ref="muscleGroup"
+									onChange={this.handleChange}
+									id="groupForm"
+									required>
+										<option>Legs</option>
+										<option>Chest</option>
+										<option>Triceps</option>
+										<option>Biceps</option>
+										<option>Forearms</option>
+										<option>Back</option>
+										<option>Abs</option>	
+										<option>Shoulders</option>
+										<option>Calves</option>			
+									</select>
+								</div>
 							</div>
 							<div className="form-group">
-								<h4 className=""><strong>Isolated or Compound</strong></h4>
-								<select
-								value={this.state.mechanics}
-								className="form-control"
-								ref="mechanics"
-								onChange={this.handleChange}
-								/*onChange={this.state.creatorId}*/
-								required>
-									<option>Compound</option>
-									<option>Isolated</option>			
-								</select>
+								<label className="control-label col-xs-3">Mechanics:</label>
+								<div className="col-xs-9">
+									<select
+									value={this.state.mechanics}
+									className="form-control"
+									ref="mechanics"
+									onChange={this.handleChange}
+									id="mechanicsForm"
+									required>
+										<option>Compound</option>
+										<option>Isolated</option>			
+									</select>
+								</div>
 							</div>
 							<div className="pull-right">
 								<button
@@ -119,6 +111,7 @@ class Exercises extends React.Component{
 								>
 									<h4>Button</h4>
 								</button>
+								<Link to="/create/sets"><button className="btn btn-danger">Sets</button></Link>
 							</div>
 						</form>
 					</div>
