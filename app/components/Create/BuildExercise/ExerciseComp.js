@@ -22,16 +22,16 @@ class ExerciseComp extends React.Component{
 						<h6>{this.props.exerciseName}</h6>
 						<img src={this.props.image} alt={this.props.exerciseName} className="img img-responsive"/>
 
-						<a href={this.props.URL} target="_blank"><i className="fa fa-info-circle" aria-hidden="true"></i></a>
-						<div className="align-right" onClick={this.handleSubmit}>
+						<div className="pull-right" onClick={this.handleSubmit}>
 							<Link to="/create/exercises/reps">
 								<i 
 								className="fa fa-check-circle fa-2x" 
-								aria-hidden="true"	
+								aria-hidden="true"
 								>
 								</i>
 							</Link>
 						</div>
+						<a href={this.props.URL} target="_blank"><i className="fa fa-info fa-sm" aria-hidden="true"></i></a>
 					</div>
 				</div>
 			)

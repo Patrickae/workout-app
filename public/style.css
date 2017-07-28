@@ -1,4 +1,9 @@
-/*footer{
-	position: absolute;
-	bottom:0;
+/*#exercise-builder{
+	height:500px;
+	overflow: scroll;
 }*/
+
+#workout-review{
+	height:500px;
+	overflow: scroll;
+}

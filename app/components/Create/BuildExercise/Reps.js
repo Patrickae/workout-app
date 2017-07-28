@@ -40,7 +40,7 @@ class Reps extends React.Component{
 		
 		var numberHolder = this.state.reps[data];
 		numberHolder++;
-		if(numberHolder<=20){
+		if(numberHolder<=100){
 			var arrayHolder = this.state.reps;
 			arrayHolder.splice(data, 1, numberHolder);
 			this.setState({reps: arrayHolder});
@@ -68,9 +68,9 @@ class Reps extends React.Component{
 				<div className="row" key={index}>
 
 					
-					<form className="form-horizontal">
+
 					<h4 className=""><strong>Set {index + 1} Reps:</strong></h4>	
-					<div className="form-group col-xs-8">
+					<div className="form-group col-xs-6">
 						<input
 						type="number"
 						value= {item}
@@ -81,22 +81,25 @@ class Reps extends React.Component{
 
 						</input>
 					</div>
-						<div className="pull-right col-xs-4">
+						<div className="pull-left col-xs-3">
+					
 						<i 
-						className="fa fa-arrow-up fa-lg" 
-						aria-hidden="true"
-						onClick={()=>{this.addReps(index)}}
-						>
-						</i>
-						<br/>	
-						<i 
-						className="fa fa-arrow-down fa-lg" 
+						className="fa fa-minus-circle fa-4x" 
 						aria-hidden="true"
 						onClick={()=>{this.subtractReps(index)}}
 						>
 						</i>
+						</div>
+						<div className="pull-right col-xs-3">
+
+						<i 
+						className="fa fa-plus-circle fa-4x" 
+						aria-hidden="true"
+						onClick={()=>{this.addReps(index)}}
+						>
+						</i>
 					</div>
-					</form>
+
 					
 				</div>
 
@@ -123,13 +126,13 @@ class Reps extends React.Component{
 						</div>
 						<div className="pull-left col-xs-2">
 							<i 
-							className="fa fa-arrow-up fa-3x" 
+							className="fa fa-plus-circle fa-4x" 
 							aria-hidden="true"
 							onClick={this.addSets}>
 							</i>
-							<br/>	
+								
 							<i 
-							className="fa fa-arrow-down fa-3x" 
+							className="fa fa-minus-circle fa-4x" 
 							aria-hidden="true"
 							onClick={this.subtractSets}>
 							</i>
@@ -141,11 +144,13 @@ class Reps extends React.Component{
 				
 					{repSelector}
 					<div className="row">
+					<Link to="/create/exercises/time">
 					<i 
 					className="fa fa-check-circle fa-4x" 
 					aria-hidden="true"
 					onClick={()=>this.props.setParent(this.state.reps)}>
 					</i>
+					</Link>
 					
 					</div>
 			

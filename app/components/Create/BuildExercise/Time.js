@@ -8,29 +8,72 @@ class Time extends React.Component{
 		this.state = {
 			rest: 60
 		}
+		this.addTime = this.addTime.bind(this);
+		this.subTime = this.subTime.bind(this);
 	}
 
 	addTime(){
-
+		//set variable eqal to the state. add one to variable and then set that to the state
+		var time = this.state.rest;
+		time += 10;
+		if(time<=300){
+			this.setState({rest:time})
+		}
 	}
 	subTime(){
-		
+		//same as above, but subtract
+		var time = this.state.rest;
+		time -= 10;
+		if(time > 0){
+			this.setState({rest:time})
+		}
+
 	}
 	render(){
 		return(
 
 			<div className="container">
-				<form>
-					<h3><strong>Rest Time:</strong></h3>
-					<div className="form-group">
+				<form >
+					<h3><strong>Rest Between Sets:</strong></h3>
+					<div className="form-group col-xs-12">
 						<input 
-						type="number"
-						value={this.state.rest}
-						class="form-control"
+						type="text"
+						value={this.state.rest + " Seconds"}
+						className="form-control"
+						readOnly
 						>
 						</input>
 					</div>
 				</form>
+
+				<div className="row">
+					<div className="col-xs-2"></div>
+					<div className="col-xs-4">
+						<i
+						 className="fa fa-minus-circle fa-5x"
+						 onClick ={this.subTime}></i>
+					</div>
+					<div className="col-xs-4">
+						<i 
+						className="fa fa-plus-circle fa-5x"
+						onClick ={this.addTime}></i>
+					</div>
+					<div className="col-xs-2"></div>
+				</div>
+
+				<div className="row">
+				<div className="col-xs-4"></div>
+				<div className="col-xs-4">
+					<Link to="/create/name">
+						<i 
+						className="fa fa-check-circle fa-5x"
+						onClick={()=>this.props.setParent(this.state.rest)}>
+						</i>
+					</Link>
+				</div>
+				<div className="col-xs-4"></div>
+				</div>
+
 			</div>
 			)
 	}

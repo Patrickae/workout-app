@@ -56,7 +56,7 @@ class Create extends React.Component{
 						return <Type setParent={this.handleSubmitType} />
 						}}/>
 					<Route path="/create/exercises" render={() =>{
-						return <Exercises pushExerciseToParent={this.handleNewExercise} />
+						return <Exercises pushExerciseToParent={this.handleNewExercise} type={this.state.type} />
 					}  }/>
 					<Route path="/create/name" render={() =>{
 						return <Name pushExerciseToParent={this.handleNewExercise} />

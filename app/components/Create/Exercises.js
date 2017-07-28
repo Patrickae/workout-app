@@ -34,29 +34,46 @@ class Exercises extends React.Component{
 	}
 	handleAddTime(input){
 		this.setState({rest: input});
+
 	}
+	pushToParent(input){
+		this.props.pushExerciseToParent(input);
+	}
+
 
 	render(){
 
 
 		return(<div className="container">
-					<div className="row">
+					<div className="row" id="exercise-builder">
 
 
-					<Switch>
-						{/*Render the search component*/}
-						<Route path="/create/exercises/search" render={()=>{
-							return <ExerciseSearch setParent={this.addExercise} />
-						}}/>
-							{/*Render the reps component*/}
-						<Route path="/create/exercises/reps" render={() =>{
-							return <Reps setParent={this.handleAddReps} />
-						}  }/>
-							{/*render the time component*/}
-						<Route path="/create/exercises/time" render={() =>{
-							return <Time setParent={this.handleAddRest} />
-						}  }/>
-					</Switch>
+						<Switch>
+							{/*Render the search component*/}
+							<Route path="/create/exercises/search" render={()=>{
+								return <ExerciseSearch setParent={this.addExercise} />
+							}}/>
+								{/*Render the reps component*/}
+							<Route path="/create/exercises/reps" render={() =>{
+								return <Reps setParent={this.handleAddReps} />
+							}  }/>
+								{/*render the time component*/}
+							<Route path="/create/exercises/time" render={() =>{
+								return <Time setParent={this.handleAddTime} />
+							}  }/>
+						</Switch>
+					</div>
+					<div className="row" id="workout-review">
+					<h1>This exercise</h1>
+						<h3>{this.state.currentName}</h3>
+						<ul>
+						{
+							this.state.reps.map((item, index) =>
+								<li>Set {index + 1}: {item} Reps</li>
+								)
+						}
+						</ul>
+						<h3>Rest Time Between Sets: {this.state.rest} Seconds</h3>
 					</div>
 
 				</div>
