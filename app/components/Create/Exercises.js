@@ -9,7 +9,6 @@ class Exercises extends React.Component{
 		constructor(){
 		super();
 		this.state = {
-			exercises: [],
 			currentName:"",
 			currentId:"",
 			reps:[],

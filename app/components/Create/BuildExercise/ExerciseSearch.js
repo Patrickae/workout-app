@@ -17,7 +17,7 @@ class ExerciseSearch extends React.Component{
 		this.filterExercise = this.filterExercise.bind(this);
 		this.componentDidMount = this.componentDidMount.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
-		this.componentDidUpdate = this.componentDidUpdate.bind(this);
+
 
 	}
 	//change state depending on value of form
@@ -33,9 +33,7 @@ class ExerciseSearch extends React.Component{
 	handleSubmit(name, id){
 		this.setState({name:name, id:id})
 	}
-	componentDidUpdate(){
-		this.props.setParent(this.state.name, this.state.id);
-	}
+
 	//filter exercises by whatever the current state is
 	filterExercise(event){
 		event.preventDefault();
@@ -55,7 +53,7 @@ class ExerciseSearch extends React.Component{
 	render(){
 		var exercisesDisplay=this.state.exerciseList.map(data =>
 				<ExerciseComp 
-				addExercise={this.handleSubmit} 
+				addExercise={this.props.setParent} 
 				exerciseName={data.exerciseName} 
 				id={data._id} key={data._id} 
 				URL={data.URL} 
