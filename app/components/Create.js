@@ -2,7 +2,6 @@ import React from "react";
 import { Switch, Route } from 'react-router-dom'
 
 import { Link } from "react-router-dom";
-import Sets  from "./Create/Sets";
 import Name from "./Create/Name";
 import Exercises from "./Create/Exercises";
 import Type from "./Create/Type";
@@ -54,7 +53,7 @@ class Create extends React.Component{
 					<Route path="/create/exercises" render={() =>{
 						return <Exercises pushExerciseToParent={this.handleNewExercise} />
 					}  }/>
-					<Route path="/create/sets" component={Sets} />
+					
 				</Switch>
 
 				

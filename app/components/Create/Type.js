@@ -50,7 +50,7 @@ class Type extends React.Component{
 				</div>
 				<div className="pull-right">
 					
-				<Link to="/create/exercises">
+				<Link to="/create/exercises/search">
 					<button className="btn btn-success">
 						<h4>Next</h4>
 					</button>

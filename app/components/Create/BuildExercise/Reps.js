@@ -4,7 +4,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 
-class Sets extends React.Component{
+class Reps extends React.Component{
 		constructor(props){
 		super();
 		this.state = {
@@ -64,6 +64,6 @@ class Sets extends React.Component{
 	}
 }
 
-export default Sets;
+export default Reps;
 
 
