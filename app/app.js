@@ -1,8 +1,9 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { render } from "react-dom";
 
 //importin routes from the routes file in the config folder
-import routes from "./config/routes";
+import Router from "./config/routes";
 import Home from "./components/Home"
+import { BrowserRouter } from 'react-router-dom'
 
-ReactDOM.render(routes, document.getElementById("app"));
+render(<BrowserRouter><Router /></BrowserRouter>, document.getElementById("app"));

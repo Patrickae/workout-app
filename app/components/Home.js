@@ -9,13 +9,7 @@ class Home extends React.Component{
 		}
 	}
 
-
-
-
   render(){
-
-
-
 
     return(
     	<div>
@@ -25,22 +19,13 @@ class Home extends React.Component{
           	</div>
         </div>
     	<h3> Recommended for you </h3>
-      <ul className="list-group">
+      	<ul className="list-group">
 		  <li className="list-group-item">Weight Training</li>
 		  <li className="list-group-item">HIIT Training</li>
 		  <li className="list-group-item">Running intervals</li>
 		  <li className="list-group-item">Leg Day</li>
 		  <li className="list-group-item">Full Body Strength</li>
-	</ul>
-
-
-	<button className="btn btn-warning">Seed Data</button>
-
-	
-
-
-
-
+		</ul>
 
 	</div>
     );

@@ -25,11 +25,18 @@ class Exercises extends React.Component{
 		helpers.getExercises().then(result => {
 			this.setState({exercises: result.data})
 		});
+
+		
 	};
 
+	componentDidMount(){
+		$("#exerciseList").hide();
+	};
 
 	filterExercise(event){
 		event.preventDefault();
+
+
 		
 		console.log("clicked");
 		console.log(this.state.muscleGroup);
@@ -41,6 +48,10 @@ class Exercises extends React.Component{
 			console.log(result);
 			this.setState({exercises:result.data})
 		});	
+
+		
+		$("#exerciseList").show(300)
+
 	};
 
 
@@ -112,7 +123,7 @@ class Exercises extends React.Component{
 						</form>
 					</div>
 
-					<div className="row">
+					<div className="row" id="exerciseList">
 						{exercisesDisplay}
 					</div>
 

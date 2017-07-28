@@ -1,7 +1,7 @@
 import React from "react";
+import { Switch, Route } from 'react-router-dom'
 
-
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import Type  from "./Create/Type";
 import Name from "./Create/Name";
 import Exercises from "./Create/Exercises";
@@ -45,8 +45,13 @@ class Create extends React.Component{
 					</div>
 				</div>
 
+				<Link to="/create/exercises"><button className="btn btn-primary"></button></Link>
 
-				<Exercises />
+				<Switch>
+					<Route path="/create/exercises" component={Exercises} />
+				</Switch>
+
+				
 			
 
 
