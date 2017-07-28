@@ -39,16 +39,15 @@ class Create extends React.Component{
 		return(
 			<div>
 
-			<div className="row">
-				<div className="jumbotron text-center" id="jumbo">
-					<h1>Create a New Workout</h1>
+				<div className="row">
+					<div className="jumbotron text-center" id="jumbo">
+						<h1>Create a New Workout</h1>
+					</div>
 				</div>
-			</div>
 
 
-			<Type workoutType={this.state.workoutType} handleChange={this.handleChange} updateWorkoutType={this.updateWorkoutType} />
-			<Exercises exercises={this.state.exercises} />
-			<Name />
+				<Exercises />
+			
 
 
 			</div>

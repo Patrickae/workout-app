@@ -24,7 +24,21 @@ var helpers = {
   		console.log("axios response", response);
   		return response
   	});
+  },
+
+
+  exerciseSearchResults: function(muscleGroup, mechanism){
+    var conditions ={"muscleGroup":muscleGroup, "mechanism":mechanism};
+    return axios.get("/api/exercises/"+muscleGroup+"/"+mechanism).then(function(response){
+      console.log("axios return data", response);
+      return response
+    })
   }
+
+
+
+
+
 
 };
 

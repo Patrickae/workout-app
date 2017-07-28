@@ -79,8 +79,17 @@ app.get("/api/exercises", function(req, res){
 });
 
 
-
-
+app.get("/api/exercises/:muscleGroup/:mechanism", function(req, res){
+	Exercise.find({"muscleGroup":req.params.muscleGroup, "mechanics": req.params.mechanism})
+	.exec(function(err, doc){
+		if(err){
+			console.log(err)
+		}
+		else{
+			res.send(doc)
+		}
+	});
+});
 
 
 
