@@ -5,12 +5,12 @@ import { Link } from "react-router-dom";
 
 
 class Reps extends React.Component{
-		constructor(props){
+		constructor(){
 		super();
 		this.state = {
 			workoutName:"",
 			workoutType: "Sets and Reps",
-			reps:[1]
+			reps:[5]
 		}
 	this.addSets = this.addSets.bind(this);
 	this.subtractSets = this.subtractSets.bind(this);
@@ -23,7 +23,7 @@ class Reps extends React.Component{
 		event.preventDefault();
 		var repHolder = this.state.reps
 		if(repHolder.length <10){
-			repHolder.push(1);
+			repHolder.push(5);
 			this.setState({reps: repHolder})
 		}
 	}
@@ -67,8 +67,10 @@ class Reps extends React.Component{
 		const repSelector = this.state.reps.map((item, index) =>
 				<div className="row" key={index}>
 
-					<h4 className=""><strong>Set {index + 1}</strong></h4>	
-					<div className="form-group  col-xs-10">
+					
+					<form className="form-horizontal">
+					<h4 className=""><strong>Set {index + 1} Reps:</strong></h4>	
+					<div className="form-group col-xs-8">
 						<input
 						type="number"
 						value= {item}
@@ -79,7 +81,7 @@ class Reps extends React.Component{
 
 						</input>
 					</div>
-						<div className="pull-right col-xs-2">
+						<div className="pull-right col-xs-4">
 						<i 
 						className="fa fa-arrow-up fa-lg" 
 						aria-hidden="true"
@@ -94,6 +96,7 @@ class Reps extends React.Component{
 						>
 						</i>
 					</div>
+					</form>
 					
 				</div>
 
@@ -135,10 +138,17 @@ class Reps extends React.Component{
 					</form>
 				</div>
 
-				<form className="form-horizontal">
+				
 					{repSelector}
-				</form>
-
+					<div className="row">
+					<i 
+					className="fa fa-check-circle fa-4x" 
+					aria-hidden="true"
+					onClick={()=>this.props.setParent(this.state.reps)}>
+					</i>
+					
+					</div>
+			
 			</div>
 
 			);

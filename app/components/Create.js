@@ -14,7 +14,9 @@ class Create extends React.Component{
 			workoutName:"Foo",
 			exercises: ["Foo", "Wiz", "Bang"],
 			creatorId : "123456",
-			type: ""
+			type: "",
+			name:"",
+			description:""
 
 		}
 		this.handleSubmitType = this.handleSubmitType.bind(this);
@@ -31,6 +33,9 @@ class Create extends React.Component{
   		var exerciseArray = this.state.exercises;
   		exerciseArray.push(input);
   		this.setState({exercises: exerciseArray});
+  	}
+  	addNameAndDescription(name, descrip){
+  		this.setState({name:name, description:descrip});
   	}
 
 	render(){
@@ -52,6 +57,9 @@ class Create extends React.Component{
 						}}/>
 					<Route path="/create/exercises" render={() =>{
 						return <Exercises pushExerciseToParent={this.handleNewExercise} />
+					}  }/>
+					<Route path="/create/name" render={() =>{
+						return <Name pushExerciseToParent={this.handleNewExercise} />
 					}  }/>
 					
 				</Switch>
