@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Name from "./Create/Name";
 import Exercises from "./Create/Exercises";
 import Type from "./Create/Type";
+import Review from "./Create/Review"
 
 class Create extends React.Component{
 
@@ -12,10 +13,9 @@ class Create extends React.Component{
 		super();
 		this.state = {
 			workoutName:"Foo",
-			exercises: ["Foo", "Wiz", "Bang"],
-			creatorId : "123456",
 			type: "",
-			name:"",
+			exercises: [],
+			creatorId : "123",
 			description:""
 
 		}
@@ -49,7 +49,7 @@ class Create extends React.Component{
 					</div>
 				</div>
 
-				
+
 
 				<Switch>
 					<Route path="/create/type" render={()=>{
@@ -61,11 +61,14 @@ class Create extends React.Component{
 					<Route path="/create/name" render={() =>{
 						return <Name pushExerciseToParent={this.handleNewExercise} />
 					}  }/>
-					
+				<Route path="/create/review" render={() =>{
+						return <Review exercises={this.state.exercises} type={this.state.type} />
+					}  }/>
+
 				</Switch>
 
-				
-			
+
+
 
 
 			</div>

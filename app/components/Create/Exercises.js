@@ -18,6 +18,7 @@ class Exercises extends React.Component{
 		this.addExercise = this.addExercise.bind(this);
 		this.handleAddReps = this.handleAddReps.bind(this);
 		this.handleAddTime = this.handleAddTime.bind(this);
+		this.pushToParent = this.pushToParent.bind(this);
 
 	};
 
@@ -36,8 +37,8 @@ class Exercises extends React.Component{
 		this.setState({rest: input});
 
 	}
-	pushToParent(input){
-		this.props.pushExerciseToParent(input);
+	pushToParent(){
+		this.props.pushExerciseToParent(this.state);
 	}
 
 
@@ -59,7 +60,7 @@ class Exercises extends React.Component{
 							}  }/>
 								{/*render the time component*/}
 							<Route path="/create/exercises/time" render={() =>{
-								return <Time setParent={this.handleAddTime} />
+								return <Time setParent={this.handleAddTime} saveExercise={this.pushToParent}/>
 							}  }/>
 						</Switch>
 					</div>
@@ -69,7 +70,7 @@ class Exercises extends React.Component{
 						<ul>
 						{
 							this.state.reps.map((item, index) =>
-								<li>Set {index + 1}: {item} Reps</li>
+								<li key={index}>Set {index + 1}: {item} Reps</li>
 								)
 						}
 						</ul>

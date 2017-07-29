@@ -28,6 +28,7 @@ class Home extends React.Component{
 	        </Link>
         </div>
 
+
     	<h3> Recommended for you </h3>
       	<ul className="list-group">
 		  <li className="list-group-item">Weight Training</li>

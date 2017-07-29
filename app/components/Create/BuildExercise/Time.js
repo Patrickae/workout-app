@@ -10,6 +10,7 @@ class Time extends React.Component{
 		}
 		this.addTime = this.addTime.bind(this);
 		this.subTime = this.subTime.bind(this);
+		this.componentWillUnmount = this.componentWillUnmount.bind(this);
 	}
 
 	addTime(){
@@ -27,8 +28,13 @@ class Time extends React.Component{
 		if(time > 0){
 			this.setState({rest:time})
 		}
-
 	}
+
+	componentWillUnmount(){
+		this.props.saveExercise();
+	}
+
+
 	render(){
 		return(
 
@@ -36,7 +42,7 @@ class Time extends React.Component{
 				<form >
 					<h3><strong>Rest Between Sets:</strong></h3>
 					<div className="form-group col-xs-12">
-						<input 
+						<input
 						type="text"
 						value={this.state.rest + " Seconds"}
 						className="form-control"
@@ -54,7 +60,7 @@ class Time extends React.Component{
 						 onClick ={this.subTime}></i>
 					</div>
 					<div className="col-xs-4">
-						<i 
+						<i
 						className="fa fa-plus-circle fa-5x"
 						onClick ={this.addTime}></i>
 					</div>
@@ -64,8 +70,8 @@ class Time extends React.Component{
 				<div className="row">
 				<div className="col-xs-4"></div>
 				<div className="col-xs-4">
-					<Link to="/create/name">
-						<i 
+					<Link to="/create/review">
+						<i
 						className="fa fa-check-circle fa-5x"
 						onClick={()=>this.props.setParent(this.state.rest)}>
 						</i>
