@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 class Name extends React.Component{
 	constructor(){
@@ -9,16 +10,20 @@ class Name extends React.Component{
 		}
 
 	this.handleChange = this.handleChange.bind(this);
+	this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
 	handleChange(){
 		this.setState({workoutName: this.refs.wktName.value});
-		this.setState({workoutDescrip: this.refs.wktDescrp.value})
+		this.setState({workoutDescrip: this.refs.wktDescrp.value});
+		this.props.addNameAndDescription(this.refs.wktName.value, this.refs.wktDescrp.value);
 	}
+
 	handleSubmit(){
 		event.preventDefault();
-		console.log(this.state.workoutName, this.state.workoutDescrip);
+		this.props.save();
 	}
+
 	render(){
 		return(
 			<div className="container">
@@ -51,11 +56,12 @@ class Name extends React.Component{
 				<div className="row">
 					<div className="col-xs-4"></div>
 						<div className="col-xs-4">
-							<i
+							<Link to="/"><i
 							className="fa fa-check-circle fa-5x"
 							onClick={this.handleSubmit}
 							>
 							</i>
+							</Link>
 						</div>
 					<div className="col-xs-4"></div>
 				</div>

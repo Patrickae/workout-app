@@ -2,7 +2,7 @@ import axios from "axios";
 
 var helpers = {
 
-//exercise helpers
+//-----------exercise helpers-----------------------------
 	saveExercise: function(name, url, target, image, mechanics) {
     var newExercise = { exerciseName: name, URL: url, muscleGroup: target, image: image, mechanics: mechanics };
     return axios.post("/api/exercises", newExercise)
@@ -28,15 +28,33 @@ var helpers = {
 
 
   exerciseSearchResults: function(muscleGroup, mechanism){
-    var conditions ={"muscleGroup":muscleGroup, "mechanism":mechanism};
+    // var conditions ={"muscleGroup":muscleGroup, "mechanism":mechanism};
     return axios.get("/api/exercises/"+muscleGroup+"/"+mechanism).then(function(response){
       console.log("axios return data", response);
       return response
     })
-  }
+  },
 
 
+//------------------------------------------------------------------
+//---------------workout helpers-----------------------------------
 
+	getWorkouts: function(id){
+		return axios.get("/api/workouts/"+id).then(function(response){
+      console.log("axios return data", response);
+      return response
+		})
+	},
+
+	saveWorkout: function(workout){
+		return axios.post("/api/workouts", workout)
+      .then(function(response) {
+        console.log("axios results", response.data._id);
+        return response.data._id;
+      });
+	}
+
+//------------------------------------------------------------------
 
 
 

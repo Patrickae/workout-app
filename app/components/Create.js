@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 import Name from "./Create/Name";
 import Exercises from "./Create/Exercises";
 import Type from "./Create/Type";
-import Review from "./Create/Review"
+import Review from "./Create/Review";
+import helpers from "../utils/helpers";
 
 class Create extends React.Component{
 
@@ -21,6 +22,8 @@ class Create extends React.Component{
 		}
 		this.handleSubmitType = this.handleSubmitType.bind(this);
 		this.handleNewExercise = this.handleNewExercise.bind(this);
+		this.saveWorkout = this.saveWorkout.bind(this);
+		this.addNameAndDescription = this.addNameAndDescription.bind(this);
 	}
 	//function for saving the exercise type. this will be passed to Type.js
  	handleSubmitType(input){
@@ -35,8 +38,12 @@ class Create extends React.Component{
   		this.setState({exercises: exerciseArray});
   	}
   	addNameAndDescription(name, descrip){
-  		this.setState({name:name, description:descrip});
+  		this.setState({workoutName:name, description:descrip});
   	}
+		saveWorkout(){
+			console.log(this.state);
+			helpers.saveWorkout(this.state)
+		}
 
 	render(){
 
@@ -59,7 +66,7 @@ class Create extends React.Component{
 						return <Exercises pushExerciseToParent={this.handleNewExercise} type={this.state.type} />
 					}  }/>
 					<Route path="/create/name" render={() =>{
-						return <Name pushExerciseToParent={this.handleNewExercise} />
+						return <Name addNameAndDescription={this.addNameAndDescription} save={this.saveWorkout} />
 					}  }/>
 				<Route path="/create/review" render={() =>{
 						return <Review exercises={this.state.exercises} type={this.state.type} />

@@ -53,6 +53,19 @@ app.get("/api/workouts", function(req, res){
 	});
 });
 
+//route to get all workouts by creatorId
+app.get("/api/workouts/:creatorId", function(req, res){
+	//get all Workout Collection
+	Workout.find({"creatorId":req.params.creatorId}).exec(function(err, doc){
+		if(err){
+			console.log(err)
+		}
+		else{
+			res.send(doc);
+		}
+	});
+});
+
 //route to get all users
 app.get("/api/users", function(req, res){
 	//find all in the User collection
@@ -187,7 +200,7 @@ app.delete("/api/exercises/:id", function(req, res){
 		}else{
 			console.log("collection deleted")
 		}
-	});	
+	});
 });
 
 //---------------------------------------------------------------
