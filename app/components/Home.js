@@ -7,17 +7,24 @@ class Home extends React.Component{
 	constructor(){
 		super();
 		this.state = {
-			userId: "123"
+			userId: "123",
+			workouts:[]
 		}
 		this.componentWillMount=this.componentWillMount.bind(this);
 	}
 
 	componentWillMount(){
 		helpers.getWorkouts(this.state.userId).then((item) =>{
-			console.log(item)})
+			console.log(item)
+			this.setState({workouts:item.data})
+		})
+
 	}
 
   render(){
+
+		var myWorkouts = this.state.workouts.map((item)=>
+		<li key={item._id} className="list-group-item">{item.workoutName}</li>)
 
     return(
     	<div>
@@ -37,11 +44,7 @@ class Home extends React.Component{
 
     	<h3> Recommended for you </h3>
       	<ul className="list-group">
-				  <li className="list-group-item">Weight Training</li>
-				  <li className="list-group-item">HIIT Training</li>
-				  <li className="list-group-item">Running intervals</li>
-				  <li className="list-group-item">Leg Day</li>
-				  <li className="list-group-item">Full Body Strength</li>
+				  {myWorkouts}
 				</ul>
 
 		<div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
