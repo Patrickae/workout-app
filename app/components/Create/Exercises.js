@@ -13,7 +13,7 @@ class Exercises extends React.Component{
 			currentName:"",
 			currentId:"",
 			reps:[],
-			rest:""
+			rest:"60"
 					}
 		this.addExercise = this.addExercise.bind(this);
 		this.handleAddReps = this.handleAddReps.bind(this);

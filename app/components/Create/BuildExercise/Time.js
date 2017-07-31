@@ -4,14 +4,14 @@ import{ Link } from "react-router-dom";
 
 class Time extends React.Component{
 		constructor(props){
-		super();
-		this.state = {
-			rest: 60
+			super();
+			this.state = {
+				rest: 60
+			}
+			this.addTime = this.addTime.bind(this);
+			this.subTime = this.subTime.bind(this);
+			this.componentWillUnmount = this.componentWillUnmount.bind(this);
 		}
-		this.addTime = this.addTime.bind(this);
-		this.subTime = this.subTime.bind(this);
-		this.componentWillUnmount = this.componentWillUnmount.bind(this);
-	}
 
 	addTime(){
 		//set variable eqal to the state. add one to variable and then set that to the state
@@ -19,6 +19,7 @@ class Time extends React.Component{
 		time += 10;
 		if(time<=300){
 			this.setState({rest:time})
+			this.props.setParent(time);
 		}
 	}
 	subTime(){
@@ -27,11 +28,13 @@ class Time extends React.Component{
 		time -= 10;
 		if(time > 0){
 			this.setState({rest:time})
+			this.props.setParent(time);
 		}
 	}
 
 	componentWillUnmount(){
 		this.props.saveExercise();
+
 	}
 
 
