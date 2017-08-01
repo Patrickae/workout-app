@@ -8,6 +8,7 @@ var flash = require('connect-flash');
 var logger = require("morgan");
 var mongoose = require("mongoose");
 var passport = require('passport');
+var mongo = require('mongodb');
 var LocalStrategy = require('passport-local').Strategy;
 
 // Require Schemas
@@ -101,9 +102,8 @@ passport.deserializeUser(function(id, done) {
 //--------Login verification ---------------------
 
 app.post('/login', passport.authenticate('local', {
-  successRedirect: '/home',
-  failureRedirect: '/',
-  failureFlash: true
+  successRedirect: '/#/home',
+  failureRedirect: '/#/'
 }));
 //------------------------------------------------
 //--------Routes for getting existing info----------------
@@ -191,7 +191,6 @@ app.post("/api/users", function(req, res) {
   var username = req.body.username;
   var password = req.body.password;
   var password2 = req.body.password2;
-  var workouts = [];
 
   // Validation
   req.checkBody('name', 'Name is required').notEmpty();
@@ -207,7 +206,20 @@ app.post("/api/users", function(req, res) {
     console.log(errors);
     return errors
   } else {
-    console.log("there are no errors")
+    var newUser = new User({
+			name: name,
+			email:email,
+			username: username,
+			password: password,
+      workouts:[]
+		});
+
+		User.createUser(newUser, function(err, user){
+			if(err) throw err;
+			console.log(user);
+		});
+
+		res.redirect('/#/');
   }
 
 });
