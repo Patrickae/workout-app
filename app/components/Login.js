@@ -23,7 +23,7 @@ class Login extends React.Component {
           <img className="img-responsive" src="../images/dumbbell.png"/>
         </div>
         <br/>
-        <legend className="text-center">Login</legend>
+        <h2 className="page-header">Login</h2>
 
         <form className="form-signin" action="/login" method="post">
           <h4>Username</h4>

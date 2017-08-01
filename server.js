@@ -2,7 +2,9 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var cookieParser = require('cookie-parser');
+var expressValidator = require('express-validator');
 var session = require('express-session');
+var flash = require('connect-flash');
 var logger = require("morgan");
 var mongoose = require("mongoose");
 var passport = require('passport');
@@ -19,15 +21,41 @@ var PORT = process.env.PORT || 3000; // Sets an initial port. We'll use this lat
 
 // Run Morgan for Logging
 app.use(logger("dev"));
+
+//body and cookie parser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.text());
 app.use(bodyParser.json({type: "application/vnd.api+json"}));
-// configure express
-
-app.use(express.static("./public"));
 app.use(cookieParser());
-app.use(session({ secret: 'keyboard cat' }));
+
+// Connect Flash
+app.use(flash());
+//set static folder
+app.use(express.static("./public"));
+// Passport init
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Express Validator
+app.use(expressValidator({
+  errorFormatter: function(param, msg, value) {
+      var namespace = param.split('.')
+      , root    = namespace.shift()
+      , formParam = root;
+
+    while(namespace.length) {
+      formParam += '[' + namespace.shift() + ']';
+    }
+    return {
+      param : formParam,
+      msg   : msg,
+      value : value
+    };
+  }
+}));
+
+
 
 //-----------------------
 //MongoDB config
@@ -43,9 +71,7 @@ db.once("open", function() {
   console.log("Mongoose connection successful.");
 });
 //--------------------------
-// Passport config for authentication
-app.use(passport.initialize());
-app.use(passport.session());
+
 
 
 passport.use(new LocalStrategy(
@@ -167,17 +193,23 @@ app.post("/api/workouts", function(req, res) {
 //add new user
 app.post("/api/users", function(req, res) {
   //make a new instance of User with the req.body
-  var newUser = new User(req.body);
-  console.log(req.body);
-  //save the new User
-  newUser.save(function(err, doc) {
-    if (err) {
-      console.log(err);
-    } else {
-      res.send(doc);
-      res.redirect("/");
-    }
-  });
+  var name = req.body.name;
+	var email = req.body.email;
+	var username = req.body.username;
+	var password = req.body.password;
+	var password2 = req.body.password2;
+  var workouts = [];
+
+  //validation
+  req.checkBody('name', 'Name is required').notEmpty();
+  var errors = req.validationErrors();
+
+  if(errors){
+    console.log("there are errors")
+  }else{
+    console.log("there are no errors")
+  }
+
 });
 
 //add new exercise
