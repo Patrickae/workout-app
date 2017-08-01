@@ -6,12 +6,12 @@ import { Link } from "react-router-dom";
 class Type extends React.Component{
 		constructor(){
 		super();
-		this.state = {		
+		this.state = {
 			type: "Strength Training"
 		}
 	this.handleChange = this.handleChange.bind(this);
 	this.handleSubmit = this.handleSubmit.bind(this);
-	
+
 	}
 
 	handleChange(event) {
@@ -49,17 +49,17 @@ class Type extends React.Component{
 					</select>
 				</div>
 				<div className="pull-right">
-					
-				<Link to="/create/exercises/search">
-					<button className="btn btn-success">
+
+				<Link to="/create/exercises/search" className="btn btn-success">
+
 						<h4>Next</h4>
-					</button>
+
 				</Link>
-								
+
 				</div>
 			</form>
 
-			
+
 			</div>
 
 			);
@@ -67,4 +67,3 @@ class Type extends React.Component{
 }
 
 export default Type;
-

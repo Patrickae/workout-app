@@ -19,9 +19,10 @@ class Review extends React.Component{
           </div>
         )}
 
-        <Link to="/create/exercises/search"><button className="btn btn-primary"><h3>Add Another Exerise</h3></button></Link>
+        <Link to="/create/exercises/search" className="btn btn-info btn-lg btn-block">Add Next Exercise</Link>
 
-        <Link to="/create/name"><button className="btn btn-success"><h3>Name and Save Your Workout</h3></button></Link>
+        <Link to="/create/name" className="btn btn-success btn-block btn-lg">Complete</Link>
+
       </div>
     )
   }

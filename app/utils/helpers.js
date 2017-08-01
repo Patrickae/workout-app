@@ -43,7 +43,7 @@ var helpers = {
 		return axios.get("/api/workouts/"+id).then(function(response){
       console.log("axios return data", response.data);
       return response
-		})
+		});
 	},
 
 	saveWorkout: function(workout){
@@ -52,8 +52,17 @@ var helpers = {
         console.log("axios results", response.data._id);
         return response.data._id;
       });
-	}
+	},
 
+//------------------------------------------------------------------
+//---------------user helpers-----------------------------------
+
+	saveUser: function(userObj){
+		return axios.post("/api/users", userObj)
+		.then(function(response){
+			console.log("axios results", response.data);
+		})
+	}
 //------------------------------------------------------------------
 
 

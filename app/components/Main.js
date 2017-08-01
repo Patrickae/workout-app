@@ -28,7 +28,7 @@ class Main extends React.Component{
 
       <div>
         <Header loggedIn={this.state.loggedIn} userId={this.state.userId} changeLogin={this.loggedInTrue}/>
-        <div className="container-fluid">
+        <div className="container-fluid" id="body">
            <Switch>
             <Route path="/home" component={Home} />
             <Route path="/create" component={Create} />
@@ -36,6 +36,9 @@ class Main extends React.Component{
             <Route path="/register" component={Register} />
            </Switch>
         </div>
+
+
+
       </div>
 
     );
