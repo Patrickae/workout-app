@@ -40,22 +40,16 @@ app.use(passport.session());
 // Express Validator
 app.use(expressValidator({
   errorFormatter: function(param, msg, value) {
-      var namespace = param.split('.')
-      , root    = namespace.shift()
-      , formParam = root;
+    var namespace = param.split('.'),
+      root = namespace.shift(),
+      formParam = root;
 
-    while(namespace.length) {
+    while (namespace.length) {
       formParam += '[' + namespace.shift() + ']';
     }
-    return {
-      param : formParam,
-      msg   : msg,
-      value : value
-    };
+    return {param: formParam, msg: msg, value: value};
   }
 }));
-
-
 
 //-----------------------
 //MongoDB config
@@ -72,26 +66,25 @@ db.once("open", function() {
 });
 //--------------------------
 
+passport.use(new LocalStrategy(function(username, password, done) {
+  User.getUserByUsername(username, function(err, user) {
+    if (err)
+      throw err;
+    if (!user) {
+      return done(null, false, {message: 'Unknown User'});
+    }
 
-
-passport.use(new LocalStrategy(
-  function(username, password, done) {
-   User.getUserByUsername(username, function(err, user){
-   	if(err) throw err;
-   	if(!user){
-   		return done(null, false, {message: 'Unknown User'});
-   	}
-
-   	User.comparePassword(password, user.password, function(err, isMatch){
-   		if(err) throw err;
-   		if(isMatch){
-   			return done(null, user);
-   		} else {
-   			return done(null, false, {message: 'Invalid password'});
-   		}
-   	});
-   });
-  }));
+    User.comparePassword(password, user.password, function(err, isMatch) {
+      if (err)
+        throw err;
+      if (isMatch) {
+        return done(null, user);
+      } else {
+        return done(null, false, {message: 'Invalid password'});
+      }
+    });
+  });
+}));
 
 passport.serializeUser(function(user, done) {
   done(null, user.id);
@@ -194,19 +187,26 @@ app.post("/api/workouts", function(req, res) {
 app.post("/api/users", function(req, res) {
   //make a new instance of User with the req.body
   var name = req.body.name;
-	var email = req.body.email;
-	var username = req.body.username;
-	var password = req.body.password;
-	var password2 = req.body.password2;
+  var email = req.body.email;
+  var username = req.body.username;
+  var password = req.body.password;
+  var password2 = req.body.password2;
   var workouts = [];
 
-  //validation
+  // Validation
   req.checkBody('name', 'Name is required').notEmpty();
+  req.checkBody('email', 'Email is required').notEmpty();
+  req.checkBody('email', 'Email is not valid').isEmail();
+  req.checkBody('username', 'Username is required').notEmpty();
+  req.checkBody('password', 'Password is required').notEmpty();
+  req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
   var errors = req.validationErrors();
 
-  if(errors){
-    console.log("there are errors")
-  }else{
+  if (errors) {
+    res.redirect("/#/register")
+    console.log(errors);
+    return errors
+  } else {
     console.log("there are no errors")
   }
 
