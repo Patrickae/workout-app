@@ -54,7 +54,7 @@ class Header extends React.Component {
                   <span className="icon-bar"></span>
                   <span className="icon-bar"></span>
                 </button>
-                <Link className="navbar-brand" to="/">Workout App</Link>
+                <Link className="navbar-brand" to="/home">Workout App</Link>
               </div>
               {/*Navbar Header*/}
 

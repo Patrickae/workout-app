@@ -39,8 +39,15 @@ var helpers = {
 //------------------------------------------------------------------
 //---------------workout helpers-----------------------------------
 
-	getWorkouts: function(id){
+	getWorkoutsByUser: function(id){
 		return axios.get("/api/workouts/"+id).then(function(response){
+      console.log("axios return data", response.data);
+      return response
+		});
+	},
+
+	getWorkoutsById: function(id){
+		return axios.get("/api/workouts/id/"+id).then(function(response){
       console.log("axios return data", response.data);
       return response
 		});

@@ -78,36 +78,39 @@ class Register extends React.Component {
         <form method="post" action="/new/users">
           <div className={this.checkForError("name")}>
             <h4>Name</h4>
-            <input type="text" className="form-control" ref="name" value={this.state.name} onChange={this.handleChange} placeholder="Name" name="name" onBlur={() => {
+            <input required type="text" className="form-control" ref="name" value={this.state.name} onChange={this.handleChange} placeholder="Name" name="name" onBlur={() => {
               this.handleBlur("name")
             }}/>
           </div>
           <div className={this.checkForError("username")}>
             <h4>Username</h4>
-            <input type="text" className="form-control" ref="username" value={this.state.username} onChange={this.handleChange} placeholder="Username" name="username" onBlur={() => {
+            <input required type="text" className="form-control" ref="username" value={this.state.username} onChange={this.handleChange} placeholder="Username" name="username" onBlur={() => {
               this.handleBlur("username")
             }}/>
           </div>
           <div className={this.checkForError("email")}>
             <h4>Email</h4>
-            <input type="email" className="form-control" ref="email" value={this.state.email} onChange={this.handleChange} placeholder="Email" name="email" onBlur={() => {
+            <input required type="email" className="form-control" ref="email" value={this.state.email} onChange={this.handleChange} placeholder="Email" name="email" onBlur={() => {
               this.handleBlur("email")
             }}/>
           </div>
           <div className={this.passwordMatch()}>
             <h4>Password</h4>
-            <input type="password" className="form-control" ref="password" value={this.state.password} onChange={this.handleChange} placeholder="Password" name="password" onBlur={() => {
+            <input required type="password" className="form-control" ref="password" value={this.state.password} onChange={this.handleChange} placeholder="Password" name="password" onBlur={() => {
               this.handleBlur("password")
             }}/>
           </div>
           <div className={this.passwordMatch()}>
             <h4>confirm Password</h4>
-            <input type="password" className="form-control" ref="password2" value={this.state.password2} onChange={this.handleChange} placeholder="Password" name="password2" onBlur={() => {
+            <input required type="password" className="form-control" ref="password2" value={this.state.password2} onChange={this.handleChange} placeholder="Password" name="password2" onBlur={() => {
               this.handleBlur("password2")
             }}/>
           </div>
-          <button type="submit" className="btn btn-success">Submit</button>
+          <button type="submit" className="btn btn-success btn-lg btn-block">Submit</button>
+          <br/>
         </form>
+        <Link to="/" className="btn btn-danger btn-lg btn-block">Back</Link>
+        <br/>
       </div>
     )
   }

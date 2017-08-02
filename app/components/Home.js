@@ -13,7 +13,7 @@ class Home extends React.Component {
   }
 
   componentWillMount() {
-    helpers.getWorkouts(this.state.userId).then((item) => {
+    helpers.getWorkoutsByUser(this.state.userId).then((item) => {
       console.log(item)
       this.setState({workouts: item.data})
     })

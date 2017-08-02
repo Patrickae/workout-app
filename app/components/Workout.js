@@ -3,26 +3,42 @@ import {Switch, Route, BrowserRouter, Link} from 'react-router-dom'
 import ActiveWorkout from "./Workout/ActiveWorkout";
 import Finished from "./Workout/Finished";
 import Overview from "./Workout/Overview";
+import helpers from "../utils/helpers";
 
 class Workout extends React.Component {
   constructor() {
     super();
     this.state = {
-      workoutId: ""
+      workout: {
+        exercises: [
+          {
+            reps: []
+          }
+        ]
+      }
     }
-    this.componentDidMount = this.componentDidMount.bind(this);
+    this.componentWillMount = this.componentWillMount.bind(this);
   }
-  componentDidMount(){
-    this.setState({workoutId: this.props.workoutId})
+  componentWillMount() {
+    helpers.getWorkoutsById(this.props.workoutId).then(result => {
+      this.setState({workout: result.data[0]})
+    })
   }
 
   render() {
+    console.log(this.state.workout);
     return (
       <div className="container-fluid">
-        <div className="row text-center">
-          <h1>This will be the workout name</h1>
-          <h4>By: This will be the creator Name</h4>
+
+        <div className="panel panel-info text-center">
+          <div className="panel-heading">
+            <h3 className="panel-title">{this.state.workout.workoutName} info</h3>
+          </div>
+          <div className="panel-body">
+            {this.state.workout.description}
+          </div>
         </div>
+
         <div className="row">
           <Switch>
             <Route path="/workout/overview" render={() => {

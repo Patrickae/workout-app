@@ -10,17 +10,20 @@ class ActiveWorkout extends React.Component{
 
     }
   }
+
+
   render(){
+    console.log(this.props.workout)
     return(
       <div className="container-fluid">
 
 
       <Switch>
         <Route path="/workout/active/current" render={()=>{
-            return <CurrentExercise />
+            return <CurrentExercise workout={this.props.workout} />
           }}/>
         <Route path="/workout/active/timer" render={()=>{
-            return <Timer />
+            return <Timer workout={this.props.workout} />
           }}/>
       </Switch>
 
