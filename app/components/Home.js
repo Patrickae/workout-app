@@ -25,8 +25,8 @@ class Home extends React.Component {
 
     var myWorkouts = this.state.workouts.map((item) =>
 
-			<div className="list-group" key={item._id}>
-			  <Link to="/home"className="list-group-item">
+			<div className="list-group" key={item._id} onClick={()=>{this.props.setWorkoutId(item._id)}}>
+			  <Link to="/workout/overview"className="list-group-item">
 			    <h4 className="list-group-item-heading">{item.workoutName}</h4>
 			    <p className="list-group-item-text">{item.description}</p>
 			  </Link>
