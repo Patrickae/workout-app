@@ -18,3 +18,8 @@
 .img-responsive{
 	margin: 0 auto;
 }
+
+#excsImg{
+	height:100px;
+	max-width:100%;
+}
