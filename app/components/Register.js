@@ -75,7 +75,7 @@ class Register extends React.Component {
     return (
       <div>
         <h2 className="page-header">Register</h2>
-        <form method="post" action="/api/users">
+        <form method="post" action="/new/users">
           <div className={this.checkForError("name")}>
             <h4>Name</h4>
             <input type="text" className="form-control" ref="name" value={this.state.name} onChange={this.handleChange} placeholder="Name" name="name" onBlur={() => {

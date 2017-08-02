@@ -17,6 +17,8 @@ class Login extends React.Component {
     this.setState({password: this.refs.password.value})
   }
   render() {
+
+
     return (
       <div className="container">
         <div className="text-center">
@@ -25,7 +27,7 @@ class Login extends React.Component {
         <br/>
         <h2 className="page-header">Login</h2>
 
-        <form className="form-signin" action="/login" method="post">
+        <form className="form-signin" action="/new/login" method="post">
           <h4>Username</h4>
           <input type="text" name="username" ref="username" value={this.state.username} className="form-control" placeholder="Username" onChange={this.handleChange} required/>
           <h4>Password</h4>

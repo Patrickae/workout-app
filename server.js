@@ -1,6 +1,7 @@
 // Include Server Dependencies
 var express = require("express");
 var bodyParser = require("body-parser");
+var path = require("path");
 var cookieParser = require('cookie-parser');
 var expressValidator = require('express-validator');
 var session = require('express-session');
@@ -10,9 +11,10 @@ var mongoose = require("mongoose");
 var passport = require('passport');
 var mongo = require('mongodb');
 var LocalStrategy = require('passport-local').Strategy;
+var users = require('./login-routes/users');
+var User = require("./model/user.js");
 
 // Require Schemas
-var User = require("./model/user.js");
 var Workout = require("./model/workout.js");
 var Exercise = require("./model/exercise.js");
 
@@ -34,6 +36,12 @@ app.use(cookieParser());
 app.use(flash());
 //set static folder
 app.use(express.static("./public"));
+// Express Session
+app.use(session({
+    secret: 'secret',
+    saveUninitialized: true,
+    resave: true
+}));
 // Passport init
 app.use(passport.initialize());
 app.use(passport.session());
@@ -65,47 +73,9 @@ db.on("error", function(err) {
 db.once("open", function() {
   console.log("Mongoose connection successful.");
 });
-//--------------------------
-
-passport.use(new LocalStrategy(function(username, password, done) {
-  User.getUserByUsername(username, function(err, user) {
-    if (err)
-      throw err;
-    if (!user) {
-      return done(null, false, {message: 'Unknown User'});
-    }
-
-    User.comparePassword(password, user.password, function(err, isMatch) {
-      if (err)
-        throw err;
-      if (isMatch) {
-        return done(null, user);
-      } else {
-        return done(null, false, {message: 'Invalid password'});
-      }
-    });
-  });
-}));
-
-passport.serializeUser(function(user, done) {
-  done(null, user.id);
-});
-
-passport.deserializeUser(function(id, done) {
-  User.findById(id, function(err, user) {
-    done(err, user);
-  });
-});
 
 //------------------------------------------------
 
-//--------Login verification ---------------------
-
-app.post('/login', passport.authenticate('local', {
-  successRedirect: '/#/home',
-  failureRedirect: '/#/'
-}));
-//------------------------------------------------
 //--------Routes for getting existing info----------------
 
 //route to get all workouts
@@ -184,45 +154,7 @@ app.post("/api/workouts", function(req, res) {
 });
 
 //add new user
-app.post("/api/users", function(req, res) {
-  //make a new instance of User with the req.body
-  var name = req.body.name;
-  var email = req.body.email;
-  var username = req.body.username;
-  var password = req.body.password;
-  var password2 = req.body.password2;
 
-  // Validation
-  req.checkBody('name', 'Name is required').notEmpty();
-  req.checkBody('email', 'Email is required').notEmpty();
-  req.checkBody('email', 'Email is not valid').isEmail();
-  req.checkBody('username', 'Username is required').notEmpty();
-  req.checkBody('password', 'Password is required').notEmpty();
-  req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
-  var errors = req.validationErrors();
-
-  if (errors) {
-    res.redirect("/#/register")
-    console.log(errors);
-    return errors
-  } else {
-    var newUser = new User({
-			name: name,
-			email:email,
-			username: username,
-			password: password,
-      workouts:[]
-		});
-
-		User.createUser(newUser, function(err, user){
-			if(err) throw err;
-			console.log(user);
-		});
-
-		res.redirect('/#/');
-  }
-
-});
 
 //add new exercise
 app.post("/api/exercises", function(req, res) {
@@ -343,6 +275,14 @@ app.put("/api/users/:id", function(req, res) {
 //---------------------------------------------------------------
 
 // Any non API GET routes will be directed to our React App and handled by React Router
+app.use('/new', users);
+
+app.get('/flash', function(req, res){
+  // Set a flash message by passing the key, followed by the value, to req.flash().
+  req.flash('info', 'Flash is back!')
+  res.redirect('/');
+});
+
 app.get("*", function(req, res) {
   res.sendFile(__dirname + "/view/public/index.html");
 });
