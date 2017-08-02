@@ -1,15 +1,20 @@
 // Include Server Dependencies
 var express = require("express");
 var bodyParser = require("body-parser");
+var path = require("path");
 var cookieParser = require('cookie-parser');
+var expressValidator = require('express-validator');
 var session = require('express-session');
+var flash = require('connect-flash');
 var logger = require("morgan");
 var mongoose = require("mongoose");
 var passport = require('passport');
+var mongo = require('mongodb');
 var LocalStrategy = require('passport-local').Strategy;
+var users = require('./login-routes/users');
+var User = require("./model/user.js");
 
 // Require Schemas
-var User = require("./model/user.js");
 var Workout = require("./model/workout.js");
 var Exercise = require("./model/exercise.js");
 
@@ -19,15 +24,41 @@ var PORT = process.env.PORT || 3000; // Sets an initial port. We'll use this lat
 
 // Run Morgan for Logging
 app.use(logger("dev"));
+
+//body and cookie parser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.text());
 app.use(bodyParser.json({type: "application/vnd.api+json"}));
-// configure express
-
-app.use(express.static("./public"));
 app.use(cookieParser());
-app.use(session({ secret: 'keyboard cat' }));
+
+// Connect Flash
+app.use(flash());
+//set static folder
+app.use(express.static("./public"));
+// Express Session
+app.use(session({
+    secret: 'secret',
+    saveUninitialized: true,
+    resave: true
+}));
+// Passport init
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Express Validator
+app.use(expressValidator({
+  errorFormatter: function(param, msg, value) {
+    var namespace = param.split('.'),
+      root = namespace.shift(),
+      formParam = root;
+
+    while (namespace.length) {
+      formParam += '[' + namespace.shift() + ']';
+    }
+    return {param: formParam, msg: msg, value: value};
+  }
+}));
 
 //-----------------------
 //MongoDB config
@@ -42,51 +73,9 @@ db.on("error", function(err) {
 db.once("open", function() {
   console.log("Mongoose connection successful.");
 });
-//--------------------------
-// Passport config for authentication
-app.use(passport.initialize());
-app.use(passport.session());
-
-
-passport.use(new LocalStrategy(
-  function(username, password, done) {
-   User.getUserByUsername(username, function(err, user){
-   	if(err) throw err;
-   	if(!user){
-   		return done(null, false, {message: 'Unknown User'});
-   	}
-
-   	User.comparePassword(password, user.password, function(err, isMatch){
-   		if(err) throw err;
-   		if(isMatch){
-   			return done(null, user);
-   		} else {
-   			return done(null, false, {message: 'Invalid password'});
-   		}
-   	});
-   });
-  }));
-
-passport.serializeUser(function(user, done) {
-  done(null, user.id);
-});
-
-passport.deserializeUser(function(id, done) {
-  User.findById(id, function(err, user) {
-    done(err, user);
-  });
-});
 
 //------------------------------------------------
 
-//--------Login verification ---------------------
-
-app.post('/login', passport.authenticate('local', {
-  successRedirect: '/home',
-  failureRedirect: '/',
-  failureFlash: true
-}));
-//------------------------------------------------
 //--------Routes for getting existing info----------------
 
 //route to get all workouts
@@ -124,6 +113,21 @@ app.get("/api/users", function(req, res) {
     }
   });
 });
+
+
+//route to get one user
+app.get("/api/users/:username", function(req, res) {
+  //find all in the User collection
+  User.find({username:req.params.username}).exec(function(err, doc) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(doc);
+    }
+  });
+});
+
+
 
 //get all exercises
 app.get("/api/exercises", function(req, res) {
@@ -165,20 +169,7 @@ app.post("/api/workouts", function(req, res) {
 });
 
 //add new user
-app.post("/api/users", function(req, res) {
-  //make a new instance of User with the req.body
-  var newUser = new User(req.body);
-  console.log(req.body);
-  //save the new User
-  newUser.save(function(err, doc) {
-    if (err) {
-      console.log(err);
-    } else {
-      res.send(doc);
-      res.redirect("/");
-    }
-  });
-});
+
 
 //add new exercise
 app.post("/api/exercises", function(req, res) {
@@ -299,6 +290,14 @@ app.put("/api/users/:id", function(req, res) {
 //---------------------------------------------------------------
 
 // Any non API GET routes will be directed to our React App and handled by React Router
+app.use('/new', users);
+
+app.get('/flash', function(req, res){
+  // Set a flash message by passing the key, followed by the value, to req.flash().
+  req.flash('info', 'Flash is back!')
+  res.redirect('/');
+});
+
 app.get("*", function(req, res) {
   res.sendFile(__dirname + "/view/public/index.html");
 });

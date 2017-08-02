@@ -57,10 +57,11 @@ var helpers = {
 //------------------------------------------------------------------
 //---------------user helpers-----------------------------------
 
-	saveUser: function(userObj){
-		return axios.post("/api/users", userObj)
+	getUser: function(name){
+		return axios.get("/api/users/"+name)
 		.then(function(response){
 			console.log("axios results", response.data);
+			return response.data
 		})
 	}
 //------------------------------------------------------------------
