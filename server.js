@@ -114,6 +114,21 @@ app.get("/api/users", function(req, res) {
   });
 });
 
+
+//route to get one user
+app.get("/api/users/:username", function(req, res) {
+  //find all in the User collection
+  User.find({username:req.params.username}).exec(function(err, doc) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(doc);
+    }
+  });
+});
+
+
+
 //get all exercises
 app.get("/api/exercises", function(req, res) {
   Exercise.find({}).exec(function(err, doc) {

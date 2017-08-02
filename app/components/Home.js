@@ -17,6 +17,7 @@ class Home extends React.Component {
       console.log(item)
       this.setState({workouts: item.data})
     })
+		this.props.changeLogin();
 
   }
 
@@ -29,7 +30,7 @@ class Home extends React.Component {
 			    <h4 className="list-group-item-heading">{item.workoutName}</h4>
 			    <p className="list-group-item-text">{item.description}</p>
 			  </Link>
-			</div>)
+			</div>).reverse();
 
     return (
       <div className="container-fluid">
@@ -39,12 +40,12 @@ class Home extends React.Component {
               <div className="col-xs-2"></div>
               <div className="col-xs-4">
                 <Link to="/create/type">
-                  <img className="img-responsive" src="../images/dumbbell.png"></img>
+                  <img className="img-responsive" src="../images/64px-icons/002-weight.png"></img>
                 </Link>
               </div>
               <div className="col-xs-4">
                 <Link to="/create/type">
-                  <img className="img-responsive" src="../images/dumbbell.png"></img>
+                  <img className="img-responsive" src="../images/64px-icons/006-search.png"></img>
                 </Link>
               </div>
               <div className="col-xs-2"></div>

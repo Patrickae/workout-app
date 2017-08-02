@@ -62,6 +62,7 @@ passport.use(new LocalStrategy(function(username, password, done) {
       if (isMatch) {
         return done(null, user);
         req.flash("user_flash", user);
+        res.return(user);
       } else {
         return done(null, false, {message: 'Invalid password'});
       }
