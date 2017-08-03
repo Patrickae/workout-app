@@ -7,7 +7,7 @@ class Finished extends React.Component {
   }
   render() {
     return (
-      <div class="container">
+      <div className="container">
         <div className="row">
           <h1>This will show when finished. Yay!</h1>
         </div>

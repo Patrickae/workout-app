@@ -60,9 +60,7 @@ class Timer extends React.Component {
         </div>
         <br/>
         <div className="row">
-          <Link to="/workout/active/current" className="btn btn-info btn-lg btn-block" onClick={this.props.nextRep}>Next</Link>
-          <br/>
-          <Link to="/workout/finished" className="btn btn-danger btn-block">Finished</Link>
+          <Link to="/workout/active/current" className="btn btn-info btn-lg btn-block" onClick={this.props.nextRep}>Start Next Set</Link>
         </div>
       </div>
     )

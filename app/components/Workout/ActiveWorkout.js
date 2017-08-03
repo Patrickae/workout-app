@@ -3,13 +3,16 @@ import {Switch, Route, BrowserRouter, Link} from 'react-router-dom'
 import CurrentExercise from "./CurrentExercise";
 import Timer from "./Timer";
 
+
 class ActiveWorkout extends React.Component{
   constructor(){
     super();
     this.state={
-      exerciseNumber:0,
-      repNumber:0,
-      exercise:""
+      exerciseIndex:0,
+      repIndex:0,
+      exercise:"",
+      path:"/workout/active/timer",
+      message:""
     }
     this.componentWillMount = this.componentWillMount.bind(this);
     this.nextRep = this.nextRep.bind(this);
@@ -20,11 +23,29 @@ class ActiveWorkout extends React.Component{
   }
 
   nextRep(){
-    var repHolder = this.state.repNumber;
+    var repHolder = this.state.repIndex;
     repHolder++;
-    if(repHolder <= this.state.exercise.reps.length){
-      this.setState({repNumber:repHolder})
-    };
+
+    if(repHolder >= this.state.exercise.reps.length-1 &&
+       this.state.exerciseIndex >= this.props.workout.exercises.length -1){
+         this.setState({path: "/workout/finished"});
+         this.setState({repIndex:repHolder})
+       }
+       else if(repHolder < this.state.exercise.reps.length){
+      //areplace repIndex with the repHolder
+      this.setState({repIndex:repHolder})
+      //if repHolder is greater than the length of the reps
+      }
+      else if(repHolder >= this.state.exercise.reps.length){
+      //add one to the exercise number
+      this.setState({repIndex:0})
+      var exerciseHolder = this.state.exerciseIndex
+      exerciseHolder++;
+      if(exerciseHolder < this.props.workout.exercises.length){
+        this.setState({exerciseIndex:exerciseHolder});
+        this.setState({exercise: this.props.workout.exercises[exerciseHolder]})
+      }
+    }
   }
 
 
@@ -36,13 +57,14 @@ class ActiveWorkout extends React.Component{
 
       <Switch>
         <Route path="/workout/active/current" render={()=>{
-            return <CurrentExercise exerciseNumber={this.state.exerciseNumber} repNumber={this.state.repNumber} exercise={this.state.exercise} />
+            return <CurrentExercise exerciseIndex={this.state.exerciseIndex} repIndex={this.state.repIndex} exercise={this.state.exercise} path={this.state.path} />
           }}/>
         <Route path="/workout/active/timer" render={()=>{
-            return <Timer exerciseNumber={this.state.exerciseNumber}
-              repNumber={this.state.repNumber} exercise={this.state.exercise} nextRep={this.nextRep} />
+            return <Timer exerciseIndex={this.state.exerciseIndex}
+              repIndex={this.state.repIndex} exercise={this.state.exercise} nextRep={this.nextRep} path={this.state.path}/>
           }}/>
       </Switch>
+
 
       </div>
 
