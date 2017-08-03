@@ -32,7 +32,7 @@ class Workout extends React.Component {
 
         <div className="panel panel-info text-center">
           <div className="panel-heading">
-            <h3 className="panel-title">{this.state.workout.workoutName} info</h3>
+            <h3 className="panel-title">{this.state.workout.workoutName}</h3>
           </div>
           <div className="panel-body">
             {this.state.workout.description}

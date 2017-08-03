@@ -80,11 +80,20 @@ passport.deserializeUser(function(id, done) {
   });
 });
 
-router.post('/login', passport.authenticate('local', {
-  successRedirect: '/#/home',
-  failureRedirect: '/#/',
-  failureFlash: true
-}));
+
+
+router.post('/login', function(req, res, next) {
+  passport.authenticate('local', function(err, user, info) {
+    if (err) { return next(err); }
+    if (!user) { return res.redirect('/#/'); }
+    req.logIn(user, function(err) {
+      if (err) { return next(err); }
+      return res.redirect('/#/home/' + user._id);
+    });
+  })(req, res, next);
+});
+
+
 
 router.get('/logout', function(req, res){
 	req.logout();

@@ -7,8 +7,19 @@ class ActiveWorkout extends React.Component{
   constructor(){
     super();
     this.state={
-
+      exerciseNumber:0,
+      repNumber:0,
+      currentExercise:""
     }
+    this.setExercise = this.setExercise.bind(this);
+  }
+
+  setExercise(){
+    var placehold = this.state.exerciseNumber;
+    this.setState({currentExercise: this.props.workout.exercise[placehold]})
+  }
+  nextRep(){
+
   }
 
 
@@ -20,10 +31,11 @@ class ActiveWorkout extends React.Component{
 
       <Switch>
         <Route path="/workout/active/current" render={()=>{
-            return <CurrentExercise workout={this.props.workout} />
+            return <CurrentExercise workout={this.props.workout} exerciseNumber={this.state.exerciseNumber} repNumber={this.state.repNumber}/>
           }}/>
         <Route path="/workout/active/timer" render={()=>{
-            return <Timer workout={this.props.workout} />
+            return <Timer workout={this.props.workout} exerciseNumber={this.state.exerciseNumber}
+              repNumber={this.state.repNumber} />
           }}/>
       </Switch>
 

@@ -10,11 +10,16 @@ class Login extends React.Component {
       password: ""
     }
     this.handleChange = this.handleChange.bind(this);
+    this.getUsetId = this.getUserId.bind(this);
   }
 
   handleChange() {
     this.setState({username: this.refs.username.value})
     this.setState({password: this.refs.password.value})
+  }
+
+  getUserId(){
+    this.props.setUserId(this.refs.username.value);
   }
 
 
@@ -37,10 +42,10 @@ class Login extends React.Component {
           <input type="password" name="password" ref="password" value={this.state.password} className="form-control" placeholder="Password" onChange={this.handleChange} required/>
           <div className="checkbox"></div>
           <br/>
-          <button className="btn btn-lg btn-success btn-block" type="submit" value="Log In">Sign in</button>
+          <button className="btn btn-lg btn-success btn-block" type="submit" value="Log In" onClick={this.getUserId}>Sign in</button>
           <br/>
         </form>
-        <Link to="/register" className="btn btn-lg btn-info btn-block">Register</Link>
+        <Link to="/register" className="btn btn-lg btn-info btn-block" >Register</Link>
 
       </div>
     )

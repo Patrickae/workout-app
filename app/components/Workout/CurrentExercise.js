@@ -4,6 +4,9 @@ import {Link} from "react-router-dom";
 class CurrentExercise extends React.Component {
   constructor() {
     super();
+    this.state={
+
+    }
   }
   render() {
     return (

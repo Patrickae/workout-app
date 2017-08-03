@@ -25,8 +25,12 @@ class Main extends React.Component {
   }
   //change the user id
   setUserId(input) {
-    this.setState({userId: input});
+    helpers.getUser(input).then(result=>{
+      this.setState({userTest: result})
+    })
+
   }
+
   //change the current workout
   setWorkoutId(input) {
     this.setState({currentWorkoutId: input});
@@ -48,7 +52,7 @@ class Main extends React.Component {
             }}/>
 
             <Route exact path="/" render={() => {
-              return <Login setUserId={this.setUserId}/>
+              return <Login setUserId={this.setUserId} />
             }}/>
 
             <Route path="/register" render={() => {
