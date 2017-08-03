@@ -1,0 +1,8 @@
+{
+  "name": "Workout Buddy App",
+  "description": "Make workouts and get walked through them",
+  "repository": "https://github.com/Patrickae/workout-app",
+  "logo": "https://image.flaticon.com/icons/svg/249/249187.svg",
+  "keywords": ["mongo","express","react","node"],
+  "image": "heroku/nodejs"
+}
