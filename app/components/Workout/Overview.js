@@ -36,8 +36,9 @@ class Overview extends React.Component {
 
         </div>
         <div className="row">
-          <Link to="/workout/active/current" className="btn btn-info">Begin</Link>
+          <Link to="/workout/active/current" className="btn btn-info btn-block btn-lg">Begin</Link>
         </div>
+        <br/>
       </div>
     )
   }

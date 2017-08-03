@@ -9,10 +9,11 @@ class Finished extends React.Component {
     return (
       <div className="container">
         <div className="row">
-          <h1>This will show when finished. Yay!</h1>
+          <h1>Workout Complete</h1>
         </div>
+        <br/>
         <div className="row">
-          <Link to={"/home/"+this.props.userId} className="btn btn-info">Home</Link>
+          <Link to={"/home/"+this.props.userId} className="btn btn-success btn-block btn-lg">Home</Link>
         </div>
       </div>
     )
