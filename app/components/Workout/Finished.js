@@ -12,7 +12,7 @@ class Finished extends React.Component {
           <h1>This will show when finished. Yay!</h1>
         </div>
         <div className="row">
-          <Link to="/home" className="btn btn-info">Home</Link>
+          <Link to={"/home/"+this.props.userId} className="btn btn-info">Home</Link>
         </div>
       </div>
     )

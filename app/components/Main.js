@@ -16,7 +16,7 @@ class Main extends React.Component {
       currentWorkoutId: ""
     }
     this.loggedInTrue = this.loggedInTrue.bind(this);
-    this.setUserId = this.setUserId.bind(this);
+    this.getUserId = this.getUserId.bind(this);
     this.setWorkoutId = this.setWorkoutId.bind(this);
   }
   //set logged in to true in order to change the nav bar
@@ -24,11 +24,8 @@ class Main extends React.Component {
     this.setState({loggedIn: true})
   }
   //change the user id
-  setUserId(input) {
-    helpers.getUser(input).then(result=>{
-      this.setState({userTest: result})
-    })
-
+  getUserId(input){
+    this.setState({userId: input})
   }
 
   //change the current workout
@@ -43,23 +40,23 @@ class Main extends React.Component {
         <Header loggedIn={this.state.loggedIn} userId={this.state.userId}/>
         <div className="container-fluid" id="body">
           <Switch>
-            <Route path="/home" render={() => {
-              return <Home changeLogin={this.loggedInTrue} userId={this.state.userId} setWorkoutId={this.setWorkoutId}/>
-            }}/>
+            <Route path="/home/:userId" render={(props) =>
+               <Home {...props} changeLogin={this.loggedInTrue} getUserId={this.getUserId} setWorkoutId={this.setWorkoutId} />
+            }/>
 
             <Route path="/create" render={() => {
               return <Create userId={this.state.userId}/>
             }}/>
 
             <Route exact path="/" render={() => {
-              return <Login setUserId={this.setUserId} />
+              return <Login />
             }}/>
 
             <Route path="/register" render={() => {
               return <Register/>
             }}/>
           <Route path="/workout" render={() => {
-              return <Workout workoutId={this.state.currentWorkoutId} />
+              return <Workout workoutId={this.state.currentWorkoutId} userId={this.state.userId}  />
             }}/>
           </Switch>
         </div>
@@ -72,3 +69,8 @@ class Main extends React.Component {
 }
 
 export default Main;
+
+
+
+
+// <Route path="/home/:userId" component={Home}/>

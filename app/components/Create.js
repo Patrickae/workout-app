@@ -16,7 +16,7 @@ class Create extends React.Component {
       workoutName: "Foo",
       type: "",
       exercises: [],
-      creatorId: "123",
+      creatorId: "",
       description: ""
 
     }
@@ -44,6 +44,9 @@ class Create extends React.Component {
     console.log(this.state);
     helpers.saveWorkout(this.state)
   }
+  componentWillMount(){
+    this.setState({creatorId:this.props.userId});
+  }
 
   render() {
 
@@ -70,7 +73,7 @@ class Create extends React.Component {
             return <Exercises pushExerciseToParent={this.handleNewExercise} type={this.state.type}/>
           }}/>
           <Route path="/create/name" render={() => {
-            return <Name addNameAndDescription={this.addNameAndDescription} save={this.saveWorkout}/>
+            return <Name addNameAndDescription={this.addNameAndDescription} save={this.saveWorkout} userId={this.props.userId}/>
           }}/>
           <Route path="/create/review" render={() => {
             return <Review exercises={this.state.exercises} type={this.state.type}/>

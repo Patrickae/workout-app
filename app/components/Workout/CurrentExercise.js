@@ -11,8 +11,11 @@ class CurrentExercise extends React.Component {
   render() {
     return (
       <div className="container">
-        <div className="row">
-          <h1>This will be the Current Exercise</h1>
+        <div className="row text-center">
+          <h3>Set {this.props.repNumber +1} </h3>
+          <hr/>
+          <h1>{this.props.exercise.currentName} X {this.props.exercise.reps[this.props.repNumber]}</h1>
+          
         </div>
         <div className="row">
           <Link to="/workout/active/timer" className="btn btn-info">to Timer</Link>

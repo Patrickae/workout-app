@@ -9,17 +9,22 @@ class ActiveWorkout extends React.Component{
     this.state={
       exerciseNumber:0,
       repNumber:0,
-      currentExercise:""
+      exercise:""
     }
-    this.setExercise = this.setExercise.bind(this);
+    this.componentWillMount = this.componentWillMount.bind(this);
+    this.nextRep = this.nextRep.bind(this);
   }
 
-  setExercise(){
-    var placehold = this.state.exerciseNumber;
-    this.setState({currentExercise: this.props.workout.exercise[placehold]})
+  componentWillMount(){
+    this.setState({exercise: this.props.workout.exercises[0]})
   }
+
   nextRep(){
-
+    var repHolder = this.state.repNumber;
+    repHolder++;
+    if(repHolder <= this.state.exercise.reps.length){
+      this.setState({repNumber:repHolder})
+    };
   }
 
 
@@ -31,11 +36,11 @@ class ActiveWorkout extends React.Component{
 
       <Switch>
         <Route path="/workout/active/current" render={()=>{
-            return <CurrentExercise workout={this.props.workout} exerciseNumber={this.state.exerciseNumber} repNumber={this.state.repNumber}/>
+            return <CurrentExercise exerciseNumber={this.state.exerciseNumber} repNumber={this.state.repNumber} exercise={this.state.exercise} />
           }}/>
         <Route path="/workout/active/timer" render={()=>{
-            return <Timer workout={this.props.workout} exerciseNumber={this.state.exerciseNumber}
-              repNumber={this.state.repNumber} />
+            return <Timer exerciseNumber={this.state.exerciseNumber}
+              repNumber={this.state.repNumber} exercise={this.state.exercise} nextRep={this.nextRep} />
           }}/>
       </Switch>
 

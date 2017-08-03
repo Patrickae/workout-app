@@ -1,6 +1,6 @@
 import React from "react";
 import helpers from "../utils/helpers"
-import {Link} from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 
 class Home extends React.Component {
   constructor() {
@@ -10,18 +10,26 @@ class Home extends React.Component {
       workouts: []
     }
     this.componentWillMount = this.componentWillMount.bind(this);
+		this.componentDidMount = this.componentDidMount.bind(this);
   }
 
   componentWillMount() {
-    helpers.getWorkoutsByUser(this.state.userId).then((item) => {
+		var Id = this.props.match.params.userId;
+		this.setState({userId: Id})
+    helpers.getWorkoutsByUser(Id).then((item) => {
       console.log(item)
       this.setState({workouts: item.data})
     })
 		this.props.changeLogin();
-
   }
 
+	componentDidMount(){
+		this.props.getUserId(this.state.userId);
+
+	}
+
   render() {
+		console.log(this.props.match.params.userId);
 
     var myWorkouts = this.state.workouts.map((item) =>
 

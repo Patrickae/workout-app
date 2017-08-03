@@ -12,7 +12,7 @@ class Timer extends React.Component {
           <h1>This will be the timer</h1>
         </div>
         <div className="row">
-          <Link to="/workout/active/current" className="btn btn-info">back to exercise</Link>
+          <Link to="/workout/active/current" className="btn btn-info" onClick={this.props.nextRep}>Next</Link>
           <Link to="/workout/finished" className="btn btn-danger">Finished</Link>
         </div>
       </div>

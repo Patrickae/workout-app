@@ -48,7 +48,7 @@ class Workout extends React.Component {
               return <ActiveWorkout workout={this.state.workout}/>
             }}/>
             <Route path="/workout/Finished" render={() => {
-              return <Finished workout={this.state.workout}/>
+              return <Finished workout={this.state.workout} userId={this.props.userId}/>
             }}/>
           </Switch>
         </div>
