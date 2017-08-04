@@ -46,29 +46,42 @@ class Home extends React.Component {
           <div className="text-center" id="home-header">
             <div className="row">
               <div className="col-xs-2"></div>
-              <div className="col-xs-4">
+              <div className="col-xs-4 text-center">
                 <Link to="/create/type">
                   <img className="img-responsive" src="../images/64px-icons/002-weight.png"></img>
+                  <h5>Create Workout</h5>
                 </Link>
               </div>
-              <div className="col-xs-4">
+              <div className="col-xs-4 text-center">
                 <Link to="/create/type">
                   <img className="img-responsive" src="../images/64px-icons/006-search.png"></img>
+                  <h5>Search Workouts</h5>
                 </Link>
               </div>
               <div className="col-xs-2"></div>
             </div>
           </div>
         </div>
+        <div className="row">
+          <div className="col-xs-4"></div>
+          <div className="col-xs-4 text-center">
+            <Link to="/create/type">
+              <img className="img-responsive" src="../images/64px-icons/network.png"></img>
+              <h5>Find friends</h5>
+            </Link>
+          </div>
+          <div className="col-xs-4"></div>
+        </div>
 
         {/*take user to the create page*/}
-
+        <div className="row">
         <h3>
           Your Workouts
         </h3>
         <ul className="list-group" id="home-workout-list">
           {myWorkouts}
         </ul>
+      </div>
 
 				<footer className="container-fluid">
 				<div>Icons made by

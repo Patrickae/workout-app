@@ -18,10 +18,14 @@ class Main extends React.Component {
     this.loggedInTrue = this.loggedInTrue.bind(this);
     this.getUserId = this.getUserId.bind(this);
     this.setWorkoutId = this.setWorkoutId.bind(this);
+    this.loggedInFalse =this.loggedInFalse.bind(this);
   }
   //set logged in to true in order to change the nav bar
   loggedInTrue() {
     this.setState({loggedIn: true})
+  }
+  loggedInFalse(){
+    this.setState({loggedIn:false})
   }
   //change the user id
   getUserId(input){
@@ -37,7 +41,7 @@ class Main extends React.Component {
     return (
 
       <div>
-        <Header loggedIn={this.state.loggedIn} userId={this.state.userId}/>
+        <Header loggedIn={this.state.loggedIn} userId={this.state.userId} loggedInFalse={this.loggedInFalse} />
         <div className="container-fluid" id="body">
           <Switch>
             <Route path="/home/:userId" render={(props) =>

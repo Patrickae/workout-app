@@ -11,16 +11,18 @@ class Header extends React.Component {
 			var tabs =
 				<ul className="nav navbar-nav" id="nav-links">
 					<li>
+						<Link to={"/home/"+this.props.userId}>
+              <img src="../images/64px-icons/home.png" className="img-responsive" alt="home"/>
+						</Link>
+					</li>
+					<li>
 						<Link to="/create/type">Create Workout</Link>
 					</li>
-					<li>
-						<Link to="/">Edit Saved Workouts</Link>
+					<li onClick={this.props.loggedInFalse}>
+						<Link to="/">This will also log you out</Link>
 					</li>
-					<li>
-						<Link to="/">Saved Workouts</Link>
-					</li>
-					<li>
-						<Link to="/home">View Profile</Link>
+					<li onClick={this.props.loggedInFalse}>
+						<Link to="/">Logout</Link>
 					</li>
 				</ul>
 
