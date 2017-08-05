@@ -67,7 +67,7 @@ var helpers = {
 	getUser: function(name){
 		return axios.get("/api/users/"+name)
 		.then(function(response){
-			console.log("axios results", response.data);
+			console.log("axios results", response);
 			return response.data
 		})
 	}

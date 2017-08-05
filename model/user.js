@@ -24,7 +24,12 @@ var UserSchema = new Schema({
      index: { unique: true }
   },
   workouts:{
-    type: Array
+    type: Array,
+    default:[]
+  },
+  friends:{
+    type: Array,
+    default:[]
   }
 });
 

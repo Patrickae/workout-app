@@ -65,7 +65,7 @@ class Home extends React.Component {
         <div className="row">
           <div className="col-xs-4"></div>
           <div className="col-xs-4 text-center">
-            <Link to="/create/type">
+            <Link to="/friendsearch">
               <img className="img-responsive" src="../images/64px-icons/network.png"></img>
               <h5>Find friends</h5>
             </Link>

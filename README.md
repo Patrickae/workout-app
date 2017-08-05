@@ -14,4 +14,4 @@ Gym-Aid is a workout application build with the MERN stack. It is designed to be
 * Passport
 * Babel
 
- [You can try the Gym-aid out here](http://gym-aid.herokuapp.com/)
+ [You can try out Gym-aid here](http://gym-aid.herokuapp.com/)

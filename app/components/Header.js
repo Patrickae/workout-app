@@ -5,15 +5,14 @@ import {Link} from 'react-router-dom'
 
 class Header extends React.Component {
 
+
   render(){
 
 		if (this.props.loggedIn === true) {
 			var tabs =
 				<ul className="nav navbar-nav" id="nav-links">
 					<li>
-						<Link to={"/home/"+this.props.userId}>
-              <img src="../images/64px-icons/home.png" className="img-responsive" alt="home"/>
-						</Link>
+						<Link to={"/home/"+this.props.userId}>Home</Link>
 					</li>
 					<li>
 						<Link to="/create/type">Create Workout</Link>
@@ -56,7 +55,7 @@ class Header extends React.Component {
                   <span className="icon-bar"></span>
                   <span className="icon-bar"></span>
                 </button>
-                <Link className="navbar-brand" to={"/home/"+this.props.userId}>Workout App</Link>
+                <div className="navbar-brand">Workout App</div>
               </div>
               {/*Navbar Header*/}
 

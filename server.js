@@ -129,7 +129,8 @@ app.get("/api/users", function(req, res) {
 //route to get one user
 app.get("/api/users/:username", function(req, res) {
   //find all in the User collection
-  User.find({username:req.params.username}).exec(function(err, doc) {
+  User.find({username:{ "$regex": req.params.username, "$options": "ix" }})
+  .exec(function(err, doc) {
     if (err) {
       console.log(err);
     } else {

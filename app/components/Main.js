@@ -5,7 +5,8 @@ import Create from "./Create";
 import Workout from "./Workout.js";
 import Login from "./Login";
 import Register from "./Register";
-import Header from "./Header"
+import Header from "./Header";
+import FriendSearch from "./FriendSearch";
 
 class Main extends React.Component {
   constructor() {
@@ -62,6 +63,9 @@ class Main extends React.Component {
           <Route path="/workout" render={() => {
               return <Workout workoutId={this.state.currentWorkoutId} userId={this.state.userId}  />
             }}/>
+          <Route path="/friendsearch" render={() => {
+                return <FriendSearch   />
+              }}/>
           </Switch>
         </div>
 
