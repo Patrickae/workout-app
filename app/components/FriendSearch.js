@@ -7,28 +7,36 @@ class FriendSearch extends React.Component {
     super();
     this.state = {
       usersList: [],
-      friendQuery: ""
+      friendQuery: "",
+      currentUser:""
     }
     this.handleChange = this.handleChange.bind(this);
     this.filterUsers = this.filterUsers.bind(this);
+    this.componentWillMount = this.componentWillMount.bind(this);
   }
   handleChange() {
     this.setState({friendQuery: this.refs.friendQuery.value});
   }
   filterUsers() {
     // event.preventDefault();
-    console.log("user filter button works");
-    if(this.state.friendQurey != "" ){
-    helpers.getUser(this.state.friendQuery).then(result=>{
-      this.setState({usersList:result})
-    });
+      if(this.state.friendQurey != "" ){
+      helpers.getUserByUsername(this.state.friendQuery).then(result=>{
+        this.setState({usersList:result})
+      });
+    }
   }
-  }
+
+componentWillMount(){
+  helpers.getUserById(this.props.userId).then(data=>{
+    this.setState({currentUser: data[0]})
+  });
+
+}
   render() {
 
     var friends = this.state.usersList.map(data =>
-      <FriendElement username={data.username} name={data.name} workouts={data.workouts}
-/>    )
+      <FriendElement username={data.username} name={data.name} workouts={data.workouts} id={data._id}
+        currentUserFriends={this.state.currentUser.friends} key={data._id} />  )
 
     return (
       <div className="container">

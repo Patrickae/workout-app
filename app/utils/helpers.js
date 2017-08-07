@@ -64,8 +64,16 @@ var helpers = {
 //------------------------------------------------------------------
 //---------------user helpers-----------------------------------
 
-	getUser: function(name){
+	getUserByUsername: function(name){
 		return axios.get("/api/users/"+name)
+		.then(function(response){
+			console.log("axios results", response);
+			return response.data
+		})
+	},
+
+	getUserById: function(id){
+		return axios.get("/api/users/id/"+id)
 		.then(function(response){
 			console.log("axios results", response);
 			return response.data

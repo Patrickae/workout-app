@@ -125,6 +125,17 @@ app.get("/api/users", function(req, res) {
   });
 });
 
+app.get("/api/users/id/:id", function(req, res) {
+  //find all in the User collection
+  User.find({_id:req.params.id}).exec(function(err, doc) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(doc);
+    }
+  });
+});
+
 
 //route to get one user
 app.get("/api/users/:username", function(req, res) {

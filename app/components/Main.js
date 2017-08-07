@@ -64,7 +64,7 @@ class Main extends React.Component {
               return <Workout workoutId={this.state.currentWorkoutId} userId={this.state.userId}  />
             }}/>
           <Route path="/friendsearch" render={() => {
-                return <FriendSearch   />
+                return <FriendSearch userId={this.state.userId}  />
               }}/>
           </Switch>
         </div>
