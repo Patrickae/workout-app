@@ -48,7 +48,7 @@ class Home extends React.Component {
               <div className="col-xs-2"></div>
               <div className="col-xs-4 text-center">
                 <Link to="/create/type">
-                  <img className="img-responsive" src="../images/64px-icons/002-weight.png"></img>
+                  <img className="img-responsive" src="../images/64px-icons/weights.png"></img>
                   <h5>Create Workout</h5>
                 </Link>
               </div>

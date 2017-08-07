@@ -30,6 +30,14 @@ class Overview extends React.Component {
     return (
       <div className="container">
         <div className="row text-center">
+          <div className="panel panel-info text-center">
+            <div className="panel-heading">
+              <h3 className="panel-title">{this.props.workout.workoutName}</h3>
+            </div>
+            <div className="panel-body">
+              {this.props.workout.description}
+            </div>
+          </div>
           <h3>Overview</h3>
 
           {overview}
@@ -37,6 +45,10 @@ class Overview extends React.Component {
         </div>
         <div className="row">
           <Link to="/workout/active/current" className="btn btn-info btn-block btn-lg">Begin</Link>
+        </div>
+        <br/>
+        <div className="row">
+          <Link to={"/home/"+this.props.userId} className="btn btn-danger btn-block btn-lg">Back</Link>
         </div>
         <br/>
       </div>

@@ -57,9 +57,9 @@ class Create extends React.Component {
         <nav className="navbar navbar-default">
           <div className="container-fluid">
             <div className="navbar-header">
-              <a className="navbar-brand" href="#">
+              <div className="navbar-brand">
                 <img alt="Brand" src="../images/edit.png"/>
-              </a>
+              </div>
 							<p className="navbar-text">Design a Workout</p>
             </div>
           </div>

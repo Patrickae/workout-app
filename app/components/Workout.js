@@ -29,20 +29,22 @@ class Workout extends React.Component {
     console.log(this.state.workout);
     return (
       <div className="container-fluid">
-
-        <div className="panel panel-info text-center">
-          <div className="panel-heading">
-            <h3 className="panel-title">{this.state.workout.workoutName}</h3>
-          </div>
-          <div className="panel-body">
-            {this.state.workout.description}
-          </div>
-        </div>
-
         <div className="row">
+
+        <nav className="navbar navbar-default">
+          <div className="container-fluid">
+            <div className="navbar-header">
+              <div className="navbar-brand col-xs-2" >
+                <img alt="Brand" src="../images/64px-icons/barbell.png" className="img-responsive"/>
+              </div>
+							<p className="navbar-text">Get to Work!</p>
+            </div>
+          </div>
+        </nav>
+
           <Switch>
             <Route path="/workout/overview" render={() => {
-              return <Overview workout={this.state.workout}/>
+              return <Overview workout={this.state.workout} userId={this.props.userId}/>
             }}/>
             <Route path="/workout/active" render={() => {
               return <ActiveWorkout workout={this.state.workout}/>

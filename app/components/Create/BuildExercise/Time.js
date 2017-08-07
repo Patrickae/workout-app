@@ -42,7 +42,7 @@ class Time extends React.Component{
 		return(
 
 			<div className="container">
-				<form >
+				<form className="text-center">
 					<h3><strong>Rest Between Sets:</strong></h3>
 					<div className="form-group col-xs-12">
 						<input
@@ -58,26 +58,22 @@ class Time extends React.Component{
 				<div className="row">
 					<div className="col-xs-2"></div>
 					<div className="col-xs-4">
-						<i
-						 className="fa fa-minus-circle fa-5x"
-						 onClick ={this.subTime}></i>
+						<img className="img-responsive" src="../images/64px-icons/minus.png"
+							onClick={() => {this.subTime}}/>
 					</div>
 					<div className="col-xs-4">
-						<i
-						className="fa fa-plus-circle fa-5x"
-						onClick ={this.addTime}></i>
+						<img className="img-responsive" src="../images/64px-icons/plus.png"
+							onClick={() => {this.addTime}}/>
 					</div>
 					<div className="col-xs-2"></div>
 				</div>
-
+				<br/>
 				<div className="row">
 				<div className="col-xs-4"></div>
 				<div className="col-xs-4">
 					<Link to="/create/review">
-						<i
-						className="fa fa-check-circle fa-5x"
-						onClick={()=>this.props.setParent(this.state.rest)}>
-						</i>
+						<img className="img-responsive" src="../images/64px-icons/check.png"
+							onClick={()=>this.props.setParent(this.state.rest)}/>
 					</Link>
 				</div>
 				<div className="col-xs-4"></div>

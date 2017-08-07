@@ -56,6 +56,7 @@ class Timer extends React.Component {
     return (
       <div className="container">
         <div className="row text-center" id="timer">
+          <h1>Next Set Starts in:</h1>
           <h1>{this.state.minutesRemaining}:{placeholder}{this.state.secondsRemaining}</h1>
         </div>
         <br/>
