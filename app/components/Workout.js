@@ -34,8 +34,8 @@ class Workout extends React.Component {
         <nav className="navbar navbar-default">
           <div className="container-fluid">
             <div className="navbar-header">
-              <div className="navbar-brand col-xs-2" >
-                <img alt="Brand" src="../images/64px-icons/barbell.png" className="img-responsive"/>
+              <div className="navbar-brand" >
+                <img alt="Brand" src="../images/weightlifting.png"/>
               </div>
 							<p className="navbar-text">Get to Work!</p>
             </div>

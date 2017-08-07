@@ -59,11 +59,11 @@ class Time extends React.Component{
 					<div className="col-xs-2"></div>
 					<div className="col-xs-4">
 						<img className="img-responsive" src="../images/64px-icons/minus.png"
-							onClick={() => {this.subTime}}/>
+							onClick={this.subTime}/>
 					</div>
 					<div className="col-xs-4">
 						<img className="img-responsive" src="../images/64px-icons/plus.png"
-							onClick={() => {this.addTime}}/>
+							onClick={this.addTime}/>
 					</div>
 					<div className="col-xs-2"></div>
 				</div>
