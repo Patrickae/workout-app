@@ -18,7 +18,7 @@ class CurrentExercise extends React.Component {
         </div>
         <br/>
         <div className="row">
-          <Link to={this.props.path} className="btn btn-info btn-block btn-lg">Set Completed</Link>
+          <Link to={this.props.path} className="btn btn-info btn-block btn-lg" onClick={this.props.nextRep}>Set Completed</Link>
         </div>
       </div>
     )

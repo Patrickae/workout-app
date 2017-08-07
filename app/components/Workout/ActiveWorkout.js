@@ -36,7 +36,7 @@ class ActiveWorkout extends React.Component{
       this.setState({repIndex:repHolder})
       //if repHolder is greater than the length of the reps
       }
-      else if(repHolder >= this.state.exercise.reps.length){
+      else if(repHolder >= this.state.exercise.reps.length -1){
       //add one to the exercise number
       this.setState({repIndex:0})
       var exerciseHolder = this.state.exerciseIndex
@@ -57,13 +57,29 @@ class ActiveWorkout extends React.Component{
 
       <Switch>
         <Route path="/workout/active/current" render={()=>{
-            return <CurrentExercise exerciseIndex={this.state.exerciseIndex} repIndex={this.state.repIndex} exercise={this.state.exercise} path={this.state.path} />
+            return <CurrentExercise exerciseIndex={this.state.exerciseIndex} repIndex={this.state.repIndex} exercise={this.state.exercise} path={this.state.path} nextRep={this.nextRep} />
           }}/>
         <Route path="/workout/active/timer" render={()=>{
             return <Timer exerciseIndex={this.state.exerciseIndex}
-              repIndex={this.state.repIndex} exercise={this.state.exercise} nextRep={this.nextRep} path={this.state.path}/>
+              repIndex={this.state.repIndex} exercise={this.state.exercise}  path={this.state.path}/>
           }}/>
       </Switch>
+      <hr/>
+      <h3>Current Exercise Overview</h3>
+      <div  className="panel panel-success">
+        <div className="panel-heading">
+          <h3 className="panel-title">{this.state.exercise.currentName}</h3>
+        </div>
+        <div className="panel-body">
+          <ul className="list-group">
+            {this.state.exercise.reps.map((data, index) => <li key={index} className="list-group-item">
+              Set {index + 1}: {data}Reps
+            </li>)}
+          </ul>
+          <h5>Rest: {this.state.exercise.rest}
+            Seconds</h5>
+        </div>
+      </div>
 
 
       </div>
