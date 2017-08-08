@@ -280,11 +280,11 @@ app.put("/api/users/add", function(req, res) {
   var id = req.body.currentUser;
   console.log(id);
   User.findById(id, function(err, p) {
-    if (!p)
+    if (!p){
       return next(new Error('Could not load Document'));
       //dont execute if user id is already in the friends array
-    else if(p.friends.indexOf(req.body.requestedUser)<0){
-      p.friends.push(req.body.requestedUser)
+    }else if(p.friends.indexOf(req.body.requestedUser)<0){
+      p.friends.push(req.body.requestedUser)}
       p.modified = new User();
 
       p.save(function(err) {
@@ -293,7 +293,7 @@ app.put("/api/users/add", function(req, res) {
         else
           console.log('success')
       });
-    }else{console.log("this friend has already been added")}
+
   });
 
 });
@@ -302,11 +302,11 @@ app.put("/api/users/delete", function(req, res) {
   var id = req.body.currentUser;
   console.log(id);
   User.findById(id, function(err, p) {
-    if (!p)
+    if (!p){
       return next(new Error('Could not load Document'));
       //dont execute if this user id is already in friends array
-    else if(p.friends.indexOf(req.body.requestedUser)>=0){
-      p.friends.splice(req.body.requestedUser,1)
+    }else if(p.friends.indexOf(req.body.requestedUser)>=0){
+      p.friends.splice(req.body.requestedUser,1)}
       p.modified = new User();
 
       p.save(function(err) {
@@ -315,7 +315,7 @@ app.put("/api/users/delete", function(req, res) {
         else
           console.log('success')
       });
-    }else{console.log("this is not a current friend")}
+
   });
 
 });
