@@ -82,6 +82,10 @@ var helpers = {
 
 	addFriend: function(userId, friendId){
 		return axios.put("/api/users/add",{currentUser: userId, requestedUser: friendId})
+	},
+
+	deleteFriend: function(userId, friendId){
+		return axios.put("/api/users/delete",{currentUser: userId, requestedUser: friendId})
 	}
 //------------------------------------------------------------------
 

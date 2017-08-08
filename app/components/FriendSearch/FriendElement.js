@@ -5,33 +5,35 @@ class FriendElement extends React.Component {
   constructor(){
     super();
     this.state={
-
+      friend: false
     }
     this.handleRequest = this.handleRequest.bind(this);
+    this.deleteFriend = this.deleteFriend.bind(this);
   }
 
   handleRequest(){
     this.props.addFriend(this.props.id);
-    console.log("clicked")
-    var likeBtn = <img src="./images/64px-icons/like-full.png" className="img-responsive" alt="friend"/>;
+    console.log("clicked");
+    this.setState({friend:true})
+
+  }
+
+  deleteFriend(){
+    this.props.deleteFriend(this.props.id)
+    this.forceUpdate()
+    this.setState({friend:false})
   }
 
 
+
   render() {
+    var buttonSwitch;
+      if(this.props.currentUserFriends.indexOf(this.props.id)>=0 || this.state.friend===true){
+    buttonSwitch = <img src="./images/64px-icons/like-full.png" className="img-responsive" alt="friend" onClick={this.deleteFriend}/>;
+      }else{
+        buttonSwitch = <img src="./images/64px-icons/like.png" className="img-responsive" alt="not-friend" onClick={this.handleRequest}/>;
+        }
 
-      var likeBtn = <img src="./images/64px-icons/like.png"
-        className="img-responsive"
-        alt="not-friend"
-        onClick={this.handleRequest}
-
-        />;
-
-      for(var i=0; i<this.props.currentUserFriends.length; i++) {
-        if (this.props.currentUserFriends[i] === this.props.id) {
-          likeBtn = <img src="./images/64px-icons/like-full.png" className="img-responsive" alt="friend"/>;
-          break;
-        };
-      };
 
     return (
       <div className="well">
@@ -45,7 +47,7 @@ class FriendElement extends React.Component {
               Workouts: {this.props.workouts.length}</h4>
           </div>
           <div className="col-xs-4">
-            {likeBtn}
+            {buttonSwitch}
           </div>
         </div>
       </div>

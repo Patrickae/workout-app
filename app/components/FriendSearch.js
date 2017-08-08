@@ -14,6 +14,7 @@ class FriendSearch extends React.Component {
     this.filterUsers = this.filterUsers.bind(this);
     this.componentWillMount = this.componentWillMount.bind(this);
     this.addFriend = this.addFriend.bind(this);
+    this.deleteFriend = this.deleteFriend.bind(this);
   }
   handleChange() {
     this.setState({friendQuery: this.refs.friendQuery.value});
@@ -33,6 +34,12 @@ class FriendSearch extends React.Component {
     console.log("adding friend");
   }
 
+  deleteFriend(friendId){
+    helpers.deleteFriend(this.props.userId, friendId).then(result=>{console.log(result)});
+    helpers.deleteFriend(friendId, this.props.userId);
+    console.log("deleting friend");
+  }
+
 componentWillMount(){
   helpers.getUserById(this.props.userId).then(data=>{
     this.setState({currentUser: data[0]})
@@ -44,7 +51,7 @@ componentWillMount(){
 
     var friends = this.state.usersList.map(data =>
       <FriendElement username={data.username} name={data.name} workouts={data.workouts} id={data._id}
-        currentUserFriends={this.state.currentUser.friends} key={data._id} addFriend={this.addFriend} />  )
+        currentUserFriends={this.state.currentUser.friends} key={data._id} addFriend={this.addFriend} deleteFriend={this.deleteFriend}/>  )
 
     return (
       <div className="container">

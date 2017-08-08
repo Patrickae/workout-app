@@ -282,7 +282,8 @@ app.put("/api/users/add", function(req, res) {
   User.findById(id, function(err, p) {
     if (!p)
       return next(new Error('Could not load Document'));
-    else {
+      //dont execute if user id is already in the friends array
+    else if(p.friends.indexOf(req.body.requestedUser)<0){
       p.friends.push(req.body.requestedUser)
       p.modified = new User();
 
@@ -292,11 +293,32 @@ app.put("/api/users/add", function(req, res) {
         else
           console.log('success')
       });
-    }
+    }else{console.log("this friend has already been added")}
   });
 
 });
 
+app.put("/api/users/delete", function(req, res) {
+  var id = req.body.currentUser;
+  console.log(id);
+  User.findById(id, function(err, p) {
+    if (!p)
+      return next(new Error('Could not load Document'));
+      //dont execute if this user id is already in friends array
+    else if(p.friends.indexOf(req.body.requestedUser)>=0){
+      p.friends.splice(req.body.requestedUser,1)
+      p.modified = new User();
+
+      p.save(function(err) {
+        if (err)
+          console.log('error')
+        else
+          console.log('success')
+      });
+    }else{console.log("this is not a current friend")}
+  });
+
+});
 //---------------------------------------------------------------
 
 // Any non API GET routes will be directed to our React App and handled by React Router
