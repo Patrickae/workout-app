@@ -209,6 +209,7 @@ app.post("/api/exercises", function(req, res) {
   });
 });
 
+
 //---------------------------------------------------------------
 //---------------Routes for deleting ----------------------------
 
@@ -256,23 +257,6 @@ app.delete("/api/exercises/:id", function(req, res) {
 //---------------------------------------------------------------
 //---------------Routes for Updating----------------------------
 
-app.put("/api/workouts/:id", function(req, res) {
-  var id = req.params.id;
-  Workout.findOne({
-    _id: id
-  }, function(err, foundObject) {
-    if (err) {
-      console.log(err);
-      res.status(500).send();
-    } else {
-      if (!foundObject) {
-        res.status(404).send();
-      } else {
-        foundObject.workoutName = req.body.workoutName
-      }
-    }
-  });
-});
 
 app.put("/api/workouts/:id", function(req, res) {
   var id = req.params.id;
@@ -292,22 +276,25 @@ app.put("/api/workouts/:id", function(req, res) {
   });
 });
 
-app.put("/api/users/:id", function(req, res) {
-  var id = req.params.id;
-  User.findOne({
-    _id: id
-  }, function(err, foundObject) {
-    if (err) {
-      console.log(err);
-      res.status(500).send();
-    } else {
-      if (!foundObject) {
-        res.status(404).send();
-      } else {
-        foundObject.name = req.body.name
-      }
+app.put("/api/users/add", function(req, res) {
+  var id = req.body.currentUser;
+  console.log(id);
+  User.findById(id, function(err, p) {
+    if (!p)
+      return next(new Error('Could not load Document'));
+    else {
+      p.friends.push(req.body.requestedUser)
+      p.modified = new User();
+
+      p.save(function(err) {
+        if (err)
+          console.log('error')
+        else
+          console.log('success')
+      });
     }
   });
+
 });
 
 //---------------------------------------------------------------

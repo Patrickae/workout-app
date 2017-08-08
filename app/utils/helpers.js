@@ -78,6 +78,10 @@ var helpers = {
 			console.log("axios results", response);
 			return response.data
 		})
+	},
+
+	addFriend: function(userId, friendId){
+		return axios.put("/api/users/add",{currentUser: userId, requestedUser: friendId})
 	}
 //------------------------------------------------------------------
 
