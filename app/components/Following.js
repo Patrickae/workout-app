@@ -1,59 +1,63 @@
 import React from "react";
-import { Link } from "react-router-dom"
+import {Link} from "react-router-dom"
 import helpers from "../utils/helpers";
+import FollowingModal from "./Following/FollowingModal";
 
-class Following extends React.Component{
-  constructor(){
+class Following extends React.Component {
+  constructor() {
     super();
-    this.state={
-      friends:[]
+    this.state = {
+      friends: []
     }
   }
-  componentWillMount(){
-    helpers.getUserById(this.props.userId).then(data=>{
+  componentWillMount() {
+    helpers.getUserById(this.props.userId).then(data => {
       var friendIds = data[0].friends;
       var statePlaceholder = this.state.friends;
-      for (var i=0; i<friendIds.length; i++){
-        helpers.getUserById(friendIds[i]).then(result=>{
+      for (var i = 0; i < friendIds.length; i++) {
+        helpers.getUserById(friendIds[i]).then(result => {
           var statePlaceholder = this.state.friends;
           statePlaceholder.push(result[0]);
-          this.setState({friends:statePlaceholder});
+          this.setState({friends: statePlaceholder});
         });
       }
-
     });
   }
 
-  render(){
+  render() {
+
     var friends = this.state.friends.map(item =>
-      <div className="well">
-        <div className="row">
-          <div className="col-xs-8">
-            <h3>{item.username}</h3>
-            <h4>
-              {item.name}</h4>
-            <h4>
-              Workouts: {item.workouts.length}</h4>
-          </div>
-          <div className="col-xs-4">
-            <img src="./images/dumbbell.png" className="img-responsive" alt="view-friend" />
-          </div>
+    <div>
+      <div className="media col-xs-12 col-sm-5 friend-element">
+        <div className="media-left">
+          <img src="./images/dumbbell.png" className="media-object" alt="view-friend" data-toggle="modal" data-target={"#"+item._id + "modal"}/>
+        </div>
+        <div className="media-body">
+          <h3 className="media-heading">{item.username}</h3>
+          <h4>{item.name}</h4>
+          <h4>Workouts: {item.workouts.length}</h4>
         </div>
       </div>
+      <div className="col-xs-0 col-sm-1"></div>
+    </div>)
 
-    )
-    return(
-      <div class="container-fluid">
+    var modals = this.state.friends.map(item =>
+    <FollowingModal user={item}/>
+  )
+
+    return (
+      <div className="container-fluid">
         <h1 className="text-center">View your favorites</h1>
         <hr/>
-        <div className="col-xs-1"></div>
-        <div className="col-xs-10">
+        <div className="col-xs-1 col-sm-0"></div>
+        <div className="col-xs-10 col-sm-12">
 
           {friends}
 
-      </div>
+        </div>
 
-        <div className="col-xs-1"></div>
+        <div className="col-xs-1 col-sm-0"></div>
+        {modals}
       </div>
 
     )
