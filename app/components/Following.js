@@ -23,14 +23,16 @@ class Following extends React.Component {
       }
     });
   }
+  hideBtn(){
+    $(".show-hide").hide()
+  }
 
   render() {
-
     var friends = this.state.friends.map(item =>
     <div>
       <div className="media col-xs-12 col-sm-5 friend-element">
         <div className="media-left">
-          <img src="./images/dumbbell.png" className="media-object" alt="view-friend" data-toggle="modal" data-target={"#"+item._id + "modal"}/>
+          <img src="./images/dumbbell.png" className="media-object" alt="view-friend" data-toggle="modal" data-target={"#"+item._id + "modal"} onClick={this.hideBtn}/>
         </div>
         <div className="media-body">
           <h3 className="media-heading">{item.username}</h3>
