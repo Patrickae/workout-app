@@ -1,19 +1,47 @@
-/*#exercise-builder{
-	height:500px;
-	overflow: scroll;
-}*/
+
+
+#body{
+  padding:0px;
+}
 
 #workout-review {
   height: 500px;
   overflow: scroll;
 }
+#workout-container{
+  padding:20px;
+}
+#create-container{
+  padding:20px;
+}
+
 
 #home-workout-list {
   max-height: 300px;
   overflow: scroll;
-  border: 1px solid #F46D78;
+
 }
 
 .img-responsive{
 	margin: 0 auto;
+}
+
+#home-create{
+  background-color: #248888;
+
+}
+#home-search{
+  background-color: #F0D879;
+}
+#home-friends{
+  background-color: #E7475E;
+}
+.home-option{
+  margin-bottom:10px;
+  padding:10px;
+  border:2px solid #445252;
+}
+.home-option h5{
+  color:black;
+  font-family: 'Arvo', serif;
 }

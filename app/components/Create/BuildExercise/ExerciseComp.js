@@ -16,7 +16,7 @@ class ExerciseComp extends React.Component {
   render() {
 
     return (
-      <div className="col-xs-6" key={this.props.id}>
+      <div className="col-xs-6 col-md-3" key={this.props.id} id="exercise-search-result">
 
           <div className="well" key={this.props.id}>
             <div className="row text-center">

@@ -41,9 +41,11 @@ class Time extends React.Component{
 	render(){
 		return(
 
-			<div className="container">
+			<div className="container-fluid">
+			<h3><strong>Rest Between Sets:</strong></h3>
+			<div className="row">
+			<div className="col-xs-12 col-sm-6">
 				<form className="text-center">
-					<h3><strong>Rest Between Sets:</strong></h3>
 					<div className="form-group col-xs-12">
 						<input
 						type="text"
@@ -54,20 +56,24 @@ class Time extends React.Component{
 						</input>
 					</div>
 				</form>
+				</div>
 
-				<div className="row">
-					<div className="col-xs-2"></div>
-					<div className="col-xs-4">
+				<div className="col-xs-12 col-sm-6">
+
+					<div className="col-xs-6">
 						<img className="img-responsive" src="../images/64px-icons/minus.png"
 							onClick={this.subTime}/>
 					</div>
-					<div className="col-xs-4">
+					<div className="col-xs-6">
 						<img className="img-responsive" src="../images/64px-icons/plus.png"
 							onClick={this.addTime}/>
 					</div>
-					<div className="col-xs-2"></div>
+
 				</div>
+			</div>
+
 				<br/>
+
 				<div className="row">
 				<div className="col-xs-4"></div>
 				<div className="col-xs-4">

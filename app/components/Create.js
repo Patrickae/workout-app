@@ -51,7 +51,7 @@ class Create extends React.Component {
   render() {
 
     return (
-      <div className="container-fluid">
+      <div className="container-fluid" id="create-container">
 				<div className="row">
 
         <nav className="navbar navbar-default">

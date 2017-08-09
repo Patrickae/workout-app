@@ -276,6 +276,53 @@ app.put("/api/workouts/:id", function(req, res) {
   });
 });
 
+
+app.put("/api/workouts/add", function(req, res) {
+  var id = req.body.currentUser;
+  console.log(id);
+  User.findById(id, function(err, p) {
+    if (!p){
+      return next(new Error('Could not load Document'));
+      //dont execute if user id is already in the friends array
+    }else if(p.workouts.indexOf(req.body.requestedId)<0){
+      p.workouts.push(req.body.requestedId)}
+      p.modified = new User();
+
+      p.save(function(err) {
+        if (err)
+          console.log('error')
+        else
+          console.log('success')
+      });
+  });
+
+});
+
+app.put("/api/users/delete", function(req, res) {
+  var id = req.body.currentUser;
+  console.log(id);
+  User.findById(id, function(err, p) {
+    if (!p){
+      return next(new Error('Could not load Document'));
+      //dont execute if this user id is already in friends array
+    }else if(p.workouts.indexOf(req.body.requestedId)>=0){
+      p.workouts.splice(req.body.requestedId,1)}
+      p.modified = new User();
+
+      p.save(function(err) {
+        if (err)
+          console.log('error')
+        else
+          console.log('success')
+      });
+
+  });
+
+});
+
+
+
+
 app.put("/api/users/add", function(req, res) {
   var id = req.body.currentUser;
   console.log(id);

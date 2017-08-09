@@ -55,8 +55,8 @@ class ExerciseSearch extends React.Component {
         <div className="row">
           <form className="form-horizontal">
             <div className="form-group">
-              <label className="control-label col-xs-3">Muscle Group:</label>
-              <div className="col-xs-9">
+              <h5 className="col-xs-3">Muscle Group:</h5>
+              <div className="col-xs-8 col-sm-7">
                 <select value={this.state.muscleGroup} className="form-control" ref="muscleGroup" onChange={this.handleChange} id="groupForm" required>
                   <option>Legs</option>
                   <option>Chest</option>
@@ -69,10 +69,10 @@ class ExerciseSearch extends React.Component {
                   <option>Calves</option>
                 </select>
               </div>
-            </div>
+           </div>
             <div className="form-group">
-              <label className="control-label col-xs-3">Mechanics:</label>
-              <div className="col-xs-9">
+              <h5 className="col-xs-3">Mechanics:</h5>
+              <div className="col-xs-8 col-sm-7">
                 <select value={this.state.mechanics} className="form-control" ref="mechanics" onChange={this.handleChange} id="mechanicsForm" required>
                   <option>Compound</option>
                   <option>Isolated</option>

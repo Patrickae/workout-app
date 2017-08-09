@@ -7,6 +7,7 @@ import Login from "./Login";
 import Register from "./Register";
 import Header from "./Header";
 import FriendSearch from "./FriendSearch";
+import Following from "./Following";
 
 class Main extends React.Component {
   constructor() {
@@ -19,17 +20,17 @@ class Main extends React.Component {
     this.loggedInTrue = this.loggedInTrue.bind(this);
     this.getUserId = this.getUserId.bind(this);
     this.setWorkoutId = this.setWorkoutId.bind(this);
-    this.loggedInFalse =this.loggedInFalse.bind(this);
+    this.loggedInFalse = this.loggedInFalse.bind(this);
   }
   //set logged in to true in order to change the nav bar
   loggedInTrue() {
     this.setState({loggedIn: true})
   }
-  loggedInFalse(){
-    this.setState({loggedIn:false})
+  loggedInFalse() {
+    this.setState({loggedIn: false})
   }
   //change the user id
-  getUserId(input){
+  getUserId(input) {
     this.setState({userId: input})
   }
 
@@ -41,33 +42,36 @@ class Main extends React.Component {
   render() {
     return (
 
-      <div>
-        <Header loggedIn={this.state.loggedIn} userId={this.state.userId} loggedInFalse={this.loggedInFalse} />
+      <div id="main-container">
+        <Header loggedIn={this.state.loggedIn} userId={this.state.userId} loggedInFalse={this.loggedInFalse}/>
         <div className="container-fluid" id="body">
           <Switch>
-            <Route path="/home/:userId" render={(props) =>
-               <Home {...props} changeLogin={this.loggedInTrue} getUserId={this.getUserId} setWorkoutId={this.setWorkoutId} />
-            }/>
+            <Route path="/home/:userId" render={(props) => <Home {...props} changeLogin={this.loggedInTrue} getUserId={this.getUserId} setWorkoutId={this.setWorkoutId}/>}/>
 
             <Route path="/create" render={() => {
               return <Create userId={this.state.userId}/>
             }}/>
 
             <Route exact path="/" render={() => {
-              return <Login />
+              return <Login/>
             }}/>
 
             <Route path="/register" render={() => {
               return <Register/>
             }}/>
-          <Route path="/workout" render={() => {
-              return <Workout workoutId={this.state.currentWorkoutId} userId={this.state.userId}  />
+            <Route path="/workout" render={() => {
+              return <Workout workoutId={this.state.currentWorkoutId} userId={this.state.userId}/>
             }}/>
-          <Route path="/friendsearch" render={() => {
-                return <FriendSearch userId={this.state.userId}  />
-              }}/>
+            <Route path="/friendsearch" render={() => {
+              return <FriendSearch userId={this.state.userId}/>
+            }}/>
+          <Route path="/following" render={() => {
+              return <Following userId={this.state.userId}/>
+            }}/>
           </Switch>
+
         </div>
+
 
       </div>
 
@@ -77,8 +81,5 @@ class Main extends React.Component {
 }
 
 export default Main;
-
-
-
 
 // <Route path="/home/:userId" component={Home}/>

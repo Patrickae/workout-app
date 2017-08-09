@@ -17,12 +17,25 @@ class Header extends React.Component {
 					<li>
 						<Link to="/create/type">Create Workout</Link>
 					</li>
-					<li onClick={this.props.loggedInFalse}>
-						<Link to="/">This will also log you out</Link>
+					<li>
+						<Link to="/friendsearch">Search Users</Link>
+					</li>
+          <li>
+						<Link to="/following">View Your Friends</Link>
 					</li>
 					<li onClick={this.props.loggedInFalse}>
 						<Link to="/">Logout</Link>
 					</li>
+          <li>
+            <a href="https://github.com/Patrickae/workout-app" target="_blank">
+              <i className="fa fa-github fa-3x"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/andrew-patrick-0653a161/" target="_blank">
+              <i className="fa fa-linkedin fa-3x"></i>
+            </a>
+          </li>
 				</ul>
 
 

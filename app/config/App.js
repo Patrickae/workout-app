@@ -7,7 +7,7 @@ import Main from "../components/Main";
 
 
 const App = () =>(
-  <div id="main-container">
+  <div id="app-container">
       <Main />
   </div>
 

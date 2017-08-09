@@ -30,13 +30,11 @@ class FriendSearch extends React.Component {
 
   addFriend(friendId){
     helpers.addFriend(this.props.userId, friendId).then(result=>{console.log(result)});
-    helpers.addFriend(friendId, this.props.userId);
     console.log("adding friend");
   }
 
   deleteFriend(friendId){
     helpers.deleteFriend(this.props.userId, friendId).then(result=>{console.log(result)});
-    helpers.deleteFriend(friendId, this.props.userId);
     console.log("deleting friend");
   }
 
