@@ -89,10 +89,10 @@ var helpers = {
 	},
 
 	addWorkoutToUser: function(userId, workoutId){
-		return axios.put("/api/workouts/add",{currentUser: userId, requestedId: friendId})
+		return axios.put("/api/userworkouts/add",{currentUser: userId, requestedId: workoutId})
 	},
 	deleteWorkoutFromUser: function(userId, workoutId){
-		return axios.put("/api/workouts/delete",{currentUser: userId, requestedId: friendId})
+		return axios.put("/api/userworkouts/delete",{currentUser: userId, requestedId: workoutId})
 	}
 
 //------------------------------------------------------------------

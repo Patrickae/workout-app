@@ -27,6 +27,10 @@ var UserSchema = new Schema({
     type: Array,
     default:[]
   },
+  savedWorkouts:{
+    type: Array,
+    default:[]
+  },
   friends:{
     type: Array,
     default:[]

@@ -277,12 +277,12 @@ app.put("/api/workouts/:id", function(req, res) {
 });
 
 
-app.put("/api/workouts/add", function(req, res) {
+app.put("/api/userworkouts/add", function(req, res) {
   var id = req.body.currentUser;
   console.log(id);
   User.findById(id, function(err, p) {
     if (!p){
-      return next(new Error('Could not load Document'));
+      console.log('Could not load Document');
       //dont execute if user id is already in the friends array
     }else if(p.workouts.indexOf(req.body.requestedId)<0){
       p.workouts.push(req.body.requestedId)}
@@ -298,12 +298,12 @@ app.put("/api/workouts/add", function(req, res) {
 
 });
 
-app.put("/api/users/delete", function(req, res) {
+app.put("/api/userworkouts/delete", function(req, res) {
   var id = req.body.currentUser;
   console.log(id);
   User.findById(id, function(err, p) {
     if (!p){
-      return next(new Error('Could not load Document'));
+      return (new Error('Could not load Document'));
       //dont execute if this user id is already in friends array
     }else if(p.workouts.indexOf(req.body.requestedId)>=0){
       p.workouts.splice(req.body.requestedId,1)}
@@ -328,7 +328,7 @@ app.put("/api/users/add", function(req, res) {
   console.log(id);
   User.findById(id, function(err, p) {
     if (!p){
-      return next(new Error('Could not load Document'));
+      return (new Error('Could not load Document'));
       //dont execute if user id is already in the friends array
     }else if(p.friends.indexOf(req.body.requestedUser)<0){
       p.friends.push(req.body.requestedUser)}
@@ -350,7 +350,7 @@ app.put("/api/users/delete", function(req, res) {
   console.log(id);
   User.findById(id, function(err, p) {
     if (!p){
-      return next(new Error('Could not load Document'));
+      return (new Error('Could not load Document'));
       //dont execute if this user id is already in friends array
     }else if(p.friends.indexOf(req.body.requestedUser)>=0){
       p.friends.splice(req.body.requestedUser,1)}

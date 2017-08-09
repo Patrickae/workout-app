@@ -41,8 +41,12 @@ class Create extends React.Component {
     this.setState({workoutName: name, description: descrip});
   }
   saveWorkout() {
+    //save workout
     console.log(this.state);
-    helpers.saveWorkout(this.state)
+    helpers.saveWorkout(this.state).then(result=>{
+      //then add wokout to user's workouts
+      helpers.addWorkoutToUser(this.props.userId, result)
+    });
   }
   componentWillMount(){
     this.setState({creatorId:this.props.userId});
