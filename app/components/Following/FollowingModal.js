@@ -50,7 +50,7 @@ class FollowingModal extends React.Component {
         <h4>{item.description}</h4>
         <br/>
         <button className="btn btn-info" onClick={()=>{this.setExercises(this.state.workouts[index].exercises)}} >View</button>
-        <button className="btn btn-success" onClick={()=>{this.saveExercise(this.state.workouts[index]._id)}}>Save</button>
+        <button className="btn btn-success" onClick={()=>{this.saveExercise(this.state.workouts[index]._id)}} data-dismiss="modal">Save</button>
 
         <div className="row">
           {this.state.exercises.map(data=>

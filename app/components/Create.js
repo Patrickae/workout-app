@@ -7,6 +7,7 @@ import Exercises from "./Create/Exercises";
 import Type from "./Create/Type";
 import Review from "./Create/Review";
 import helpers from "../utils/helpers";
+import Done from "./Create/Done"
 
 class Create extends React.Component {
 
@@ -17,7 +18,8 @@ class Create extends React.Component {
       type: "",
       exercises: [],
       creatorId: "",
-      description: ""
+      description: "",
+
 
     }
     this.handleSubmitType = this.handleSubmitType.bind(this);
@@ -81,6 +83,9 @@ class Create extends React.Component {
           }}/>
           <Route path="/create/review" render={() => {
             return <Review exercises={this.state.exercises} type={this.state.type}/>
+          }}/>
+        <Route path="/create/done" render={() => {
+            return <Done addNameAndDescription={this.addNameAndDescription} userId={this.props.userId}/>
           }}/>
 
         </Switch>

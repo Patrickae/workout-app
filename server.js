@@ -217,7 +217,7 @@ app.post("/api/exercises", function(req, res) {
 app.delete("/api/workouts/:id", function(req, res) {
   var id = req.params.id
 
-  Workouts.find({_id: id}).remove().exec(function(err) {
+  Workout.find({_id:id}).remove().exec(function(err) {
     if (err) {
       console.log(err);
     } else {

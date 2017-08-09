@@ -56,7 +56,7 @@ class Name extends React.Component{
 				<div className="row">
 					<div className="col-xs-4"></div>
 						<div className="col-xs-4">
-							<Link to={"/home/"+this.props.userId}><i
+							<Link to="/create/done"><i
 							className="fa fa-check-circle fa-5x"
 							onClick={this.handleSubmit}
 							>

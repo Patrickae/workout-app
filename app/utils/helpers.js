@@ -60,6 +60,9 @@ var helpers = {
         return response.data._id;
       });
 	},
+	deleteWorkout: function(id){
+		return axios.delete("/api/workouts/"+id);
+	},
 
 //------------------------------------------------------------------
 //---------------user helpers-----------------------------------

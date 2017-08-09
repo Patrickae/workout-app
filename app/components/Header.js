@@ -21,7 +21,10 @@ class Header extends React.Component {
 						<Link to="/friendsearch">Search Users</Link>
 					</li>
           <li>
-						<Link to="/following">View Your Friends</Link>
+						<Link to="/following">Your Friends</Link>
+					</li>
+          <li>
+						<Link to="/edit">Edit</Link>
 					</li>
 					<li onClick={this.props.loggedInFalse}>
 						<Link to="/">Logout</Link>

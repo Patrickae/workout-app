@@ -8,6 +8,7 @@ import Register from "./Register";
 import Header from "./Header";
 import FriendSearch from "./FriendSearch";
 import Following from "./Following";
+import Edit from "./Edit";
 
 class Main extends React.Component {
   constructor() {
@@ -21,6 +22,7 @@ class Main extends React.Component {
     this.getUserId = this.getUserId.bind(this);
     this.setWorkoutId = this.setWorkoutId.bind(this);
     this.loggedInFalse = this.loggedInFalse.bind(this);
+    this.getWorkouts= this.getWorkouts.bind(this);
   }
   //set logged in to true in order to change the nav bar
   loggedInTrue() {
@@ -32,6 +34,10 @@ class Main extends React.Component {
   //change the user id
   getUserId(input) {
     this.setState({userId: input})
+  }
+  getWorkouts(wkts, savedWkts) {
+    this.setState({workouts: wkts})
+    this.setState({savedWorkouts: savedWkts})
   }
 
   //change the current workout
@@ -46,7 +52,7 @@ class Main extends React.Component {
         <Header loggedIn={this.state.loggedIn} userId={this.state.userId} loggedInFalse={this.loggedInFalse}/>
         <div className="container-fluid" id="body">
           <Switch>
-            <Route path="/home/:userId" render={(props) => <Home {...props} changeLogin={this.loggedInTrue} getUserId={this.getUserId} setWorkoutId={this.setWorkoutId}/>}/>
+            <Route path="/home/:userId" render={(props) => <Home {...props} changeLogin={this.loggedInTrue} getUserId={this.getUserId} setWorkoutId={this.setWorkoutId} getWorkouts={this.getWorkouts}/>} />
 
             <Route path="/create" render={() => {
               return <Create userId={this.state.userId}/>
@@ -68,6 +74,9 @@ class Main extends React.Component {
           <Route path="/following" render={() => {
               return <Following userId={this.state.userId}/>
             }}/>
+          <Route path="/edit" render={() => {
+                return <Edit userId={this.state.userId} workouts={this.state.workouts} savedWorkouts={this.state.savedWorkouts}/>
+              }}/>
           </Switch>
 
         </div>

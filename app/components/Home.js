@@ -8,17 +8,32 @@ class Home extends React.Component {
     this.state = {
       userId:"",
       workouts:[],
-      savedWorkouts:[]
+      savedWorkouts:[],
+      mounted:false
     }
     this.componentWillMount = this.componentWillMount.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
+    this.setWorkouts = this.setWorkouts.bind(this);
   }
 
   componentWillMount() {
+
     var Id = this.props.match.params.userId;
     this.setState({userId: Id})
+
+    this.props.changeLogin();
+  }
+
+  componentDidMount() {
+    this.props.getUserId(this.state.userId);
+    this.props.getWorkouts(this.state.workouts, this.state.savedWorkouts);
+    this.setState({mounted:true});
+    this.setWorkouts(this.state.userId);
+  }
+
+  setWorkouts(id){
     //get all user info
-    helpers.getUserById(Id).then(data=>{
+    helpers.getUserById(id).then(data=>{
 
       console.log(data[0])
       var wktsList = data[0].workouts;
@@ -44,17 +59,7 @@ class Home extends React.Component {
         })
       }
 
-
-
-
     });
-
-    this.props.changeLogin();
-  }
-
-  componentDidMount() {
-    this.props.getUserId(this.state.userId);
-
   }
 
   render() {
@@ -86,7 +91,7 @@ class Home extends React.Component {
             <div className="row home-option" id="home-create">
               <div className="col-xs-12 text-center">
                 <Link to="/create/type">
-                  <img className="img-responsive" src="../images/64px-icons/compose.png"></img>
+                  <img className="img-responsive" src="../images/64px-icons/weights.png"></img>
                   <h5>Create Workout</h5>
                 </Link>
               </div>
@@ -95,7 +100,7 @@ class Home extends React.Component {
               <div className="col-xs-12 text-center">
                 <Link to="/following">
                   <img className="img-responsive" src="../images/64px-icons/followers.png"></img>
-                  <h5>Following</h5>
+                  <h5>Your Friends</h5>
                 </Link>
               </div>
             </div>
@@ -115,6 +120,7 @@ class Home extends React.Component {
             <h3>
               Your Created Workouts
             </h3>
+            <hr/>
             <ul className="list-group home-workout-list">
               {myWorkouts}
             </ul>
@@ -124,6 +130,7 @@ class Home extends React.Component {
             <h3>
               Your Saved Workouts
             </h3>
+            <hr/>
             <ul className="list-group home-workout-list">
               {mySavedWorkouts}
             </ul>
