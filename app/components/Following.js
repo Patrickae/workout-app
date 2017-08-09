@@ -44,7 +44,7 @@ class Following extends React.Component {
     </div>)
 
     var modals = this.state.friends.map(item =>
-    <FollowingModal user={item}/>
+    <FollowingModal user={item} userId={this.props.userId}/>
   )
 
     return (

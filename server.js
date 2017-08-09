@@ -320,7 +320,48 @@ app.put("/api/userworkouts/delete", function(req, res) {
 
 });
 
+app.put("/api/savedworkouts/add", function(req, res) {
+  var id = req.body.currentUser;
+  console.log(id);
+  User.findById(id, function(err, p) {
+    if (!p){
+      console.log('Could not load Document');
+      //dont execute if user id is already in the friends array
+    }else if(p.savedWorkouts.indexOf(req.body.requestedId)<0){
+      p.savedWorkouts.push(req.body.requestedId)}
+      p.modified = new User();
 
+      p.save(function(err) {
+        if (err)
+          console.log('error')
+        else
+          console.log('success')
+      });
+  });
+
+});
+
+app.put("/api/savedworkouts/delete", function(req, res) {
+  var id = req.body.currentUser;
+  console.log(id);
+  User.findById(id, function(err, p) {
+    if (!p){
+      return (new Error('Could not load Document'));
+      //dont execute if this user id is already in friends array
+    }else if(p.savedWorkouts.indexOf(req.body.requestedId)>=0){
+      p.savedWorkouts.splice(req.body.requestedId,1)}
+      p.modified = new User();
+
+      p.save(function(err) {
+        if (err)
+          console.log('error')
+        else
+          console.log('success')
+      });
+
+  });
+
+});
 
 
 app.put("/api/users/add", function(req, res) {

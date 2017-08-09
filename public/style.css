@@ -16,7 +16,7 @@
 }
 
 
-#home-workout-list {
+.home-workout-list {
   max-height: 300px;
   overflow: scroll;
 

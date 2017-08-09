@@ -6,8 +6,9 @@ class Home extends React.Component {
   constructor() {
     super();
     this.state = {
-      userId: "123",
-      workouts: []
+      userId:"",
+      workouts:[],
+      savedWorkouts:[]
     }
     this.componentWillMount = this.componentWillMount.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
@@ -16,10 +17,38 @@ class Home extends React.Component {
   componentWillMount() {
     var Id = this.props.match.params.userId;
     this.setState({userId: Id})
-    helpers.getWorkoutsByUser(Id).then((item) => {
-      console.log(item)
-      this.setState({workouts: item.data})
-    })
+    //get all user info
+    helpers.getUserById(Id).then(data=>{
+
+      console.log(data[0])
+      var wktsList = data[0].workouts;
+      var svdWktsList = data[0].savedWorkouts;
+      var workoutsHolder = this.state.workouts;
+      var savedWorkoutsHolder = this.state.savedWorkouts;
+      //for the length of this user's workouts array
+      for(var i=0; i<wktsList.length; i++){
+        //get the full workout by Id
+        helpers.getWorkoutsById(wktsList[i]).then(result=>{
+          workoutsHolder.push(result.data[0]);
+          //push it to the placeholder and then set the placeholder as the state
+          this.setState({workouts:workoutsHolder});
+        })
+      }
+
+      for(var i=0; i<svdWktsList.length; i++){
+        //get the full workout by Id
+        helpers.getWorkoutsById(svdWktsList[i]).then(result=>{
+          savedWorkoutsHolder.push(result.data[0]);
+          //push it to the placeholder and then set the placeholder as the state
+          this.setState({savedWorkouts:savedWorkoutsHolder});
+        })
+      }
+
+
+
+
+    });
+
     this.props.changeLogin();
   }
 
@@ -32,6 +61,15 @@ class Home extends React.Component {
     console.log(this.props.match.params.userId);
 
     var myWorkouts = this.state.workouts.map((item) =>
+    <div className="list-group-item" key={item._id} onClick={() => {
+      this.props.setWorkoutId(item._id)}}>
+      <Link to="/workout/overview" className="list-group-item">
+        <h4 className="list-group-item-heading">{item.workoutName}</h4>
+        <p className="list-group-item-text">{item.description}</p>
+      </Link>
+    </div>).reverse();
+
+    var mySavedWorkouts = this.state.savedWorkouts.map((item) =>
     <div className="list-group-item" key={item._id} onClick={() => {
       this.props.setWorkoutId(item._id)}}>
       <Link to="/workout/overview" className="list-group-item">
@@ -75,12 +113,22 @@ class Home extends React.Component {
           {/*take user to the create page*/}
           <div className="container-fluid">
             <h3>
-              Your Workouts
+              Your Created Workouts
             </h3>
-            <ul className="list-group" id="home-workout-list">
+            <ul className="list-group home-workout-list">
               {myWorkouts}
             </ul>
           </div>
+
+          <div className="container-fluid">
+            <h3>
+              Your Saved Workouts
+            </h3>
+            <ul className="list-group home-workout-list">
+              {mySavedWorkouts}
+            </ul>
+          </div>
+
         </div>
 
       </div>

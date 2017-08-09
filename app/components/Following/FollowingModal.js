@@ -11,7 +11,7 @@ class FollowingModal extends React.Component {
     this.componentWillMount = this.componentWillMount.bind(this);
     this.setExercises = this.setExercises.bind(this);
     this.clearExercises = this.clearExercises.bind(this);
-
+    this.saveExercise = this.saveExercise.bind(this);
   }
   componentWillMount(){
     var wktsList = this.props.user.workouts;
@@ -37,6 +37,10 @@ class FollowingModal extends React.Component {
     this.setState({exercises: []})
     $(".show-hide").hide()
   }
+  //save selected workout to user's savedWorkouts list
+  saveExercise(thisId){
+    helpers.addFriendWorkoutToUser(this.props.userId, thisId)
+  }
   render(){
 
     var workouts = this.state.workouts.map((item,index)=>
@@ -46,7 +50,7 @@ class FollowingModal extends React.Component {
         <h4>{item.description}</h4>
         <br/>
         <button className="btn btn-info" onClick={()=>{this.setExercises(this.state.workouts[index].exercises)}} >View</button>
-        <button className="btn btn-success">Save</button>
+        <button className="btn btn-success" onClick={()=>{this.saveExercise(this.state.workouts[index]._id)}}>Save</button>
 
         <div className="row">
           {this.state.exercises.map(data=>

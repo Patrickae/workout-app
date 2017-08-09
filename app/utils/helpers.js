@@ -93,6 +93,12 @@ var helpers = {
 	},
 	deleteWorkoutFromUser: function(userId, workoutId){
 		return axios.put("/api/userworkouts/delete",{currentUser: userId, requestedId: workoutId})
+	},
+	addFriendWorkoutToUser: function(userId, workoutId){
+		return axios.put("/api/savedworkouts/add",{currentUser: userId, requestedId: workoutId})
+	},
+	deleteFriendWorkoutFromUser: function(userId, workoutId){
+		return axios.put("/api/savedworkouts/delete",{currentUser: userId, requestedId: workoutId})
 	}
 
 //------------------------------------------------------------------
