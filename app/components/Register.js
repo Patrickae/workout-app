@@ -73,7 +73,7 @@ class Register extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <h2 className="page-header">Register</h2>
         <form method="post" action="/new/users">
           <div className={this.checkForError("name")}>

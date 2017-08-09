@@ -8,32 +8,18 @@ class Home extends React.Component {
     this.state = {
       userId:"",
       workouts:[],
-      savedWorkouts:[],
-      mounted:false
+      savedWorkouts:[]
     }
     this.componentWillMount = this.componentWillMount.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
-    this.setWorkouts = this.setWorkouts.bind(this);
+
   }
 
   componentWillMount() {
 
     var Id = this.props.match.params.userId;
     this.setState({userId: Id})
-
-    this.props.changeLogin();
-  }
-
-  componentDidMount() {
-    this.props.getUserId(this.state.userId);
-    this.props.getWorkouts(this.state.workouts, this.state.savedWorkouts);
-    this.setState({mounted:true});
-    this.setWorkouts(this.state.userId);
-  }
-
-  setWorkouts(id){
-    //get all user info
-    helpers.getUserById(id).then(data=>{
+    helpers.getUserById(Id).then(data=>{
 
       console.log(data[0])
       var wktsList = data[0].workouts;
@@ -60,7 +46,17 @@ class Home extends React.Component {
       }
 
     });
+
+    this.props.changeLogin();
   }
+
+  componentDidMount() {
+    this.props.getUserId(this.state.userId);
+    this.props.getWorkouts(this.state.workouts, this.state.savedWorkouts);
+
+  }
+
+
 
   render() {
     console.log(this.props.match.params.userId);

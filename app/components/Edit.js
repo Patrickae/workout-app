@@ -16,18 +16,18 @@ class Edit extends React.Component{
     this.setState({workouts:this.props.workouts})
     this.setState({savedWorkouts:this.props.savedWorkouts})
   }
-  deleteMyWorkout(wktId, index){
+  deleteMyWorkout(wktId, indx){
     helpers.deleteWorkoutFromUser(this.props.userId, wktId);
     helpers.deleteWorkout(wktId);
     var holder = this.state.workouts;
-    holder.splice(index, 1);
+    holder.splice(indx, 1);
     this.setState({workouts:holder});
 
   }
-  deleteFriendWorkout(wktId, index){
+  deleteFriendWorkout(wktId, indx){
     helpers.deleteFriendWorkoutFromUser(this.props.userId, wktId);
     var holder = this.state.savedWorkouts;
-    holder.splice(index, 1);
+    holder.splice(indx, 1);
     this.setState({savedWorkouts:holder});
 
   }
