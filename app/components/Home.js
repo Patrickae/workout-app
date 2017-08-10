@@ -7,35 +7,41 @@ class Home extends React.Component {
     super();
     this.state = {
       userId:"",
+      //blank version of expected data.This is so if no result, map will not return error
       workouts:[],
       savedWorkouts:[]
     }
     this.componentWillMount = this.componentWillMount.bind(this);
-    this.componentDidMount = this.componentDidMount.bind(this);
-
   }
 
   componentWillMount() {
-
+    //get ID from the URL path and update this state
     var Id = this.props.match.params.userId;
     this.setState({userId: Id})
-    helpers.getUserById(Id).then(data=>{
+    //also pass it to the Main component
+    this.props.getUserId(Id);
 
-      console.log(data[0])
+    //get user by this id
+    helpers.getUserById(Id).then(data=>{
+      //set vars equal to the user's existing workouts(arrays of IDs)
       var wktsList = data[0].workouts;
       var svdWktsList = data[0].savedWorkouts;
-      var workoutsHolder = this.state.workouts;
-      var savedWorkoutsHolder = this.state.savedWorkouts;
+      //placeholders where full workout objects will be pushed
+      var workoutsHolder =[];
+      var savedWorkoutsHolder=[];
+
       //for the length of this user's workouts array
       for(var i=0; i<wktsList.length; i++){
-        //get the full workout by Id
+        //get the full workout by ID
         helpers.getWorkoutsById(wktsList[i]).then(result=>{
+          //push the result to the placeholder
           workoutsHolder.push(result.data[0]);
-          //push it to the placeholder and then set the placeholder as the state
+          //set the placeholder as the state
           this.setState({workouts:workoutsHolder});
         })
       }
 
+      //repeat above, but for savedWorkouts array
       for(var i=0; i<svdWktsList.length; i++){
         //get the full workout by Id
         helpers.getWorkoutsById(svdWktsList[i]).then(result=>{
@@ -44,23 +50,18 @@ class Home extends React.Component {
           this.setState({savedWorkouts:savedWorkoutsHolder});
         })
       }
-
+      //pass full workout arrays to the Main component
+      this.props.getWorkouts(workoutsHolder,savedWorkoutsHolder)
     });
-
+    //changes state.loggedIn to true in the main component(for navbar)
     this.props.changeLogin();
   }
 
-  componentDidMount() {
-    this.props.getUserId(this.state.userId);
-    this.props.getWorkouts(this.state.workouts, this.state.savedWorkouts);
-
-  }
 
 
 
   render() {
-    console.log(this.props.match.params.userId);
-
+    //map the workouts and savedWorkouts arrays and return list groups(and reverse them so newest first)
     var myWorkouts = this.state.workouts.map((item) =>
     <div className="list-group-item" key={item._id} onClick={() => {
       this.props.setWorkoutId(item._id)}}>
@@ -111,7 +112,6 @@ class Home extends React.Component {
           </div>
         </div>
         <div className="col-xs-12 col-sm-6">
-          {/*take user to the create page*/}
           <div className="container-fluid">
             <h3>
               Your Created Workouts
@@ -121,7 +121,6 @@ class Home extends React.Component {
               {myWorkouts}
             </ul>
           </div>
-
           <div className="container-fluid">
             <h3>
               Your Saved Workouts
@@ -131,13 +130,10 @@ class Home extends React.Component {
               {mySavedWorkouts}
             </ul>
           </div>
-
         </div>
-
       </div>
-    );
+    )
   }
-
 };
 
 export default Home;

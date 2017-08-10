@@ -9,24 +9,22 @@ class Workout extends React.Component {
   constructor() {
     super();
     this.state = {
+      //init state is empty version of expected object
+      //this will allow map method to work, even when empty
       workout: {
-        exercises: [
-          {
-            reps: []
-          }
-        ]
+        exercises: [{reps: []}]
       }
     }
     this.componentWillMount = this.componentWillMount.bind(this);
   }
   componentWillMount() {
+    //get the full workout from the ID and set it to the state
     helpers.getWorkoutsById(this.props.workoutId).then(result => {
       this.setState({workout: result.data[0]})
     })
   }
 
   render() {
-    console.log(this.state.workout);
     return (
       <div className="container-fluid" id="workout-container">
         <div className="row">
@@ -53,6 +51,7 @@ class Workout extends React.Component {
               return <Finished workout={this.state.workout} userId={this.props.userId}/>
             }}/>
           </Switch>
+
         </div>
       </div>
     )

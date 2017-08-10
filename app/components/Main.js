@@ -13,6 +13,7 @@ import Edit from "./Edit";
 class Main extends React.Component {
   constructor() {
     super();
+    //this.state.loggedIn will be used to determine navbar links
     this.state = {
       userId: "",
       loggedIn: false,
@@ -31,16 +32,17 @@ class Main extends React.Component {
   loggedInFalse() {
     this.setState({loggedIn: false})
   }
-  //change the user id
+  //change the user id - pass this func to the home component
   getUserId(input) {
     this.setState({userId: input})
   }
+  //get workouts from home - allows them to be passed to Edit.js
   getWorkouts(wkts, savedWkts) {
     this.setState({workouts: wkts})
     this.setState({savedWorkouts: savedWkts})
   }
 
-  //change the current workout
+  //change the current workout- this is for using workouts
   setWorkoutId(input) {
     this.setState({currentWorkoutId: input});
   }
@@ -78,15 +80,11 @@ class Main extends React.Component {
                 return <Edit userId={this.state.userId} workouts={this.state.workouts} savedWorkouts={this.state.savedWorkouts}/>
               }}/>
           </Switch>
-
         </div>
-
-
       </div>
 
-    );
+    )
   }
-
 }
 
 export default Main;

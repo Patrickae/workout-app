@@ -18,7 +18,6 @@ class Edit extends React.Component{
   }
   deleteMyWorkout(wktId, indx){
     helpers.deleteWorkoutFromUser(this.props.userId, wktId);
-    helpers.deleteWorkout(wktId);
     var holder = this.state.workouts;
     holder.splice(indx, 1);
     this.setState({workouts:holder});

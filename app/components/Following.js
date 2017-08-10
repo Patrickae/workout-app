@@ -29,7 +29,7 @@ class Following extends React.Component {
 
   render() {
     var friends = this.state.friends.map(item =>
-    <div>
+    <div key={item._id}>
       <div className="media col-xs-12 col-sm-5 friend-element">
         <div className="media-left">
           <img src="./images/dumbbell.png" className="media-object" alt="view-friend" data-toggle="modal" data-target={"#"+item._id + "modal"} onClick={this.hideBtn}/>
@@ -44,7 +44,7 @@ class Following extends React.Component {
     </div>)
 
     var modals = this.state.friends.map(item =>
-    <FollowingModal user={item} userId={this.props.userId}/>
+    <FollowingModal user={item} userId={this.props.userId} key={item._id}/>
   )
 
     return (

@@ -44,7 +44,7 @@ class FollowingModal extends React.Component {
   render(){
 
     var workouts = this.state.workouts.map((item,index)=>
-      <div className="well text-center">
+      <div className="well text-center" key={item._id}>
         <h2>{item.workoutName}</h2>
         <h4>{item.type}</h4>
         <h4>{item.description}</h4>

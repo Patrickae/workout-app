@@ -12,17 +12,15 @@ class Login extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.getUsetId = this.getUserId.bind(this);
   }
-
+//set state to input values on change
   handleChange() {
     this.setState({username: this.refs.username.value})
     this.setState({password: this.refs.password.value})
   }
-
+//pass user Id to main
   getUserId(){
     this.props.setUserId(this.refs.username.value);
   }
-
-
 
   render() {
 
