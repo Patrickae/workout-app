@@ -51,7 +51,7 @@ module.exports.createUser = function(newUser, callback){
 
 //get user by username
 module.exports.getUserByUsername = function(username, callback){
-	var query = {username: username};
+	var query = {username: { $regex : new RegExp(username, "i") }};
 	User.findOne(query, callback);
 }
 
