@@ -67,7 +67,7 @@ class Exercises extends React.Component{
 					<div className="row" id="workout-review">
 					<h1>This exercise</h1>
 						<h3>{this.state.currentName}</h3>
-						<ul>
+						<ul >
 						{
 							this.state.reps.map((item, index) =>
 								<li key={index}>Set {index + 1}: {item} Reps</li>

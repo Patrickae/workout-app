@@ -3,6 +3,12 @@
 #body{
   padding:0px;
 }
+h3{
+  font-family: 'Jura', sans-serif;
+}
+h4{
+  font-family: 'Jura', sans-serif;
+}
 
 #workout-review {
   height: 500px;
@@ -15,11 +21,24 @@
   padding:20px;
 }
 
+.list-group-item{
+  background-color:#248888;
+}
+
+.list-group-item a{
+  background-color: white;
+}
 
 .home-workout-list {
   max-height: 300px;
   overflow: scroll;
-
+}
+.exercise-holder{
+  background-color: #AEB8C3;
+  border: 2px solid #445252;
+}
+.edit-container{
+  background-color:#E7475E;
 }
 
 .img-responsive{
@@ -28,7 +47,6 @@
 
 #home-create{
   background-color: #248888;
-
 }
 #home-search{
   background-color: #F0D879;

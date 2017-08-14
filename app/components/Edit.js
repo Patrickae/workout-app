@@ -33,7 +33,7 @@ class Edit extends React.Component{
 
   render(){
     var myWorkouts = this.state.workouts.map((item, index) =>
-    <div className="list-group-item" key={item._id} >
+    <div className="list-group-item edit-container" key={item._id} >
 
         <h4 className="list-group-item-heading">{item.workoutName}</h4>
         <p className="list-group-item-text">{item.description}</p>
@@ -43,7 +43,7 @@ class Edit extends React.Component{
     </div>).reverse();
 
     var mySavedWorkouts = this.state.savedWorkouts.map((item, index) =>
-    <div className="list-group-item" key={item._id} >
+    <div className="list-group-item edit-container" key={item._id} >
 
         <h4 className="list-group-item-heading">{item.workoutName}</h4>
         <p className="list-group-item-text">{item.description}</p>
