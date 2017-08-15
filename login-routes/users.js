@@ -41,7 +41,6 @@ router.post("/users", function(req, res) {
 			if(err) throw err;
 			console.log(user);
 		});
-    req.flash('success_msg', 'You are registered and can now login');
 		res.redirect('/#/');
   }
 
@@ -61,7 +60,6 @@ passport.use(new LocalStrategy(function(username, password, done) {
         throw err;
       if (isMatch) {
         return done(null, user);
-        req.flash("user_flash", user);
         res.return(user);
       } else {
         return done(null, false, {message: 'Invalid password'});
@@ -97,8 +95,6 @@ router.post('/login', function(req, res, next) {
 
 router.get('/logout', function(req, res){
 	req.logout();
-
-	req.flash('success_msg', 'You are logged out');
 
 	res.redirect('/users/login');
 });

@@ -1,7 +1,11 @@
-
-
 #body{
   padding:0px;
+}
+h3{
+  font-family: 'Jura', sans-serif;
+}
+h4{
+  font-family: 'Jura', sans-serif;
 }
 
 #workout-review {
@@ -16,10 +20,19 @@
 }
 
 
+.list-group-item a{
+  border: 3px double #445252;
+}
+
 .home-workout-list {
   max-height: 300px;
   overflow: scroll;
-
+}
+.exercise-holder{
+  border: 2px solid #445252;
+}
+.edit-container{
+  background-color:#E7475E;
 }
 
 .img-responsive{
@@ -28,7 +41,6 @@
 
 #home-create{
   background-color: #248888;
-
 }
 #home-search{
   background-color: #F0D879;

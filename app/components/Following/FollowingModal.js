@@ -48,13 +48,13 @@ class FollowingModal extends React.Component {
         <h2>{item.workoutName}</h2>
         <h4>{item.type}</h4>
         <h4>{item.description}</h4>
-        <br/>
         <button className="btn btn-info" onClick={()=>{this.setExercises(this.state.workouts[index].exercises)}} >View</button>
         <button className="btn btn-success" onClick={()=>{this.saveExercise(this.state.workouts[index]._id)}} data-dismiss="modal">Save</button>
 
         <div className="row">
+          <br/>
           {this.state.exercises.map(data=>
-            <div className="container">
+
             <div key={data.currentId} className="panel panel-success">
               <div className="panel-heading">
                 <h3 className="panel-title">{data.currentName}</h3>
@@ -68,11 +68,10 @@ class FollowingModal extends React.Component {
                 <h5>Rest: {data.rest}
                   Seconds</h5>
               </div>
-            </div>
-            </div>
+              </div>
 
           )}
-
+          <br/>
           <button className="btn btn-danger show-hide" onClick={this.clearExercises}>Hide</button>
         </div>
 

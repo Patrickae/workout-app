@@ -5,11 +5,9 @@ var path = require("path");
 var cookieParser = require('cookie-parser');
 var expressValidator = require('express-validator');
 var session = require('express-session');
-var flash = require('connect-flash');
 var logger = require("morgan");
 var mongoose = require("mongoose");
 var passport = require('passport');
-var mongo = require('mongodb');
 var LocalStrategy = require('passport-local').Strategy;
 var users = require('./login-routes/users');
 var User = require("./model/user.js");
@@ -32,8 +30,7 @@ app.use(bodyParser.text());
 app.use(bodyParser.json({type: "application/vnd.api+json"}));
 app.use(cookieParser());
 
-// Connect Flash
-app.use(flash());
+
 //set static folder
 app.use(express.static("./public"));
 // Express Session
