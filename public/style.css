@@ -21,12 +21,9 @@ h4{
   padding:20px;
 }
 
-.list-group-item{
-  background-color:#248888;
-}
 
 .list-group-item a{
-  background-color: white;
+  border: 3px double #445252;
 }
 
 .home-workout-list {
@@ -34,7 +31,6 @@ h4{
   overflow: scroll;
 }
 .exercise-holder{
-  background-color: #AEB8C3;
   border: 2px solid #445252;
 }
 .edit-container{
