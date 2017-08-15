@@ -54,14 +54,14 @@ class Following extends React.Component {
       <div className="container-fluid">
         <h1 className="text-center">View your favorites</h1>
         <hr/>
-        <div className="col-xs-1 col-sm-0"></div>
-        <div className="col-xs-10 col-sm-12">
+        <div className="col-xs-1"></div>
+        <div className="col-xs-10">
 
           {friends}
 
         </div>
 
-        <div className="col-xs-1 col-sm-0"></div>
+        <div className="col-xs-1"></div>
         {modals}
       </div>
 
