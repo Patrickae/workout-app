@@ -17,11 +17,11 @@ class Overview extends React.Component {
       <div className="panel-body">
         <ul className="list-group">
           {item.reps.map((data, index) => <li key={index} className="list-group-item">
-            Set {index + 1}: {data}Reps
+            <h4>Set {index + 1}:</h4><h5> {data}Reps</h5>
           </li>)}
         </ul>
-        <h5>Rest: {item.rest}
-          Seconds</h5>
+        <h4>Rest: {item.rest}
+          Seconds</h4>
       </div>
     </div>)
 

@@ -20,13 +20,16 @@ router.post("/users", function(req, res) {
   req.checkBody('email', 'Email is required').notEmpty();
   req.checkBody('email', 'Email is not valid').isEmail();
   req.checkBody('username', 'Username is required').notEmpty();
-  req.checkBody('password', 'Password is required').notEmpty();
+  req.checkBody('password', 'Password is required').notEmpty().isLength({min: 6});
+  req.checkBody('password', 'Password must be at least six characters').isLength({min: 6});
   req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
   var errors = req.validationErrors();
 
   if (errors) {
-    res.redirect("/#/register")
+    req.session.errors = errors;
     console.log(errors);
+    res.redirect("/#/register");
+
     return errors
   } else {
     var newUser = new User({
@@ -41,7 +44,6 @@ router.post("/users", function(req, res) {
 			if(err) throw err;
 			console.log(user);
 		});
-    req.flash('success_msg', 'You are registered and can now login');
 		res.redirect('/#/');
   }
 
@@ -61,7 +63,6 @@ passport.use(new LocalStrategy(function(username, password, done) {
         throw err;
       if (isMatch) {
         return done(null, user);
-        req.flash("user_flash", user);
         res.return(user);
       } else {
         return done(null, false, {message: 'Invalid password'});
@@ -97,9 +98,6 @@ router.post('/login', function(req, res, next) {
 
 router.get('/logout', function(req, res){
 	req.logout();
-
-	req.flash('success_msg', 'You are logged out');
-
 	res.redirect('/users/login');
 });
 

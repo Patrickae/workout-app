@@ -4,12 +4,10 @@ var bodyParser = require("body-parser");
 var path = require("path");
 var cookieParser = require('cookie-parser');
 var expressValidator = require('express-validator');
-var session = require('express-session');
-var flash = require('connect-flash');
+var expressSession = require('express-session');
 var logger = require("morgan");
 var mongoose = require("mongoose");
 var passport = require('passport');
-var mongo = require('mongodb');
 var LocalStrategy = require('passport-local').Strategy;
 var users = require('./login-routes/users');
 var User = require("./model/user.js");
@@ -32,15 +30,14 @@ app.use(bodyParser.text());
 app.use(bodyParser.json({type: "application/vnd.api+json"}));
 app.use(cookieParser());
 
-// Connect Flash
-app.use(flash());
+
 //set static folder
 app.use(express.static("./public"));
 // Express Session
-app.use(session({
+app.use(expressSession({
     secret: 'secret',
-    saveUninitialized: true,
-    resave: true
+    saveUninitialized: false,
+    resave: false
 }));
 // Passport init
 app.use(passport.initialize());
@@ -226,33 +223,6 @@ app.delete("/api/workouts/:id", function(req, res) {
   });
 });
 
-//delete users
-app.delete("/api/users/:id", function(req, res) {
-  var id = req.params.id;
-
-  User.find({_id: id}).remove().exec(function(err) {
-    if (err) {
-      console.log(err)
-    } else {
-      res.send("Deleted");
-    }
-  });
-});
-
-//delete exercises
-app.delete("/api/exercises/:id", function(req, res) {
-
-  var id = req.params.id;
-
-  Exercise.findByIdAndRemove(id, function(err, response) {
-    if (err) {
-      console.log("Collection couldnt be removed", err);
-      return;
-    } else {
-      console.log("collection deleted")
-    }
-  });
-});
 
 //---------------------------------------------------------------
 //---------------Routes for Updating----------------------------
@@ -276,7 +246,7 @@ app.put("/api/workouts/:id", function(req, res) {
   });
 });
 
-
+//add workout to user's list of created workouts
 app.put("/api/userworkouts/add", function(req, res) {
   var id = req.body.currentUser;
   console.log(id);
@@ -298,6 +268,7 @@ app.put("/api/userworkouts/add", function(req, res) {
 
 });
 
+//remove workout from the users list of created workouts
 app.put("/api/userworkouts/delete", function(req, res) {
   var id = req.body.currentUser;
   console.log(id);
@@ -315,11 +286,10 @@ app.put("/api/userworkouts/delete", function(req, res) {
         else
           console.log('success')
       });
-
   });
-
 });
 
+//add workout to user's list of saved workouts
 app.put("/api/savedworkouts/add", function(req, res) {
   var id = req.body.currentUser;
   console.log(id);
@@ -338,9 +308,9 @@ app.put("/api/savedworkouts/add", function(req, res) {
           console.log('success')
       });
   });
-
 });
 
+// remove workout from the user's list of saved workouts
 app.put("/api/savedworkouts/delete", function(req, res) {
   var id = req.body.currentUser;
   console.log(id);
@@ -358,12 +328,10 @@ app.put("/api/savedworkouts/delete", function(req, res) {
         else
           console.log('success')
       });
-
   });
-
 });
 
-
+//add user ID to user's ist of friends
 app.put("/api/users/add", function(req, res) {
   var id = req.body.currentUser;
   console.log(id);
@@ -381,11 +349,10 @@ app.put("/api/users/add", function(req, res) {
         else
           console.log('success')
       });
-
   });
-
 });
 
+//remove user id from the user's list of friends
 app.put("/api/users/delete", function(req, res) {
   var id = req.body.currentUser;
   console.log(id);
@@ -403,25 +370,19 @@ app.put("/api/users/delete", function(req, res) {
         else
           console.log('success')
       });
-
   });
-
 });
 //---------------------------------------------------------------
 
 // Any non API GET routes will be directed to our React App and handled by React Router
 app.use('/new', users);
 
-app.get('/flash', function(req, res){
-  // Set a flash message by passing the key, followed by the value, to req.flash().
-  req.flash('info', 'Flash is back!')
-  res.redirect('/');
-});
-
 app.get("*", function(req, res) {
-  res.sendFile(__dirname + "/view/public/index.html");
+  res.sendFile(__dirname + "/view/public/index.html",{title:'Form Validation', success:false, errors:req.session.errors});
+  req.session.errors=null;
 });
 
+//listen on port
 app.listen(PORT, function() {
   console.log("App listening on PORT: " + PORT);
 });

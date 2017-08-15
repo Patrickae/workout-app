@@ -64,17 +64,20 @@ class Exercises extends React.Component{
 							}  }/>
 						</Switch>
 					</div>
-					<div className="row" id="workout-review">
-					<h1>This exercise</h1>
-						<h3>{this.state.currentName}</h3>
-						<ul>
+					<div className="row text-center" id="workout-review">
+					<br/>
+						<div className="well">
+					<h3>This exercise</h3>
+						<h4>{this.state.currentName}</h4>
+						<ul className="list-group">
 						{
 							this.state.reps.map((item, index) =>
-								<li key={index}>Set {index + 1}: {item} Reps</li>
+								<li className="list-group-item" key={index}>Set {index + 1}: {item} Reps</li>
 								)
 						}
 						</ul>
-						<h3>Rest Time Between Sets: {this.state.rest} Seconds</h3>
+						<h4>Rest Time: {this.state.rest} Seconds</h4>
+						</div>
 					</div>
 
 				</div>

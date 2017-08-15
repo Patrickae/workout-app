@@ -25,6 +25,7 @@ class Workout extends React.Component {
   }
 
   render() {
+    console.log(window.sessionStorage);
     return (
       <div className="container-fluid" id="workout-container">
         <div className="row">

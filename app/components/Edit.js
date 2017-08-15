@@ -12,17 +12,19 @@ class Edit extends React.Component{
     this.deleteFriendWorkout = this.deleteFriendWorkout.bind(this);
     this.deleteMyWorkout = this.deleteMyWorkout.bind(this);
   }
+  //get components to show
   componentWillMount(){
     this.setState({workouts:this.props.workouts})
     this.setState({savedWorkouts:this.props.savedWorkouts})
   }
+  //delete workout created by user
   deleteMyWorkout(wktId, indx){
     helpers.deleteWorkoutFromUser(this.props.userId, wktId);
     var holder = this.state.workouts;
     holder.splice(indx, 1);
     this.setState({workouts:holder});
-
   }
+  //delete workout saved by user
   deleteFriendWorkout(wktId, indx){
     helpers.deleteFriendWorkoutFromUser(this.props.userId, wktId);
     var holder = this.state.savedWorkouts;
@@ -33,7 +35,7 @@ class Edit extends React.Component{
 
   render(){
     var myWorkouts = this.state.workouts.map((item, index) =>
-    <div className="list-group-item" key={item._id} >
+    <div className="list-group-item edit-container" key={item._id} >
 
         <h4 className="list-group-item-heading">{item.workoutName}</h4>
         <p className="list-group-item-text">{item.description}</p>
@@ -43,7 +45,7 @@ class Edit extends React.Component{
     </div>).reverse();
 
     var mySavedWorkouts = this.state.savedWorkouts.map((item, index) =>
-    <div className="list-group-item" key={item._id} >
+    <div className="list-group-item edit-container" key={item._id} >
 
         <h4 className="list-group-item-heading">{item.workoutName}</h4>
         <p className="list-group-item-text">{item.description}</p>
