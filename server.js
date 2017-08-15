@@ -4,8 +4,7 @@ var bodyParser = require("body-parser");
 var path = require("path");
 var cookieParser = require('cookie-parser');
 var expressValidator = require('express-validator');
-var session = require('express-session');
-var flash = require('connect-flash');
+var expressSession = require('express-session');
 var logger = require("morgan");
 var mongoose = require("mongoose");
 var passport = require('passport');
@@ -32,15 +31,14 @@ app.use(bodyParser.text());
 app.use(bodyParser.json({type: "application/vnd.api+json"}));
 app.use(cookieParser());
 
-// Connect Flash
-app.use(flash());
+
 //set static folder
 app.use(express.static("./public"));
 // Express Session
-app.use(session({
+app.use(expressSession({
     secret: 'secret',
-    saveUninitialized: true,
-    resave: true
+    saveUninitialized: false,
+    resave: false
 }));
 // Passport init
 app.use(passport.initialize());
@@ -412,14 +410,9 @@ app.put("/api/users/delete", function(req, res) {
 // Any non API GET routes will be directed to our React App and handled by React Router
 app.use('/new', users);
 
-app.get('/flash', function(req, res){
-  // Set a flash message by passing the key, followed by the value, to req.flash().
-  req.flash('info', 'Flash is back!')
-  res.redirect('/');
-});
-
 app.get("*", function(req, res) {
-  res.sendFile(__dirname + "/view/public/index.html");
+  res.sendFile(__dirname + "/view/public/index.html",{title:'Form Validation', success:false, errors:req.session.errors});
+  req.session.errors=null;
 });
 
 app.listen(PORT, function() {

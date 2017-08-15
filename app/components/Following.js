@@ -10,6 +10,7 @@ class Following extends React.Component {
       friends: []
     }
   }
+  //loop through friends array and get users by Id.
   componentWillMount() {
     helpers.getUserById(this.props.userId).then(data => {
       var friendIds = data[0].friends;
@@ -23,11 +24,13 @@ class Following extends React.Component {
       }
     });
   }
+  //hide button
   hideBtn(){
     $(".show-hide").hide()
   }
 
   render() {
+    //map all friends found from componentWillMount
     var friends = this.state.friends.map(item =>
     <div key={item._id}>
       <div className="media col-xs-12 col-sm-5 friend-element">

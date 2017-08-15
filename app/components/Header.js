@@ -6,6 +6,7 @@ class Header extends React.Component {
   render() {
 
     if (this.props.loggedIn === true) {
+      //if the logged in status is true, show these nav otions
       var tabs = <ul className="nav navbar-nav" id="nav-links">
         <li>
           <Link to={"/home/" + this.props.userId}>Home</Link>
@@ -38,6 +39,7 @@ class Header extends React.Component {
       </ul>
 
     } else {
+      //if logged in status is false, show these nav options
       var tabs = <ul className="nav navbar-nav" id="nav-links">
         <li>
           <Link to="/">Log In</Link>
