@@ -20,13 +20,16 @@ router.post("/users", function(req, res) {
   req.checkBody('email', 'Email is required').notEmpty();
   req.checkBody('email', 'Email is not valid').isEmail();
   req.checkBody('username', 'Username is required').notEmpty();
-  req.checkBody('password', 'Password is required').notEmpty();
+  req.checkBody('password', 'Password is required').notEmpty().isLength({min: 6});
+  req.checkBody('password', 'Password must be at least six characters').isLength({min: 6});
   req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
   var errors = req.validationErrors();
 
   if (errors) {
-    res.redirect("/#/register")
+    req.session.errors = errors;
     console.log(errors);
+    res.redirect("/#/register");
+
     return errors
   } else {
     var newUser = new User({

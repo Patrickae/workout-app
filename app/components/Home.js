@@ -112,7 +112,7 @@ class Home extends React.Component {
           </div>
         </div>
         <div className="col-xs-12 col-sm-6">
-          <div className="container-fluid">
+          <div className="container-fluid exercise-holder">
             <h3>
               Your Created Workouts
             </h3>
@@ -121,7 +121,8 @@ class Home extends React.Component {
               {myWorkouts}
             </ul>
           </div>
-          <div className="container-fluid">
+          <br/>
+          <div className="container-fluid exercise-holder">
             <h3>
               Your Saved Workouts
             </h3>

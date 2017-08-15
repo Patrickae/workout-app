@@ -16,37 +16,37 @@ class FriendSearch extends React.Component {
     this.addFriend = this.addFriend.bind(this);
     this.deleteFriend = this.deleteFriend.bind(this);
   }
+  //set state to input status
   handleChange() {
     this.setState({friendQuery: this.refs.friendQuery.value});
   }
+  //find users that are matching the search results
   filterUsers() {
-    // event.preventDefault();
       if(this.state.friendQurey != "" ){
       helpers.getUserByUsername(this.state.friendQuery).then(result=>{
         this.setState({usersList:result})
       });
     }
   }
-
+  //add friend ID to current user's list of friends
   addFriend(friendId){
     helpers.addFriend(this.props.userId, friendId).then(result=>{console.log(result)});
     console.log("adding friend");
   }
-
+  //remove friend ID from user's friends list
   deleteFriend(friendId){
     helpers.deleteFriend(this.props.userId, friendId).then(result=>{console.log(result)});
     console.log("deleting friend");
   }
-
-componentWillMount(){
-  helpers.getUserById(this.props.userId).then(data=>{
-    this.setState({currentUser: data[0]})
-  });
-
-}
+  //set state to full current user object
+  componentWillMount(){
+    helpers.getUserById(this.props.userId).then(data=>{
+      this.setState({currentUser: data[0]})
+    });
+  }
 
   render() {
-
+    //map the array of search results
     var friends = this.state.usersList.map(data =>
       <FriendElement username={data.username} name={data.name} workouts={data.workouts} id={data._id}
         currentUserFriends={this.state.currentUser.friends} key={data._id} addFriend={this.addFriend} deleteFriend={this.deleteFriend}/>  )
