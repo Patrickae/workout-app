@@ -44,7 +44,7 @@ var helpers = {
 
 	getWorkoutsById: function(id){
 		return axios.get("/api/workouts/id/"+id).then(function(response){
-      return response
+      return response;
 		});
 	},
 

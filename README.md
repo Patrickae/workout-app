@@ -7,6 +7,7 @@ Gym-Aid is a workout application build with the MERN stack. It is designed to be
 * React
   * react-router-dom
   * react-dom
+  * Webpack
 * Node
 * MongoDB
   * Mongoose
