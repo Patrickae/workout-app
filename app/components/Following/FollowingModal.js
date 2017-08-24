@@ -1,5 +1,6 @@
 import React from "react";
 import helpers from "../../utils/helpers";
+import WorkoutView from "./WorkoutView";
 
 class FollowingModal extends React.Component {
   constructor(){
@@ -9,8 +10,6 @@ class FollowingModal extends React.Component {
       exercises:[]
     }
     this.componentWillMount = this.componentWillMount.bind(this);
-    this.setExercises = this.setExercises.bind(this);
-    this.clearExercises = this.clearExercises.bind(this);
     this.saveExercise = this.saveExercise.bind(this);
   }
   componentWillMount(){
@@ -27,16 +26,6 @@ class FollowingModal extends React.Component {
     }
   }
 
-  //set the exercise aray in the state in order to view when mapped
-  setExercises(exerciseArray){
-    this.setState({exercises: exerciseArray})
-    $(".show-hide").show()
-  }
-  //clears state exercise array. this will make the list go away when user doesnt want to see it
-  clearExercises(){
-    this.setState({exercises: []})
-    $(".show-hide").hide()
-  }
   //save selected workout to user's savedWorkouts list
   saveExercise(thisId){
     helpers.addFriendWorkoutToUser(this.props.userId, thisId)
@@ -44,38 +33,7 @@ class FollowingModal extends React.Component {
   render(){
 
     var workouts = this.state.workouts.map((item,index)=>
-      <div className="well text-center" key={item._id}>
-        <h2>{item.workoutName}</h2>
-        <h4>{item.type}</h4>
-        <h4>{item.description}</h4>
-        <button className="btn btn-info" onClick={()=>{this.setExercises(this.state.workouts[index].exercises)}} >View</button>
-        <button className="btn btn-success" onClick={()=>{this.saveExercise(this.state.workouts[index]._id)}} data-dismiss="modal">Save</button>
-
-        <div className="row">
-          <br/>
-          {this.state.exercises.map(data=>
-
-            <div key={data.currentId} className="panel panel-success">
-              <div className="panel-heading">
-                <h3 className="panel-title">{data.currentName}</h3>
-              </div>
-              <div className="panel-body">
-                <ul className="list-group">
-                  {data.reps.map((reps, index) => <li key={index} className="list-group-item">
-                    Set {index + 1}: {reps}Reps
-                  </li>)}
-                </ul>
-                <h5>Rest: {data.rest}
-                  Seconds</h5>
-              </div>
-              </div>
-
-          )}
-          <br/>
-          <button className="btn btn-danger show-hide" onClick={this.clearExercises}>Hide</button>
-        </div>
-
-      </div>
+          <WorkoutView key={item._id} workoutName={item.workoutName} id={item._id} exercises={item.exercises} saveExercise={this.saveExercise} description={item.description} type={item.type} />
     )
 
     return(
@@ -88,7 +46,7 @@ class FollowingModal extends React.Component {
           </div>
           <div className="modal-body">
             {workouts}
-            {$("#show-hide").hide()}
+            
           </div>
           <div className="modal-footer">
             <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
