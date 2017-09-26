@@ -1,31 +1,36 @@
-import React from "react";
-import {Link} from "react-router-dom";
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 class Overview extends React.Component {
   constructor() {
-    super();
+    super()
     this.state = {}
-
   }
 
   render() {
-    var overview = this.props.workout.exercises.map((item, index) =>
-    <div key={index} className="panel panel-success">
-      <div className="panel-heading">
-        <h3 className="panel-title">{item.currentName}</h3>
+    var overview = this.props.workout.exercises.map((item, index) => (
+      <div key={index} className="panel panel-success">
+        <div className="panel-heading">
+          <h3 className="panel-title">{item.currentName}</h3>
+        </div>
+        <div className="panel-body">
+          <ul className="list-group">
+            {item.reps.map((data, index) => (
+              <li key={index} className="list-group-item">
+                <h4>Set {index + 1}:</h4>
+                <h5> {data}Reps</h5>
+              </li>
+            ))}
+          </ul>
+          <h4>
+            Rest: {item.rest}
+            Seconds
+          </h4>
+        </div>
       </div>
-      <div className="panel-body">
-        <ul className="list-group">
-          {item.reps.map((data, index) => <li key={index} className="list-group-item">
-            <h4>Set {index + 1}:</h4><h5> {data}Reps</h5>
-          </li>)}
-        </ul>
-        <h4>Rest: {item.rest}
-          Seconds</h4>
-      </div>
-    </div>)
+    ))
 
-    console.log(this.props.workout.exercises);
+    console.log(this.props.workout.exercises)
 
     return (
       <div className="container">
@@ -34,25 +39,26 @@ class Overview extends React.Component {
             <div className="panel-heading">
               <h3 className="panel-title">{this.props.workout.workoutName}</h3>
             </div>
-            <div className="panel-body">
-              {this.props.workout.description}
-            </div>
+            <div className="panel-body">{this.props.workout.description}</div>
           </div>
           <h3>Overview</h3>
 
           {overview}
-
         </div>
         <div className="row">
-          <Link to="/workout/active/current" className="btn btn-info btn-block btn-lg">Begin</Link>
+          <Link to="/workout/active/current" className="btn btn-info btn-block btn-lg">
+            Begin
+          </Link>
         </div>
-        <br/>
+        <br />
         <div className="row">
-          <Link to={"/home/"+this.props.userId} className="btn btn-danger btn-block btn-lg">Back</Link>
+          <Link to={'/home/' + this.props.userId} className="btn btn-danger btn-block btn-lg">
+            Back
+          </Link>
         </div>
-        <br/>
+        <br />
       </div>
     )
   }
-};
-export default Overview;
+}
+export default Overview

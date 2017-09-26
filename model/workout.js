@@ -1,25 +1,25 @@
-var mongoose = require("mongoose");
+var mongoose = require('mongoose')
 
-var Schema = mongoose.Schema;
+var Schema = mongoose.Schema
 
 var WorkoutSchema = new Schema({
-  workoutName:{
-    type: String
+  workoutName: {
+    type: String,
   },
-  creatorId:{
-    type: String
+  creatorId: {
+    type: String,
   },
-  exercises:{
-    type:Array
+  exercises: {
+    type: Array,
   },
-  description:{
-    type:String
+  description: {
+    type: String,
   },
-   type:{
-    type:String
-  }
-});
+  type: {
+    type: String,
+  },
+})
 
-var Workout = mongoose.model("Workout", WorkoutSchema);
+var Workout = mongoose.model('Workout', WorkoutSchema)
 
-module.exports = Workout;
+module.exports = Workout

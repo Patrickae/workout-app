@@ -1,69 +1,69 @@
-var mongoose = require("mongoose");
-var bcrypt = require("bcrypt");
+var mongoose = require('mongoose')
+var bcrypt = require('bcrypt')
 
-var Schema = mongoose.Schema;
+var Schema = mongoose.Schema
 
 var UserSchema = new Schema({
-  name:{
+  name: {
     type: String,
-    required: true
+    required: true,
   },
-  username:{
+  username: {
     type: String,
     required: [true, "can't be blank"],
-    index: { unique: true }
+    index: { unique: true },
   },
-  password:{
-    type:String,
-    required: true
+  password: {
+    type: String,
+    required: true,
   },
-  email:{
-    type:String,
+  email: {
+    type: String,
     lowercase: true,
     required: [true, "can't be blank"],
-     index: { unique: true }
+    index: { unique: true },
   },
-  workouts:{
+  workouts: {
     type: Array,
-    default:[]
+    default: [],
   },
-  savedWorkouts:{
+  savedWorkouts: {
     type: Array,
-    default:[]
+    default: [],
   },
-  friends:{
+  friends: {
     type: Array,
-    default:[]
-  }
-});
+    default: [],
+  },
+})
 
-var User = module.exports = mongoose.model('User', UserSchema);
+var User = (module.exports = mongoose.model('User', UserSchema))
 
 //create a new user and hash password
-module.exports.createUser = function(newUser, callback){
-	bcrypt.genSalt(10, function(err, salt) {
-	    bcrypt.hash(newUser.password, salt, function(err, hash) {
-	        newUser.password = hash;
-	        newUser.save(callback);
-	    });
-	});
+module.exports.createUser = function(newUser, callback) {
+  bcrypt.genSalt(10, function(err, salt) {
+    bcrypt.hash(newUser.password, salt, function(err, hash) {
+      newUser.password = hash
+      newUser.save(callback)
+    })
+  })
 }
 
 //get user by username
-module.exports.getUserByUsername = function(username, callback){
-	var query = {username: { $regex : new RegExp(username, "i") }};
-	User.findOne(query, callback);
+module.exports.getUserByUsername = function(username, callback) {
+  var query = { username: { $regex: new RegExp(username, 'i') } }
+  User.findOne(query, callback)
 }
 
 //get uset by ID
-module.exports.getUserById = function(id, callback){
-	User.findById(id, callback);
+module.exports.getUserById = function(id, callback) {
+  User.findById(id, callback)
 }
 
 //compare submitted password to real password
-module.exports.comparePassword = function(candidatePassword, hash, callback){
-	bcrypt.compare(candidatePassword, hash, function(err, isMatch) {
-    	if(err) throw err;
-    	callback(null, isMatch);
-	});
+module.exports.comparePassword = function(candidatePassword, hash, callback) {
+  bcrypt.compare(candidatePassword, hash, function(err, isMatch) {
+    if (err) throw err
+    callback(null, isMatch)
+  })
 }
