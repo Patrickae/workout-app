@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/Patrickae/workout-app#readme",
   "dependencies": {
-    "bcrypt": "^1.0.2",
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.15.1",
     "cookie-parser": "^1.4.3",
     "express": "^4.13.4",
